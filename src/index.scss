@@ -1,5 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
 @import './styles/variables';
+// https://www.w3schools.com/colors/colors_hex.asp
 
 $tile: 16px;
 
@@ -12,28 +13,45 @@ $tile: 16px;
 main { // full page wrapper
   width: 100vw;
   height: 100vh;
-  background-color: $light;
+  background-color: linen;
   align-items: center;
   justify-items: center;
   display: grid;
 }
 
 header { // sticky header!
-  height: 48px;
+  height: 32px;
   width: 100vw;
-  background-color: $info;
+  background-color: lightgray;
   align-self: flex-start;
 }
 
 footer { // sticky footer!
-  height: 48px;
+  height: 32px;
   width: 100vw;
-  background-color: $info;
+  background-color: lightgray;
   align-self: flex-end;
 }
 
+button {
+  padding: 8px;
+  margin: 4px;
+  border-radius: 8px;
+  border-style: none;
+  color: white;
+  background-color: salmon;
+  
+  &:hover {
+    background-color: pink;
+  }
+  
+  &:active {
+    background-color: salmon;
+  }
+}
+
 .game-wrapper { // game wrapper
-  background-color: $info;
+  background-color: mistyrose;
   height: 26 * $tile;
   width: 34 * $tile;
   align-items: center;
