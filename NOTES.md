@@ -1,14 +1,13 @@
-# Delivery Notes
+# Notes
 
-This template is delivered as the `react-auth` lesson. Below is an outline
-of the normal lesson.
+### Components
+Random Number Generator Hook?
+: function that takes in two numbers as a range and returns a randomly generated number. Used to select dialogue to display
 
-1. Walk through downloading and setting up template
-2. Run through structure, features documentation in README
-    1. Go into included files like `AuthenticatedRoute` and `AutoDismissAlert`
-2. Annotate through the included auth components
-3. Build out authenticated CRUD on movies
-    1. Code Along: Index
-    2. Code Along: Show
-    3. Code Along: Create
-    4. Lab: Update & Delete
+Event Listener
+: Listens for keyboard inputs, changes state?
+
+Event Handler
+: Handles movement of player
+
+The basic idea is to use setInterval() at some arbitrary delay that corresponds to a desired frame rate. After every interval an update function will repaint the canvas showing the current view.

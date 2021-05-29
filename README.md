@@ -5,71 +5,27 @@ https://icanhazdadjoke.com/api
 
 https://sv443.net/jokeapi/v2/
 
-
-
-User -> player:
-pick up items and give them to npcs
+map:
+- tileset
+- tilearray
 
 players(users) can interact with items and npcs on a map:
 player:
 - name
 - list of interactions
 
-items/npcs:
+entity:
 - name
-- location
-- list of possible messages
+- type: npc or item
+- can be collected/added to inventory: boolean
+- location: [x,y]
+- list of possible messages:
 
 interaction:
 - player id
 - item id/npc id
-- random message
+- message
 
-
-# react-auth-template
-
-A front-end framework template for starting projects with a recent version of
-either the [Rails API Template](https://git.generalassemb.ly/ga-wdi-boston/rails-api-template)
-or the [Express API Template](https://git.generalassemb.ly/ga-wdi-boston/express-api-template).
-
-## Installation
-
-1. [Download](../../archive/main.zip) this template.
-1. Unzip and rename the template directory (`unzip ~/Downloads/react-auth-template-main.zip`).
-1. Move into the new project and `git init`.
-1. Empty [`README.md`](README.md) and fill with your own content.
-1. Replace `react-auth-template` in `package.json` with your
-   projects name.
-1. Replace the `"homepage"` field in `package.json` with your (public) Github
-   account name and repository name.
-1. Install dependencies with `npm install`.
-1. `git add` and `git commit` your changes.
-1. Run the development server with `npm start`.
-
-## Deployment
-
-Before deploying, you first need to make sure the `homepage` key in your
-`package.json` is pointing to the correct value. It should be the url of your
-deployed application.
-
-To deploy you should first make sure you are on the `main` branch with a
-clean working directory, then you can run `npm run deploy` and wait to see if
-it runs successfully.
-
-## About
-
-This template is derived from GA Boston's [react-template](https://git.generalassemb.ly/ga-wdi-boston/react-template).
-Most of the development dependencies, such as linters, SCSS compiler, Webpack
-config, NPM scripts, etc in this repo come from there.
-
-It includes all the components and routes needed to sign up, sign in, change
-passwords, and sign out of an API built with either template linked above, with
-no need for modification.
-
-**NOTE**: You should customize the included components to suit you app! They're
-provided as a guide and a bare minimum of functionality and style. Consider
-changing the provided SCSS styles, modifying the auth code, improving the flash
-messages, etc.
 
 ## Structure
 
@@ -213,21 +169,3 @@ const AboutPage = () => (
 
 export default AboutPage
 ```
-
-## Tasks
-
-Developers should run these often!
-
-- `npm run nag`: runs code quality analysis tools on your code and complains.
-- `npm run make-standard`: reformats all your code in the JavaScript Standard
-  Style.
-- `npm run start`: generates bundles, watches, and livereloads.
-- `npm run build`: place bundled styles and scripts where `index.html` can find
-    them
-- `npm run deploy`: builds and deploys main branch
-
-## [License](LICENSE)
-
-1. All content is licensed under a CC­BY­NC­SA 4.0 license.
-1. All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.

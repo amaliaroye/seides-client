@@ -1,1 +1,60 @@
 @import '~bootstrap/scss/bootstrap';
+@import './styles/variables';
+
+$tile: 16px;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+main { // full page wrapper
+  width: 100vw;
+  height: 100vh;
+  background-color: $light;
+  align-items: center;
+  justify-items: center;
+  display: grid;
+}
+
+header { // sticky header!
+  height: 48px;
+  width: 100vw;
+  background-color: $info;
+  align-self: flex-start;
+}
+
+footer { // sticky footer!
+  height: 48px;
+  width: 100vw;
+  background-color: $info;
+  align-self: flex-end;
+}
+
+.game-wrapper { // game wrapper
+  background-color: $info;
+  height: 26 * $tile;
+  width: 34 * $tile;
+  align-items: center;
+  justify-items: center;
+  display: grid;
+}
+
+#canvas-base {
+  height: 24 * $tile;
+  width: 32 * $tile;
+}
+
+.player { // player container
+  align-self: flex-end;
+  height: 3 * $tile;
+  width: 2 * $tile;
+  background-color: $secondary;
+}
+
+.entity { // item container
+  height: 1 * $tile;
+  width: 1 * $tile;
+  background-color: $warning;
+}
