@@ -1,4 +1,4 @@
-/* Generator of Random things! */
+/* Generator of Random things! I may want to have this on the back end? */
 
 // accepts a 'type' argument: hex, rgba, rgb and returns a string color value
 export const randomColor = (type) => {

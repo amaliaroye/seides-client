@@ -1,5 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
-@import './styles/variables';
+@import './variables';
+@import './dialogue';
 // https://www.w3schools.com/colors/colors_hex.asp
 
 $tile: 16px;
@@ -52,16 +53,16 @@ button {
 
 .game-wrapper { // game wrapper
   background-color: mistyrose;
-  height: 26 * $tile;
-  width: 34 * $tile;
+  height: $tile * 26;
+  width: $tile * 34;
   align-items: center;
   justify-items: center;
   display: grid;
 }
 
 #canvas-base {
-  height: 24 * $tile;
-  width: 32 * $tile;
+  height: $tile * 24;
+  width: $tile * 32;
 }
 
 .player { // player container

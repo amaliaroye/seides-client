@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+.dialogue-box {
+  width: 90vw;
+  background-color: white;
+}
+
+.wrapper {
+  margin: 5px;
+  padding: 30px;
+  /*This part is important for centering*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-body {
+  font-family: monospace;
+  font-size: 1em;
+}
+.message-button {
+  float: right;
+}

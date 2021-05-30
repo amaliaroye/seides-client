@@ -1,7 +1,7 @@
 import React from 'react'
 import Alert from 'react-bootstrap/Alert'
 
-import './AutoDismissAlert.scss'
+import '../styles/AutoDismissAlert.scss'
 
 class AutoDismissAlert extends React.Component {
   constructor (props) {

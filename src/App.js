@@ -9,10 +9,10 @@ import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
+import { v4 as uuid } from 'uuid'
 */
 
 import React from 'react'
-// import { v4 as uuid } from 'uuid'
 import World from './components/World'
 
 class App extends React.Component {
