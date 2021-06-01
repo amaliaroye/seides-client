@@ -2,23 +2,23 @@
   box-sizing: border-box;
 }
 .dialogue-box {
-  width: 90vw;
+  width: 70vw;
   background-color: white;
 }
 
 .wrapper {
   margin: 5px;
-  padding: 30px;
-  /*This part is important for centering*/
+  padding: 20px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
 }
 
 .message-body {
   font-family: monospace;
   font-size: 1em;
+  text-align: left;
 }
+
 .message-button {
   float: right;
 }
