@@ -1,10 +1,12 @@
-# My Ambitious Final Project.
-## That only serves as a reminder that I, indeed, am a failure.
+# seides-client
 
 ## Links
 [Capsone Project](https://git.generalassemb.ly/ga-wdi-boston/capstone-project)
 📋 [Requirements](https://git.generalassemb.ly/ga-wdi-boston/capstone-project/blob/main/requirements.md)
 📅 [Recommended Schedule](https://git.generalassemb.ly/ga-wdi-boston/capstone-project/blob/main/schedule.md)
+
+
+
 
 [Konva](https://konvajs.org/docs/)
 [React Konva](https://github.com/konvajs/react-konva)
@@ -32,31 +34,28 @@
 ```mermaid
 erDiagram
 
-USER ||--o{ PLAYER : owns
+USER ||--o{ GAME : has
 GAME ||--|{ NPC : has
-GAME ||--|| CHARACTER : has
   
-PLAYER {
+USER {
   email string
   password string
   token string
   name string
   sprite string
-  diary array
 }
 GAME {
   owner playerRef
   map string
-  player playerRef
-  possible array
-  eventsCompleted npcRef
+  npcs array
   over boolean
+  score number
 }
 NPC {
   name string
-  objective string
-  objectiveReached boolean
-  objectiveResponses array
+  request string
+  options array
+  requestComplete array
   points number
 }
 ```

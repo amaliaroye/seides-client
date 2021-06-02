@@ -2,11 +2,14 @@
 @import 'buttons';
 @import 'variables';
 @import 'alerts';
+@import 'fonts';
+
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'FreePixel';
 }
 
 body { // full page wrapper
@@ -25,4 +28,49 @@ header { // sticky header!
   width: 100vw;
   background-color: gray;
   align-self: flex-start;
+}
+
+.form {
+  background-color: white;
+  margin: 10px;
+  padding: 5px;
+  // border: solid white 1px;
+  // display: grid;
+  // align-items: center;
+  // justify-items: center;
+}
+
+.form-input {
+  padding: 4px;
+  margin: 2px;
+  border: solid lightgray 1px;
+  border-radius: 4px;
+  &.label{
+    display: none;
+  }
+}
+.form-button {
+  &.inline {
+    padding: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: lightgray;
+    border: solid lightgray 1px;
+    border-radius: 4px;
+    &:hover {
+      background-color: gray;
+      color: white;
+    }
+  }
+}
+
+ul {
+  list-style-type: none;
+  list-style-position: inside;
+}
+
+.npc-index {
+  border: solid lightgray 1px;
+  background-color: lightgray;
+  padding: 10px;
 }

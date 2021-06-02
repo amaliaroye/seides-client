@@ -6,6 +6,8 @@ import { v4 as uuid } from 'uuid'
 import Header from './components/shared/Header'
 import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
 import Alert from './components/shared/Alert'
+import NpcCreate from './components/shared/NpcCreate'
+import NpcIndex from './components/shared/NpcIndex'
 
 // Route Components
 import SignUp from './components/routes/SignUp'
@@ -14,6 +16,7 @@ import SignOut from './components/routes/SignOut'
 import ChangePassword from './components/routes/ChangePassword'
 import GamesIndex from './components/routes/GamesIndex'
 import GamesShow from './components/routes/GamesShow'
+import Test from './components/routes/Test'
 
 class App extends Component {
   constructor (props) {
@@ -74,6 +77,15 @@ class App extends Component {
             <GamesShow msgAlert={this.msgAlert} user={user} />
           )} />
 
+          <Route path='/test' render={() => (
+            <Test msgAlert={this.msgAlert} setUser={this.setUser} />
+          )} />
+          <Route path='/create-npc' render={() => (
+            <NpcCreate msgAlert={this.msgAlert} setUser={this.setUser} />
+          )} />
+          <Route path='/npcs' render={() => (
+            <NpcIndex msgAlert={this.msgAlert} setUser={this.setUser} />
+          )} />
         </main>
       </Fragment>
     )
