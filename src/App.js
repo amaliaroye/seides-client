@@ -1,29 +1,29 @@
-/*
 import React, { Component, Fragment } from 'react'
 import { Route } from 'react-router-dom'
-
-import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
-import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
-import Header from './components/Header/Header'
-import SignUp from './components/SignUp/SignUp'
-import SignIn from './components/SignIn/SignIn'
-import SignOut from './components/SignOut/SignOut'
-import ChangePassword from './components/ChangePassword/ChangePassword'
 import { v4 as uuid } from 'uuid'
-*/
 
-import React from 'react'
-import World from './components/World'
+// Shared Components
+import Header from './components/shared/Header'
+import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
+import Alert from './components/shared/Alert'
 
-class App extends React.Component {
+// Route Components
+import SignUp from './components/routes/SignUp'
+import SignIn from './components/routes/SignIn'
+import SignOut from './components/routes/SignOut'
+import ChangePassword from './components/routes/ChangePassword'
+import GamesIndex from './components/routes/GamesIndex'
+import GamesShow from './components/routes/GamesShow'
+
+class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      // user: null,
-      // msgAlerts: []
+      user: null,
+      msgAlerts: []
     }
   }
-  /*
+
   setUser = user => this.setState({ user })
   clearUser = () => this.setState({ user: null })
   deleteAlert = (id) => {
@@ -37,19 +37,7 @@ class App extends React.Component {
       return { msgAlerts: [...state.msgAlerts, { heading, message, variant, id }] }
     })
   }
-  */
 
-  render () {
-    return (
-      <main>
-        <header></header>
-        <World></World>
-        <footer></footer>
-      </main>
-    )
-  }
-
-  /*
   render () {
     const { msgAlerts, user } = this.state
 
@@ -57,7 +45,7 @@ class App extends React.Component {
       <Fragment>
         <Header user={user} />
         {msgAlerts.map(msgAlert => (
-          <AutoDismissAlert
+          <Alert
             key={msgAlert.id}
             heading={msgAlert.heading}
             variant={msgAlert.variant}
@@ -66,7 +54,7 @@ class App extends React.Component {
             deleteAlert={this.deleteAlert}
           />
         ))}
-        <main className="container">
+        <main>
           <Route path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
@@ -79,11 +67,17 @@ class App extends React.Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
+          <AuthenticatedRoute user={user} path='/games' render={() => (
+            <GamesIndex msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/games' render={() => (
+            <GamesShow msgAlert={this.msgAlert} user={user} />
+          )} />
+
         </main>
       </Fragment>
     )
   }
-  */
 }
 
 export default App

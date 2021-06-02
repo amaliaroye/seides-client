@@ -1,9 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
-@import './variables';
-@import './dialogue';
-// https://www.w3schools.com/colors/colors_hex.asp
-
-$tile: 16px;
+@import 'buttons';
+@import 'variables';
+@import 'alerts';
 
 * {
   box-sizing: border-box;
@@ -11,69 +9,20 @@ $tile: 16px;
   padding: 0;
 }
 
-main { // full page wrapper
+body { // full page wrapper
   width: 100vw;
   height: 100vh;
-  background-color: linen;
-  align-items: center;
-  justify-items: center;
-  display: grid;
+  background-color: lightgray;
+  // align-items: center;
+  // justify-items: center;
+  // display: grid;
 }
 
 header { // sticky header!
-  height: 32px;
+  padding: 2px;
+  padding-left: 10px;
+  height: auto;
   width: 100vw;
-  background-color: lightgray;
+  background-color: gray;
   align-self: flex-start;
-}
-
-footer { // sticky footer!
-  height: 32px;
-  width: 100vw;
-  background-color: lightgray;
-  align-self: flex-end;
-}
-
-button {
-  padding: 8px;
-  margin: 4px;
-  border-radius: 8px;
-  border-style: none;
-  color: white;
-  background-color: salmon;
-  
-  &:hover {
-    background-color: pink;
-  }
-  
-  &:active {
-    background-color: salmon;
-  }
-}
-
-.game-wrapper { // game wrapper
-  background-color: mistyrose;
-  height: $tile * 26;
-  width: $tile * 34;
-  align-items: center;
-  justify-items: center;
-  display: grid;
-}
-
-#canvas-base {
-  height: $tile * 24;
-  width: $tile * 32;
-}
-
-.player { // player container
-  align-self: flex-end;
-  height: 3 * $tile;
-  width: 2 * $tile;
-  background-color: $secondary;
-}
-
-.entity { // item container
-  height: 1 * $tile;
-  width: 1 * $tile;
-  background-color: $warning;
 }

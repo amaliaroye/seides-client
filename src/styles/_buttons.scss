@@ -1,0 +1,16 @@
+button {
+  padding: 8px;
+  margin: 4px;
+  border-radius: 8px;
+  border-style: none;
+  color: white;
+  background-color: salmon;
+  
+  &:hover {
+    background-color: pink;
+  }
+  
+  &:active {
+    background-color: salmon;
+  }
+}

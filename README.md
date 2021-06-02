@@ -7,12 +7,13 @@
 📅 [Recommended Schedule](https://git.generalassemb.ly/ga-wdi-boston/capstone-project/blob/main/schedule.md)
 
 [Konva](https://konvajs.org/docs/)
+[React Konva](https://github.com/konvajs/react-konva)
 
 ## User Stories: v1
 ##### 🔒 AUTHENTICATION
   - A new user can sign-up with an email and password,
   - A returning user can sign-in with their email and password
-  - A signed in user can choose to sign-out and end their game
+  - A signed in user can choose to sign-out
   - A signed in user can change their user password
 
 ##### 🌍 MAP
@@ -64,13 +65,20 @@ NPC {
 
 ### Routes
 Front-end routes - handled by React and React-Router
+
+| Endpoint           | Component        | `AuthenticatedRoute` |
+|--------------------|------------------|----------------------|
+| `/games`           | `GamesIndex`     | Yes |
+| `/games/:id`       | `GamesShow`      | Yes |
+
+
 #### 🔒 Authentication Routes
-| Endpoint         | Component | `AuthenticatedRoute`? |
-|------------------|-------------------|-------|
-| `/sign-up`       | `SignUp`    | No |
-| `/sign-in`       | `SignIn`    | No |
-| `/change-password` | `ChangePassword`  | Yes |
-| `/sign-out`        | `SignOut`   | Yes |
+| Endpoint           | Component        | `AuthenticatedRoute` |
+|--------------------|------------------|----------------------|
+| `/sign-up`         | `SignUp`         | No  |
+| `/sign-in`         | `SignIn`         | No  |
+| `/change-password` | `ChangePassword` | Yes |
+| `/sign-out`        | `SignOut`        | Yes |
 
 
 ## ER Diagram
