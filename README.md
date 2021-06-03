@@ -14,16 +14,17 @@
 
 ### Request Ideas
 'I need help fixing up my Neopets page!'
-'I'm missing a C U R L Y  B O I somewhere, can you help me find it??'
-'I can't find the bug on like 572 in this 84-line file!'
+'I'm missing a C U R L Y  B O I somewhere, can you help me find him??'
+'I can't find the bug on line 572 in this 84-line file!'
 'Is a hot dog a sandwich?'
-
-### Quotes
-I'm feeling the algo-rhythm!
+'Can I ASCII you a question?'
+'My document ripped! Will you help me PATCH it?'
+'Can you GET me a can of AJAX from the API store?'
 
 ### Areas!
-418 Tea
+418 Tea. Only Tea.
 Algo-Rhythm
+API Store: AJAX, SOAP
 
 
 ## Misc. Links

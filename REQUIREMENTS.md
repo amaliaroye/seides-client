@@ -5,22 +5,22 @@ In order to get a satisfactory score, by the time you present your project, you
 
 ### Deployment
 Be deployed online, where the rest of the world can access it.
-1.  [ ]  Host on your public Github page, not Github Enterprise.
+1.  [x]  Host on your public Github page, not Github Enterprise.
 1.  [ ]  Deploy client application on GH pages.
 1.  [ ]  Deploy server application on Heroku.
 
 ### Version Control
 Demonstrate using version control by:
-1.  [ ]  Sharing your work through a git repository hosted on Github.
-1.  [ ]  Making frequent, cohesive commits dating back to the **first day**
+1.  [x]  Sharing your work through a git repository hosted on Github.
+1.  [x]  Making frequent, cohesive commits dating back to the **first day**
 of the project week.
-1.  [ ]  1 commit on the first day of project week on both repos.
-1.  [ ]  At least 1 commit every day during project week (not necessarily on both repos).
+1.  [x]  1 commit on the first day of project week on both repos.
+1.  [x]  At least 1 commit every day during project week (not necessarily on both repos).
 
 ### Documentation
 Produce documentation on Github:
-1.  [ ] Create 2 Github repos (one for your front-end and one for your back-end)
-1.  [ ] Pin both repositories on GitHub as a Popular Repository
+1.  [x] Create 2 Github repos (one for your front-end and one for your back-end)
+1.  [x] Pin both repositories on GitHub as a Popular Repository
 
 Both front-end and back-end repos should include README's with:
 1.  [ ] An explanation of the what the app does and how it works.
@@ -29,8 +29,8 @@ Both front-end and back-end repos should include README's with:
 1.  [ ] A link to the other repo
 1.  [ ] A link to both deployed sites
 1.  [ ] List of technologies used
-1.  [ ] List unsolved problems which would be fixed in future iterations.
-1.  [ ] Document your planning, process and problem-solving strategy
+1.  [x] List unsolved problems which would be fixed in future iterations.
+1.  [x] Document your planning, process and problem-solving strategy
 
 Your front-end repo's README should also have:
 1.  [ ] Link to wireframes and user stories
@@ -43,18 +43,18 @@ Your back-end repo's README should also have
 1.  [ ] Set up and installation instructions for back end application
 
 ### Auth Specifications
-1.  [ ]  Signup with email, password, and password confirmation.
-1.  [ ]  Login with email and password.
-1.  [ ]  Logout when logged in.
-1.  [ ]  Change password with current and new password.
-1.  [ ]  Signup and Signin must only be available to not signed in users.
-1.  [ ]  Logout and Change password must only be available to signed in users.
+1.  [x]  Signup with email, password, and password confirmation.
+1.  [x]  Login with email and password.
+1.  [x]  Logout when logged in.
+1.  [x]  Change password with current and new password.
+1.  [x]  Signup and Signin must only be available to not signed in users.
+1.  [x]  Logout and Change password must only be available to signed in users.
 1.  [ ]  Give feedback to the user after each action's success or failure.
 1.  [ ]  All forms must clear after submit success and user sign-out
     - [ ] (Optional) Reset form to initial state on failure
 
 ### Client Specifications
-1.  [ ]  Use a front-end Javascript app to communicate with your API (both read and write) and render data that it receives in the browser.
+1.  [x]  Use a front-end Javascript app to communicate with your API (both read and write) and render data that it receives in the browser.
 1.  [ ] Have semantically clean HTML and CSS
 1.  [ ] User must be able to create a new resource
 1.  [ ] User must be able to update a resource
