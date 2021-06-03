@@ -53,9 +53,9 @@ const App = () => {
         <AuthenticatedRoute user={user} path='/games' render={() => (
           <GameIndex newAlert={newAlert} user={user} />
         )} />
-        <AuthenticatedRoute user={user} path='/games' render={() => (
+        {/* <AuthenticatedRoute user={user} path='/games' render={() => (
           <GameShow newAlert={newAlert} user={user} />
-        )} />
+        )} /> */}
 
         {/* <Route path='/npcs' render={() => (
             <NpcIndex newAlert={newAlert} setUser={setUser} />
