@@ -1,9 +1,15 @@
 import React from 'react'
 
 const Button = props => {
-  const { text } = props
+  const { text, value, className, handleSubmit } = props
   return (
-    <button>{text}</button>
+    <button
+      value={value}
+      className={className}
+      onClick={handleSubmit}
+    >
+      {text}
+    </button>
   )
 }
 

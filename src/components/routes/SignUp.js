@@ -4,9 +4,6 @@ import { withRouter } from 'react-router-dom'
 import { signUp, signIn } from '../../api/auth'
 import messages from '../../utils/alertMessages'
 
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-
 class SignUp extends Component {
   constructor (props) {
     super(props)
@@ -14,7 +11,8 @@ class SignUp extends Component {
     this.state = {
       email: '',
       password: '',
-      passwordConfirmation: ''
+      passwordConfirmation: '',
+      name: ''
     }
   }
 
@@ -25,75 +23,80 @@ class SignUp extends Component {
   onSignUp = event => {
     event.preventDefault()
 
-    const { msgAlert, history, setUser } = this.props
+    const { newAlert, history, setUser } = this.props
 
     signUp(this.state)
+      // sign in the user after they make a new account
       .then(() => signIn(this.state))
       .then(res => setUser(res.data.user))
-      .then(() => msgAlert({
-        heading: 'Sign Up Success',
+      .then(() => newAlert({
         message: messages.signUpSuccess,
         variant: 'success'
       }))
       .then(() => history.push('/'))
       .catch(error => {
-        this.setState({ email: '', password: '', passwordConfirmation: '' })
-        msgAlert({
-          heading: 'Sign Up Failed with error: ' + error.message,
-          message: messages.signUpFailure,
-          variant: 'danger'
+        this.setState({ email: '', password: '', passwordConfirmation: '', name: '' })
+        newAlert({
+          message: messages.signUpFailure + error.message,
+          variant: 'error'
         })
       })
   }
 
   render () {
-    const { email, password, passwordConfirmation } = this.state
+    const { email, password, passwordConfirmation, name } = this.state
 
     return (
-      <div className="row">
-        <div className="col-sm-10 col-md-8 mx-auto mt-5">
-          <h3>Sign Up</h3>
-          <Form onSubmit={this.onSignUp}>
-            <Form.Group controlId="email">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                required
-                type="email"
-                name="email"
+      <div>
+        <div>
+          <h3>Sign In</h3>
+          <form onSubmit={this.onSignIn}>
+            <div>
+              <label className='form-input label'>Email</label>
+              <input
+                placeholder='Enter email'
+                name='email'
                 value={email}
-                placeholder="Enter email"
                 onChange={this.handleChange}
+                className='form-input'
+                type='email'
               />
-            </Form.Group>
-            <Form.Group controlId="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                required
-                name="password"
+            </div>
+            <div>
+              <label className='form-input label'>Password</label>
+              <input
+                placeholder='Enter Password'
+                name='password'
                 value={password}
-                type="password"
-                placeholder="Password"
                 onChange={this.handleChange}
+                className='form-input'
+                type='text'
               />
-            </Form.Group>
-            <Form.Group controlId="passwordConfirmation">
-              <Form.Label>Password Confirmation</Form.Label>
-              <Form.Control
-                required
-                name="passwordConfirmation"
+            </div>
+            <div>
+              <label className='form-input label'>Confirm Password</label>
+              <input
+                placeholder='Confirm Password'
+                name='passwordConfirmation'
                 value={passwordConfirmation}
-                type="password"
-                placeholder="Confirm Password"
                 onChange={this.handleChange}
+                className='form-input'
+                type='text'
               />
-            </Form.Group>
-            <Button
-              variant="primary"
-              type="submit"
-            >
-              Submit
-            </Button>
-          </Form>
+            </div>
+            <div>
+              <label className='form-input label'>Name</label>
+              <input
+                placeholder='Enter Player Name'
+                name='name'
+                value={name}
+                onChange={this.handleChange}
+                className='form-input'
+                type='text'
+              />
+            </div>
+            <input value='Sign Up!' type="submit" />
+          </form>
         </div>
       </div>
     )

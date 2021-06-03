@@ -29,7 +29,74 @@
 ##### 🌍 MAP
   - The map is generated when a new game starts
 
-
+  ## ER Diagram
+  ```mermaid
+    erDiagram
+  
+    MAP ||--o{ PLAYER : displays
+    ENTITY-NPC }o--o{ PLAYER : interacts
+    ENTITY-ITEM }o--o{ PLAYER : interacts
+    MAP ||--o{ ENTITY-NPC : generates
+    MAP ||--o{ ENTITY-ITEM : generates
+    USER ||--|{ PLAYER : owns
+    PLAYER ||--o{ INTERACTION : creates
+  
+  
+    USER {
+      userid id
+      username string
+      email string
+      password string
+      scores array
+    }
+    PLAYER {
+      playerid id
+      ownerid id
+      name string
+      inventory array
+      interactions array
+      spritesheet string
+      messages array
+    }
+    ENTITY-ITEM {
+      id id
+      name string
+      type string
+      coordinates array
+      scoreModifier number
+      isCollectible boolean
+      messages array
+    }
+    ENTITY-NPC {
+      id id
+      name string
+      type string
+      coordinates array
+      scoreModifier number
+      isCollectible boolean
+      messages array
+      favoriteItems array
+      hatedItems array
+    }
+    INTERACTION {
+      id id
+      player id
+      entity id
+      coordinates array
+      messageDisplayed string
+      result string
+      scoreModifier number
+      isCollected boolean
+      timeItHappened timestamp
+    }
+    MAP {
+      id id
+      height number
+      width number
+      createdAt timestamp
+      currentEntities array
+    }
+  ```
 
 ### 🚂 Train of Thought
 > I want to make a side-scrolling platformer game that's populated with entities like NPCs and items
@@ -122,26 +189,24 @@ utils/ - utilities and helper methods to use project-wide
 
 ```
 🎮 client/
- ├⎯╴📁 config/
- ├⎯╴📂 public/
- ├⎯╴📁 scripts/
- ├⎯╴📂 src/
- │   ├⎯⎯╴📄 App.js
- │   ├⎯⎯╴📂 api/
- │   │     ├⎯⎯╴📄 auth.js
- │   │     ├⎯⎯╴📄 user.js
- │   ├⎯⎯╴📂 routes/
- │   │     ├⎯⎯╴📄 AuthenticatedRoutes.js
- │   ├⎯⎯╴📂 components/
- │   │     ├⎯⎯╴📂 components/
- │   ├⎯⎯╴📂 utilities/
- │   │     ├⎯⎯╴🎲 randomGenerator.js
- │   ├⎯⎯╴📂 pages/
- │   ├⎯⎯╴📂 layout/
- │   └⎯⎯╴📂 styles/
- │         ├⎯⎯╴📄 index.scss
- │         └⎯⎯╴📄 _variables.scss
- └⎯╴📑 README.md
+📁 config/
+📂 public/
+📁 scripts/
+📂 src/
+📄 App.js
+📂 api/
+📄 auth.js
+📄 user.js
+📂 routes/
+📄 AuthenticatedRoutes.js
+📂 components/
+📂 components/
+📂 styles/
+📄 index.scss
+📄 _variables.scss
+📂 utilities/
+🎲 randomGenerator.js
+📑 README.md
 ```
 ---
 
@@ -170,6 +235,7 @@ Random Number Generator
 [Styled Components](https://styled-components.com/)
 [React Smooth](https://www.npmjs.com/package/react-smooth)
 
+[SCSS File Organization](https://matthewelsom.com/blog/simple-scss-playbook.html)
 [Chalk](https://www.npmjs.com/package/chalk) [Chalk Animations](https://github.com/bokub/chalk-animation) [Terminal Link](https://github.com/sindresorhus/terminal-link)
 [Structuring Apps](https://cheesecakelabs.com/blog/efficient-way-structure-react-native-projects/)
 [React Sidescroller](https://github.com/nrobin24/react-sidescroller)
@@ -197,15 +263,50 @@ Highlight {== ==}{>> <<} (markdown-writer:toggle-highlight-text)
 
 🦺 Under Construction
 
-🔒 🔐 🔑 🔔 🔗 💻 📼 📷 💾
 ❗️ ❕ ❓ ❔ ➕ ➖ ➗ ⭕ ❌ ✅ ❎ 〰️ 🆔 *️⃣ #️⃣
-🥳️ 😊 😢 😡 🤬 👤 👥 💬 💭 👁‍🗨 💡
+🔒 🔐 🔑 🔔 🔗 💻 📼 📷 💾
+📄 📄 📑 📜 📦 📁 📂 📖 📇 📅 ✉️ 📩
 ⌛ ⌚ ⏰ 🔍 🏠 🧲 🚩 🛑 ⛔ 🎒
-📍 📌 📎 📄 📄 📑 📜 📦 📁 📂 📖 📇 📅
-📩 🎨 🌍
-📏 📓 💩
+📍 📌 📎
+🥳️ 😊 😢 😡 🤬 👤 👥 💬 💭 👁‍🗨 💡
+📩 🎨 🌍 📏 📓 💩
 🧠 🎰 🧩 🎲 🛒 🎮 🎧 📢
 🥔 🍩 🍟 🥭 🎁 🤖
 🟥🟧🟨🟩🟦🟪⬛️⬜️🟫
 🢆🢇
 🢅🢄
+
+```
+scss/                               # Import all ‘-dir.scss’ files
+|
+|- abstracts/
+|	|- __abstracts-dir.scss     # Import all abstracts .scss files
+|	|- _fonts.scss              # Font Import
+|	|- _mixins.scss             # Scss Mixins
+|	|- _variables.scss          # Scss Variables
+|
+|- base/
+|	|- __base-dir.scss          # Import all base .scss files
+|	|- _reset.scss              # Custom Reset/Normalize
+|	|- _typography.scss         # Typography Rules
+|
+|- components/
+|	|- __components-dir.scss    # Import all components .scss files
+|	|- _button.scss             # Button Styles
+|	|- _input.scss              # Input Styles
+|	|- _modal.scss              # Modal Styles
+|
+|- layouts/
+|	|- __layouts-dir.scss       # Import all layouts .scss files
+|	|- _footer.scss             # Footer Styles
+|	|- _main-navigation.scss    # Main Navigation Styles
+|
+|- vendor/
+|	|- __vendor-dir.scss        # Import vendor folders
+|	|- bourbon/                 # Bourbon
+|	|- fontawesome/             # Font Awesome
+|	|- neat/                    # Bourbon Neat
+|	|- normalize/               # Normalize
+|
+`styles.scss                        # Main Scss File
+```

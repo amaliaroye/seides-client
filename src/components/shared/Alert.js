@@ -1,51 +1,36 @@
-import React from 'react'
-import Alert from 'react-bootstrap/Alert'
+import React, { useState, useEffect } from 'react'
 
-class AutoDismissAlert extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      show: true
-    }
-    this.timeoutId = null
+const Alert = (props) => {
+  const [show, setShow] = useState(true)
+  const [timeoutId, setTimeoutId] = useState(null)
+
+  useEffect(() => {
+    setTimeoutId(handleClose, 5000)
+  }, [timeoutId])
+
+  const handleClose = () => setShow(false)
+
+  const { variant, message, id, deleteAlert } = props
+
+  // Delete this alert after the fade animation time (300 ms by default)
+  if (!show) {
+    setTimeoutId(() => {
+      deleteAlert(id)
+    }, 300)
   }
 
-  componentDidMount () {
-    this.timeoutId = setTimeout(this.handleClose, 5000)
-  }
-
-  componentWillUnmount () {
-    clearTimeout(this.timeoutId)
-  }
-
-  handleClose = () => this.setState({ show: false })
-
-  render () {
-    const { variant, heading, message, deleteAlert, id } = this.props
-
-    // Delete this alert after the fade animation time (300 ms by default)
-    if (!this.state.show) {
-      setTimeout(() => {
-        deleteAlert(id)
-      }, 300)
-    }
-
-    return (
-      <Alert
-        dismissible
-        show={this.state.show}
-        variant={variant}
-        onClose={this.handleClose}
-      >
-        <div className="container">
-          <Alert.Heading>
-            {heading}
-          </Alert.Heading>
-          <p className="alert-body">{message}</p>
-        </div>
-      </Alert>
-    )
-  }
+  return (
+    <Alert
+      dismissible
+      show={show}
+      variant={variant}
+      onClose={handleClose}
+    >
+      <div className="container">
+        <p className="alert-body">{message}</p>
+      </div>
+    </Alert>
+  )
 }
 
-export default AutoDismissAlert
+export default Alert

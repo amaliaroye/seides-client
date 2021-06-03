@@ -1,66 +1,34 @@
-# seides-client
+# Switching SEIdes
+
+## Description
+
+
 
 ## Links
 [Capsone Project](https://git.generalassemb.ly/ga-wdi-boston/capstone-project)
 📋 [Requirements](https://git.generalassemb.ly/ga-wdi-boston/capstone-project/blob/main/requirements.md)
 📅 [Recommended Schedule](https://git.generalassemb.ly/ga-wdi-boston/capstone-project/blob/main/schedule.md)
 
-
-
-
 [Konva](https://konvajs.org/docs/)
 [React Konva](https://github.com/konvajs/react-konva)
 
-## User Stories: v1
-##### 🔒 AUTHENTICATION
-  - A new user can sign-up with an email and password,
-  - A returning user can sign-in with their email and password
-  - A signed in user can choose to sign-out
-  - A signed in user can change their user password
+### Request Ideas
+'I need help fixing up my Neopets page!'
+'I'm missing a C U R L Y  B O I somewhere, can you help me find it??'
+'I can't find the bug on like 572 in this 84-line file!'
+'Is a hot dog a sandwich?'
 
-##### 🌍 MAP
-  - A user can start a new game to display a map with entities displayed
+### Quotes
+I'm feeling the algo-rhythm!
 
-##### ENTITIES
-  - A user can click an entitity to create a new interaction and display one of the entities' random messages
-  - A user can view all the interactions they've had in their diary
-
-## User Stories: v2
-##### ENTITIES
- - Entities can be either an item or an npc.
- - Items are removed from the map and stored in the player's inventory. They still create an interaction event in the diary?
- - NPCs are not removed from the map and the interaction is stored in the diary
-
-```mermaid
-erDiagram
-
-USER ||--o{ GAME : has
-GAME ||--|{ NPC : has
-  
-USER {
-  email string
-  password string
-  token string
-  name string
-  sprite string
-}
-GAME {
-  owner playerRef
-  map string
-  npcs array
-  over boolean
-  score number
-}
-NPC {
-  name string
-  request string
-  options array
-  requestComplete array
-  points number
-}
-```
+### Areas!
+418 Tea
+Algo-Rhythm
 
 
+## Misc. Links
+ [NES.css](https://nostalgic-css.github.io/NES.css/) + [RPG UI](https://github.com/RonenNess/RPGUI)
+ [SASS Interpolation](https://sass-lang.com/documentation/interpolation)
 
 ### Routes
 Front-end routes - handled by React and React-Router
@@ -80,71 +48,54 @@ Front-end routes - handled by React and React-Router
 | `/sign-out`        | `SignOut`        | Yes |
 
 
-## ER Diagram
+
+## 🙎 User Stories: v1
+##### 🔒 AUTHENTICATION
+  - A new user can sign-up with an email and password,
+  - A returning user can sign-in with their email and password
+  - A signed in user can choose to sign-out
+  - A signed in user can change their user password
+
+##### 🌍 MAP
+  - A user can start a new game to display a map with entities displayed
+
+##### 📦 ENTITIES
+  - A user can click an entitity to create a new interaction and display one of the entities' random messages
+  - A user can view all the interactions they've had in their diary
+
+## 🙋 User Stories: v2
+##### 📦 ENTITIES
+ - Entities can be either an item or an npc.
+ - Items are removed from the map and stored in the player's inventory. They still create an interaction event in the diary?
+ - NPCs are not removed from the map and the interaction is stored in the diary
+
+
+## Entity Relationship Diagram
 ```mermaid
   erDiagram
 
-  MAP ||--o{ PLAYER : displays
-  ENTITY-NPC }o--o{ PLAYER : interacts
-  ENTITY-ITEM }o--o{ PLAYER : interacts
-  MAP ||--o{ ENTITY-NPC : generates
-  MAP ||--o{ ENTITY-ITEM : generates
-  USER ||--|{ PLAYER : owns
-  PLAYER ||--o{ INTERACTION : creates
-
-
+  USER ||--o{ GAME : has
+  GAME ||--|{ NPC : has
+    
   USER {
-    userid id
-    username string
     email string
     password string
-    scores array
-  }
-  PLAYER {
-    playerid id
-    ownerid id
+    token string
     name string
-    inventory array
-    interactions array
-    spritesheet string
-    messages array
+    sprite string
   }
-  ENTITY-ITEM {
-    id id
+  GAME {
+    owner playerRef
+    map string
+    npcs array
+    over boolean
+    score number
+  }
+  NPC {
     name string
-    type string
-    coordinates array
-    scoreModifier number
-    isCollectible boolean
-    messages array
-  }
-  ENTITY-NPC {
-    id id
-    name string
-    type string
-    coordinates array
-    scoreModifier number
-    isCollectible boolean
-    messages array
-    favoriteItems array
-    hatedItems array
-  }
-  INTERACTION {
-    id id
-    player id
-    entity id
-    coordinates array
-    messageDisplayed string
-    result string
-    scoreModifier number
-    isCollected boolean
-    timeItHappened timestamp
-  }
-  MAP {
-    id id
-    height number
-    width number
-    createdAt timestamp
-    currentEntities array
-  }
+    request string
+    options array
+    requestComplete array
+    points number
+}
 ```

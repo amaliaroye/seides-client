@@ -1,24 +1,66 @@
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
 @import 'buttons';
 @import 'variables';
 @import 'alerts';
 @import 'fonts';
-
+@import 'animations';
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'FreePixel';
+  font-family: 'PixelSymtext';
+  font-size: 1.2rem;
+}
+html {
+  margin: 0;
+  padding: 0;
 }
 
 body { // full page wrapper
-  width: 100vw;
-  height: 100vh;
-  background-color: lightgray;
-  // align-items: center;
-  // justify-items: center;
-  // display: grid;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+  display: flex;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  // background-color: salmon;
+  position: absolute;
+  align-items: center;
+  justify-items: center;
+  display: grid;
+}
+
+.text-box {
+  background-color: white;
+  height: 8em;
+  position: absolute;
+  bottom: 50px;
+  width: 320px * $px;
+  padding: 1.5em;
+}
+
+.text-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.text-box-button {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  height: auto;
+}
+
+.gameport {
+  background-color: mistyrose;
+  width: 320px * $px;
+  height: 240px * $px;
 }
 
 header { // sticky header!
@@ -26,6 +68,7 @@ header { // sticky header!
   padding-left: 10px;
   height: auto;
   width: 100vw;
+  position: fixed;
   background-color: gray;
   align-self: flex-start;
 }
@@ -34,6 +77,7 @@ header { // sticky header!
   background-color: white;
   margin: 10px;
   padding: 5px;
+  width: 30vw;
   // border: solid white 1px;
   // display: grid;
   // align-items: center;
@@ -69,8 +113,19 @@ ul {
   list-style-position: inside;
 }
 
-.npc-index {
-  border: solid lightgray 1px;
+.npc-index-card {
+  border: solid white 1px;
+  margin: 5px;
   background-color: lightgray;
   padding: 10px;
+  width: 200px;
+}
+
+.npc-index {
+  display: flex;
+}
+
+.npc-id {
+  font-size: .7em ;
+  color: gray;
 }

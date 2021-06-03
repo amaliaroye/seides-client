@@ -1,8 +1,16 @@
-@font-face { // 16px
+@font-face { // 16px - tiny all caps
   font-family: '000webfont';
   src: url('../assets/fonts/000webfont.ttf');
 }
-@font-face {
+@font-face { //
+  font-family: '04B_03__';
+  src: url('../assets/fonts/04B_03__.TTF');
+}
+@font-face { //
+  font-family: '04B_30__';
+  src: url('../assets/fonts/04B_30__.TTF');
+}
+@font-face { // good copy text
   font-family: 'AtariSmall';
   src: url('../assets/fonts/AtariSmall.ttf');
 }
@@ -14,27 +22,39 @@
   font-family: 'FreePixel';
   src: url('../assets/fonts/FreePixel.ttf');
 }
+@font-face { // cute but hard to read
+  font-family: 'macaron';
+  src: url('../assets/fonts/macaron.ttf');
+}
 @font-face { // 10 px
   font-family: 'MonsterFriendFore';
   src: url('../assets/fonts/MonsterFriendFore.otf');
 }
-@font-face {
+@font-face { // TINY ALL CAPS
   font-family: 'PixelTiny';
   src: url('../assets/fonts/PixelTiny.ttf');
 }
-// @font-face {
+// @font-face { // cute upper and lower case
 //   font-family: 'pixelated';
 //   src: url('../assets/fonts/pixelated.ttf');
 // }
+@font-face { // cute compact copy
+  font-family: 'PixelSymtext';
+  src: url('../assets/fonts/Pixel Symtext.otf');
+}
 @font-face {
   font-family: 'rainyhearts';
   src: url('../assets/fonts/rainyhearts.ttf');
 }
-@font-face { // 8px
+@font-face { // 8px - ALL CAPS
   font-family: 'Silkscreen';
   src: url('../assets/fonts/slkscr.ttf');
 }
-@font-face { // 8px
+@font-face { // 8px - ALL CAPS
   font-family: 'SilkscreenBold';
   src: url('../assets/fonts/slkscrb.ttf');
+}
+@font-face { //suuuper tiny but cute
+  font-family: 'tiny-islanders';
+  src: url('../assets/fonts/tiny-islanders.otf');
 }

@@ -28,20 +28,20 @@ export const npcIndex = () => {
 }
 
 // edit an npc
-export const npcEdit = (id, npc, user) => {
+export const npcUpdate = (id, npc) => {
   return axios({
     url: apiUrl + '/npcs/' + id,
     method: 'PATCH',
-    headers: { 'Authorization': `Bearer: ${user.token}` },
+    // headers: { 'Authorization': `Bearer: ${user.token}` },
     data: { npc }
   })
 }
 
 // destroy an npc
-export const npcDestroy = (id, npc, user) => {
+export const npcDelete = (id) => {
   return axios({
     url: apiUrl + '/npcs/' + id,
-    method: 'DELETE',
-    headers: { 'Authorization': `Bearer: ${user.token}` }
+    method: 'DELETE'
+    // headers: { 'Authorization': `Bearer: ${user.token}` }
   })
 }

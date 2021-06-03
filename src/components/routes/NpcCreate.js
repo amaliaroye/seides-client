@@ -11,7 +11,9 @@ const NpcCreate = props => {
 
   // newNpcId will be null, until we successfully create a npc
   const [newNpcId, setNewNpcId] = useState(null)
-  const [optionArray, setOptionArray] = useState([''])
+  // stores the array of options for each npc
+  const [optionArray, setOptionArray] = useState([])
+  // stores the option to be passed into the optionArray
   const [option, setOption] = useState('')
   // initially our npc will be empty until the form is filled in
   const [npc, setNpc] = useState({
@@ -25,13 +27,8 @@ const NpcCreate = props => {
     event.persist()
     const { name, value } = event.target
     if (name === 'option') {
-      // setOption(prevOption => {
-      //   const updatedField = { value }
-      //   const objectToCreate = (prevOption, updatedField)
-      //   return objectToCreate
-      // })
       setOption(value)
-      console.log(value)
+      // console.log(value)
     } else {
       setNpc(prevNpc => {
         const updatedField = { [name]: value }
@@ -44,11 +41,17 @@ const NpcCreate = props => {
 
   const handleAdd = (event) => {
     event.preventDefault()
-    if (option) {
-      setOptionArray([...optionArray, option])
-    } else setOption('')
-    console.log(optionArray)
+    // if (option) {
+    // // if there is an option, add it to the optionArray
+    setOptionArray([...optionArray, option])
+    // then save the array in the NPC
+    setNpc(prevOption => {
+      // const updatedField = { options: optionArray }
+      return Object.assign({}, prevOption, { options: optionArray })
+      // return optionToAdd
+    })
   }
+  // }
 
   const handleSubmit = (event) => {
     // prevent page from reloading
@@ -56,7 +59,7 @@ const NpcCreate = props => {
     // send axios request
     npcCreate(npc)
       .then(res => setNewNpcId(res.data.npc.id))
-      .then(console.log(newNpcId))
+      .then(console.log(`Created new NPC! ${newNpcId}`))
       .catch(console.error)
   }
 
@@ -69,7 +72,8 @@ const NpcCreate = props => {
         handleAdd={handleAdd}
         option={option}
       />
-      <button onClick={() => console.log(npc)}>Console.log</button>
+      <button onClick={() => console.log(npc)}>Console.log(npc)</button>
+      <button onClick={() => console.log(optionArray)}>Console.log(optionArray)</button>
       <NpcIndex />
     </Fragment>
   )

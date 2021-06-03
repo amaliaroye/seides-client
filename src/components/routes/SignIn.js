@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import { signIn } from '../../api/auth'
-import messages from '../../utils/alertMessages'
-
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 
 class SignIn extends Component {
   constructor (props) {
@@ -24,22 +20,20 @@ class SignIn extends Component {
   onSignIn = event => {
     event.preventDefault()
 
-    const { msgAlert, history, setUser } = this.props
+    const { newAlert, history, setUser } = this.props
 
     signIn(this.state)
       .then(res => setUser(res.data.user))
-      .then(() => msgAlert({
-        heading: 'Sign In Success',
-        message: messages.signInSuccess,
+      .then(() => newAlert({
+        message: 'You\'re signed in!',
         variant: 'success'
       }))
       .then(() => history.push('/'))
       .catch(error => {
         this.setState({ email: '', password: '' })
-        msgAlert({
-          heading: 'Sign In Failed with error: ' + error.message,
-          message: messages.signInFailure,
-          variant: 'danger'
+        newAlert({
+          message: 'Whoops! Sign in failed with error: ' + error.message,
+          variant: 'error'
         })
       })
   }
@@ -48,39 +42,37 @@ class SignIn extends Component {
     const { email, password } = this.state
 
     return (
-      <div className="row">
-        <div className="col-sm-10 col-md-8 mx-auto mt-5">
+      <div>
+        <div>
           <h3>Sign In</h3>
-          <Form onSubmit={this.onSignIn}>
-            <Form.Group controlId="email">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                required
-                type="email"
-                name="email"
+          <form onSubmit={this.onSignIn}>
+            <div>
+              <label className='form-input label'>Email</label>
+              <input
+                placeholder='Enter email'
+                name='email'
                 value={email}
-                placeholder="Enter email"
                 onChange={this.handleChange}
+                className='form-input'
+                type='email'
               />
-            </Form.Group>
-            <Form.Group controlId="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                required
-                name="password"
+            </div>
+            <div>
+              <label className='form-input label'>Password</label>
+              <input
+                placeholder='Enter Password'
+                name='password'
                 value={password}
-                type="password"
-                placeholder="Password"
                 onChange={this.handleChange}
+                className='form-input'
+                type='text'
               />
-            </Form.Group>
-            <Button
-              variant="primary"
+            </div>
+            <input
+              value='Sign In!'
               type="submit"
-            >
-              Submit
-            </Button>
-          </Form>
+            />
+          </form>
         </div>
       </div>
     )
