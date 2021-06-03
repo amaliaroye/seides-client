@@ -4,7 +4,7 @@ const Welcome = (props) => {
   return (
     <Fragment>
       <div>
-        <h1>seides!</h1>
+        <h1>Switching SEIdes!</h1>
       </div>
     </Fragment>
   )

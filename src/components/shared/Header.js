@@ -17,7 +17,7 @@ const unauthenticatedOptions = (
 const alwaysOptions = (
   <Fragment>
     <NavLink to='/'><Button text='Home'/></NavLink>
-    <NavLink to='/konva'><Button text='KonvaTest'/></NavLink>
+    {/* <NavLink to='/konva'><Button text='KonvaTest'/></NavLink> */}
     <NavLink to='/create-npc'><Button text='Create NPC'/></NavLink>
   </Fragment>
 )

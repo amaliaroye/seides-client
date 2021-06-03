@@ -3,7 +3,7 @@ import React from 'react'
 const Input = props => {
   return (
     <div>
-      <label></label>
+      <label>{props.name}</label>
       <input
         value={props.value}
         name={props.name}

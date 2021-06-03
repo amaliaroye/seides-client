@@ -65,6 +65,7 @@ const NpcCreate = props => {
 
   return (
     <Fragment>
+
       <NpcForm
         npc={npc}
         handleChange={handleChange}
