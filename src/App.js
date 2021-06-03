@@ -16,7 +16,7 @@ import SignUp from './components/routes/SignUp'
 import SignIn from './components/routes/SignIn'
 import SignOut from './components/routes/SignOut'
 import ChangePassword from './components/routes/ChangePassword'
-import KonvaTest from './components/routes/KonvaTest'
+// import KonvaTest from './components/routes/KonvaTest'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -64,9 +64,9 @@ const App = () => {
           <NpcCreate newAlert={newAlert} setUser={setUser} />
         )} />
 
-        <Route path='/test' render={() => (
+        {/* <Route path='/test' render={() => (
           <KonvaTest newAlert={newAlert} setUser={setUser} />
-        )} />
+        )} /> */}
 
         <Route path='/newAlert-up' render={() => (
           <SignUp msgAlert={newAlert} setUser={setUser} />
