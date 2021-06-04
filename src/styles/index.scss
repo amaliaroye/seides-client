@@ -22,19 +22,19 @@ body { // full page wrapper
   padding: 0;
   width: 100%;
   height: 100%;
-  background-color: gray;
+  background-color: lightgray;
   display: flex;
 }
 
-.container {
-  width: 100%;
-  height: 100%;
-  // background-color: salmon;
-  position: absolute;
-  align-items: center;
-  justify-items: center;
-  display: grid;
-}
+// .container {
+//   width: 100%;
+//   height: 100%;
+//   // background-color: salmon;
+//   position: absolute;
+//   align-items: center;
+//   justify-items: center;
+//   display: grid;
+// }
 
 .text-box {
   background-color: white;

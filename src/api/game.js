@@ -12,18 +12,20 @@ export const gameCreate = (game, user) => {
 }
 
 /// get one game
-export const gameShow = (id) => {
+export const gameShow = (id, user) => {
   return axios({
     url: apiUrl + '/games/' + id,
-    method: 'GET'
+    method: 'GET',
+    headers: { 'Authorization': `Bearer: ${user.token}` }
   })
 }
 
 // get all games
-export const gameIndex = () => {
+export const gameIndex = (user) => {
   return axios({
     url: apiUrl + '/games',
-    method: 'GET'
+    method: 'GET',
+    headers: { 'Authorization': `Bearer: ${user.token}` }
   })
 }
 

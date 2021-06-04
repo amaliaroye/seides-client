@@ -11,6 +11,7 @@ export const npcs = [{
   request: 'some food.',
   options: ['Feed Boots.', 'Sorry, Boots, not today.']
 }]
+
 /*
 {"npc":{
   "options":"['Throw the mouse.', 'Ignore Luna.']",

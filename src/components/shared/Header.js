@@ -4,14 +4,14 @@ import Button from './Button'
 
 const authenticatedOptions = (
   <Fragment>
-    <NavLink to='sign-out'><Button text='Sign Out'/></NavLink>
-    <NavLink to='change-password'><Button text='Change Password'/></NavLink>
+    <NavLink to='/sign-out'><Button text='Sign Out'/></NavLink>
+    <NavLink to='/change-password'><Button text='Change Password'/></NavLink>
   </Fragment>
 )
 const unauthenticatedOptions = (
   <Fragment>
-    <NavLink to='sign-up'><Button text='Sign Up'/></NavLink>
-    <NavLink to='sign-in'><Button text='Sign In'/></NavLink>
+    <NavLink to='/sign-up'><Button text='Sign Up'/></NavLink>
+    <NavLink to='/sign-in'><Button text='Sign In'/></NavLink>
   </Fragment>
 )
 const alwaysOptions = (

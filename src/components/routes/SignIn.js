@@ -24,10 +24,7 @@ class SignIn extends Component {
 
     signIn(this.state)
       .then(res => setUser(res.data.user))
-      .then(() => newAlert({
-        message: 'You\'re signed in!',
-        variant: 'success'
-      }))
+      .then(() => console.log(this.state))
       .then(() => history.push('/'))
       .catch(error => {
         this.setState({ email: '', password: '' })
@@ -37,7 +34,6 @@ class SignIn extends Component {
         })
       })
   }
-
   render () {
     const { email, password } = this.state
 

@@ -47,6 +47,7 @@ const NpcCreate = props => {
     // then save the array in the NPC
     setNpc(prevOption => {
       // const updatedField = { options: optionArray }
+      console.log(npc)
       return Object.assign({}, prevOption, { options: optionArray })
       // return optionToAdd
     })

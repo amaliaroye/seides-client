@@ -18,7 +18,7 @@ import SignOut from './components/routes/SignOut'
 import ChangePassword from './components/routes/ChangePassword'
 // import KonvaTest from './components/routes/KonvaTest'
 
-const App = () => {
+const App = (props) => {
   const [user, setUser] = useState(null)
   const [alerts, setAlerts] = useState([])
 
@@ -32,6 +32,7 @@ const App = () => {
     const id = uuid()
     setAlerts([...alerts, { message, variant, id }])
   }
+  const clearUser = (user) => setUser(null)
 
   return (
     <Fragment>
@@ -47,11 +48,11 @@ const App = () => {
       ))}
       <main>
         <Route exact path='/' render={() => (
-          <Home newAlert={newAlert} setUser={setUser} />
+          <Home newAlert={newAlert} setUser={setUser} clearUser={clearUser} />
         )} />
 
         <AuthenticatedRoute user={user} path='/games' render={() => (
-          <GameIndex newAlert={newAlert} user={user} />
+          <GameIndex newAlert={newAlert} user={user} clearUser={clearUser} />
         )} />
         {/* <AuthenticatedRoute user={user} path='/games' render={() => (
           <GameShow newAlert={newAlert} user={user} />
@@ -61,14 +62,14 @@ const App = () => {
             <NpcIndex newAlert={newAlert} setUser={setUser} />
           )} /> */}
         <Route path='/create-npc' render={() => (
-          <NpcCreate newAlert={newAlert} setUser={setUser} />
+          <NpcCreate />
         )} />
 
         {/* <Route path='/test' render={() => (
           <KonvaTest newAlert={newAlert} setUser={setUser} />
         )} /> */}
 
-        <Route path='/newAlert-up' render={() => (
+        <Route path='/sign-up' render={() => (
           <SignUp msgAlert={newAlert} setUser={setUser} />
         )} />
         <Route path='/sign-in' render={() => (
@@ -76,7 +77,7 @@ const App = () => {
         )} />
 
         <AuthenticatedRoute user={user} path='/sign-out' render={() => (
-          <SignOut newAlert={newAlert} setUser={setUser} user={user} />
+          <SignOut newAlert={newAlert} setUser={setUser} user={user} clearUser={clearUser}/>
         )} />
         <AuthenticatedRoute user={user} path='/change-password' render={() => (
           <ChangePassword newAlert={newAlert} user={user} />

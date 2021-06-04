@@ -9,28 +9,21 @@
 📋 [Requirements](https://git.generalassemb.ly/ga-wdi-boston/capstone-project/blob/main/requirements.md)
 📅 [Recommended Schedule](https://git.generalassemb.ly/ga-wdi-boston/capstone-project/blob/main/schedule.md)
 
+
+
 [Konva](https://konvajs.org/docs/)
 [React Konva](https://github.com/konvajs/react-konva)
 
-### Request Ideas
-'I need help fixing up my Neopets page!'
-'I'm missing a C U R L Y  B O I somewhere, can you help me find him??'
-'I can't find the bug on line 572 in this 84-line file!'
-'Is a hot dog a sandwich?'
-'Can I ASCII you a question?'
-'My document ripped! Will you help me PATCH it?'
-'Can you GET me a can of AJAX from the API store?'
 
-### Areas!
-418 Tea. Only Tea.
-Algo-Rhythm
-API Store: AJAX, SOAP
 
 
 ## Misc. Links
  [NES.css](https://nostalgic-css.github.io/NES.css/) + [RPG UI](https://github.com/RonenNess/RPGUI)
  [SASS Interpolation](https://sass-lang.com/documentation/interpolation)
-
+ [Questbook](https://github.com/Leopotam/questbook)  + [Questbook JS](https://github.com/Leopotam/questbook-js)
+ [RPG Language](http://howtomakeanrpg.com/a/rpg-dialog-language-discourse.html)
+ 
+ 
 ### Routes
 Front-end routes - handled by React and React-Router
 

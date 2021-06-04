@@ -1,5 +1,19 @@
 # Notes
 
+### Request Ideas
+'I need help fixing up my Neopets page!'
+'I'm missing a C U R L Y  B O I somewhere, can you help me find him??'
+'I can't find the bug on line 572 in this 84-line file!'
+'Is a hot dog a sandwich?'
+'Can I ASCII you a question?'
+'My document ripped! Will you help me PATCH it?'
+'Can you GET me a can of AJAX from the API store?'
+
+### Area Ideas!
+418 Tea. Only Tea.
+Algo-Rhythm
+API Store: AJAX, SOAP
+
 ## 💡 Ideas
 - RPG or platformer side-scroller with parallax backgrounds game?
 - ~~At random intervals, random items have a chance to spawn on the map~~
