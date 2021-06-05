@@ -11,6 +11,7 @@ import Alert from './components/shared/Alert'
 // import Welcome from './components/routes/Welcome'
 import Home from './components/routes/Home'
 import NpcCreate from './components/routes/NpcCreate'
+import GameCreate from './components/routes/GameCreate'
 import GameIndex from './components/routes/GameIndex'
 import SignUp from './components/routes/SignUp'
 import SignIn from './components/routes/SignIn'
@@ -62,7 +63,10 @@ const App = (props) => {
             <NpcIndex newAlert={newAlert} setUser={setUser} />
           )} /> */}
         <Route path='/create-npc' render={() => (
-          <NpcCreate />
+          <NpcCreate user={user}/>
+        )} />
+        <Route path='/create-game' render={() => (
+          <GameCreate user={user}/>
         )} />
 
         {/* <Route path='/test' render={() => (
@@ -77,7 +81,7 @@ const App = (props) => {
         )} />
 
         <AuthenticatedRoute user={user} path='/sign-out' render={() => (
-          <SignOut newAlert={newAlert} setUser={setUser} user={user} clearUser={clearUser}/>
+          <SignOut newAlert={newAlert} setUser={setUser} user={user} />
         )} />
         <AuthenticatedRoute user={user} path='/change-password' render={() => (
           <ChangePassword newAlert={newAlert} user={user} />

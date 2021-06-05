@@ -3,23 +3,29 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 // Define Styled Components outside of the render method
-const TextBox = ({ text }) => {
-  return <StyledText text={text}>{text}</StyledText>
-}
+// const text = styled.input.attrs(props => ({
+//   type: 'text',
+//   value: props.text,
+//   char: props.text.length
+// }))
 
-const textKeyframes = keyframes`
+// interface TextProps {
+//   text: text;
+// }
+
+const textKeyframes = ({ char }) => keyframes`
   from {
     width: 0;
   }
   to {
-    width: ${props => props.text.length}ch;
+    width: ${char}ch;
   }
 `
 
 const StyledText = styled.div`
   animation: ${textKeyframes};
   animation-duration: 2s;
-  animation-timing-function: steps(${props => props.text.length}, end);
+  animation-timing-function: steps(${props => props.char}, end);
   animation-delay: 1s;
   animation-iteration-count: 1;
   animation-direction: normal;
@@ -28,7 +34,11 @@ const StyledText = styled.div`
   overflow: hidden;
   font-family: 'Source Code Pro', monospace;
   font-size: 28px;
-  color: rgba(255,255,255,.70);
 `
+
+const TextBox = ({ text }) => {
+  const char = parseInt(text.length)
+  return <StyledText char={char}>{text}</StyledText>
+}
 
 export default TextBox

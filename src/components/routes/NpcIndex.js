@@ -22,18 +22,22 @@ const NpcIndex = props => {
       .catch(console.error)
       .then(console.log(npcs))
   }
+  // const listOptions = npc.options.map(option => { return (<li key={option}>{option}</li>) })
 
-  const listNpcs = npcs.map(npc => (
-    <div key={npc.id} className='npc-index-card'>
-      <ul>
-        <li className='npc-id'>ID: {npc.id}</li>
-        <li>Points: {npc.points}</li>
-        <li>Request: {npc.requestMessage}</li>
+  const listNpcs = npcs.map(npc =>
 
-        <NpcDelete npc={npc} onClick={resetNpcs}/>
-      </ul>
-    </div>
-  ))
+    (
+      <div key={npc.id} className='npc-index-card'>
+        <ul>
+          <li className='npc-id'>ID: {npc.id}</li>
+          <li>Points: {npc.points}</li>
+          <li>Request: {npc.requestMessage}</li>
+          <li>Options: {npc.options.map(option => { return (<ol key={option}>{option}</ol>) })} </li>
+
+          <NpcDelete npc={npc} onClick={resetNpcs}/>
+        </ul>
+      </div>
+    ))
 
   return (
     <div>

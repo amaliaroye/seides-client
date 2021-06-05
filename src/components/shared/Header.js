@@ -6,6 +6,8 @@ const authenticatedOptions = (
   <Fragment>
     <NavLink to='/sign-out'><Button text='Sign Out'/></NavLink>
     <NavLink to='/change-password'><Button text='Change Password'/></NavLink>
+    <NavLink to='/create-npc'><Button text='Create NPC'/></NavLink>
+    <NavLink to='/create-game'><Button text='Create GAME'/></NavLink>
   </Fragment>
 )
 const unauthenticatedOptions = (
@@ -18,14 +20,14 @@ const alwaysOptions = (
   <Fragment>
     <NavLink to='/'><Button text='Home'/></NavLink>
     {/* <NavLink to='/konva'><Button text='KonvaTest'/></NavLink> */}
-    <NavLink to='/create-npc'><Button text='Create NPC'/></NavLink>
   </Fragment>
 )
 
 const Header = ({ user }) => {
+  // console.log(user)
   return (
     <header>
-      { user && <span>Welcome, {user.email}</span>}
+      { user && <span>Welcome, {user.name}</span>}
       { alwaysOptions }
       { user ? authenticatedOptions : unauthenticatedOptions }
     </header>

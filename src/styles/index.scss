@@ -68,7 +68,7 @@ header { // sticky header!
   padding-left: 10px;
   height: auto;
   width: 100vw;
-  position: fixed;
+  // position: fixed;
   background-color: gray;
   align-self: flex-start;
 }
@@ -78,8 +78,8 @@ header { // sticky header!
   margin: 10px;
   padding: 5px;
   width: 30vw;
-  // border: solid white 1px;
-  // display: grid;
+  border: solid white 1px;
+  display: grid;
   // align-items: center;
   // justify-items: center;
 }
@@ -89,7 +89,7 @@ header { // sticky header!
   margin: 2px;
   border: solid lightgray 1px;
   border-radius: 4px;
-  &.label{
+  &.label {
     display: none;
   }
 }

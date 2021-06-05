@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import TextBox from '../shared/TextBox'
 
-const text = 'I hate myself'
+const text = 'I fucking hate my life'
 
 const Home = (props) => {
   return (

@@ -5,12 +5,13 @@ import { signOut } from '../../api/auth'
 
 class SignOut extends Component {
   componentDidMount () {
-    const { history, clearUser, user } = this.props
+    const { history, setUser, user } = this.props
 
     signOut(user)
       .then(() => console.log(user))
       .then(() => history.push('/'))
-      .then(() => clearUser(user))
+      .then(() => setUser(null))
+      .then(() => console.log(user))
       .catch(console.error)
   }
 

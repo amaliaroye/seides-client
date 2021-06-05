@@ -2,13 +2,12 @@ import React, { Fragment, useState } from 'react'
 import { gameCreate } from '../../api/game'
 
 const GameCreate = (props) => {
-  
   const [npcArray, setNpcArray] = useState([])
   const [logArray, setLogArray] = useState([])
   // can't these just be let npc = null?
   const [npc, setNpc] = useState('')
   const [log, setLog] = useState('')
-  
+
   const [game, setGame] = useState({
     owner: props.user,
     map: '',
@@ -17,15 +16,15 @@ const GameCreate = (props) => {
     npcs: npcArray,
     logs: logArray
   })
-  
+
   const handleChange = (event) => {
     event.persist()
     const { name, value } = event.target
-    if ( name === 'npcs') {
+    if (name === 'npc') {
       setNpc(value)
       console.log(value)
     }
-    if (name === 'logs') {
+    if (name === 'log') {
       setLog(value)
       console.log(value)
     } else {
@@ -36,24 +35,31 @@ const GameCreate = (props) => {
       })
     }
   }
-  
+
   const handleAdd = (event) => {
     event.preventDefault()
     // if there is an option, add it to the optionArray
-    if (npc) {setNpcArray([...npcArray, npc])
-    if (log) {setLogArray([...logArray, log])
+    if (npc) {
+      setNpcArray([...npcArray, npc])
+      setNpc('')
+    }
+    if (log) {
+      setLogArray([...logArray, log])
+      setLog('')
+    }
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    gameCreate(game)
+    gameCreate(game, props.user)
       .then(res => console.log(res))
       .catch(console.error)
   }
 
   return (
     <Fragment>
-      <form onSubmit={createGame}>
+      <h3>Create a New Game!</h3>
+      <form onSubmit={gameCreate}>
         <div>
           <label className='form-input label'>Map</label>
           <input
@@ -68,15 +74,28 @@ const GameCreate = (props) => {
         <div>
           <label className='form-input label'>NPCs</label>
           <input
-            placeholder='Map Name'
-            name='map'
-            value={game.npcs}
+            placeholder='NPCs'
+            name='npc'
+            value={npc}
             onChange={handleChange}
             className='form-input'
             type='text'
           />
+          <button onClick={handleAdd}>Add</button>
         </div>
-
+        <div>
+          <label className='form-input label'>LOG</label>
+          <input
+            placeholder='Log Events'
+            name='log'
+            value={log}
+            onChange={handleChange}
+            className='form-input'
+            type='text'
+          />
+          <button onClick={handleAdd}>Add</button>
+        </div>
+        <button onClick={handleSubmit}>New Map!</button>
       </form>
     </Fragment>
   )
