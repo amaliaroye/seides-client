@@ -6,6 +6,7 @@ import { v4 as uuid } from 'uuid'
 import Header from './components/shared/Header'
 import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
 import Alert from './components/shared/Alert'
+import Modal from './components/shared/Modal'
 
 // Route Components
 // import Welcome from './components/routes/Welcome'
@@ -22,6 +23,7 @@ import ChangePassword from './components/routes/ChangePassword'
 const App = (props) => {
   const [user, setUser] = useState(null)
   const [alerts, setAlerts] = useState([])
+  const [open, setOpen] = useState(false)
 
   // deletes one alert from alert array
   const deleteAlert = (id) => {
@@ -38,6 +40,8 @@ const App = (props) => {
   return (
     <Fragment>
       <Header user={user} />
+      <button onClick={() => setOpen(true)}>I open model!</button>
+      <Modal open={open} onClose={() => setOpen(false)} />
       {alerts.map(alert => (
         <Alert
           key={alert.id}

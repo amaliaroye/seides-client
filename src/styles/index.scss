@@ -7,60 +7,28 @@
 
 * {
   box-sizing: border-box;
+  image-rendering: pixelated;
   margin: 0;
   padding: 0;
-  font-family: 'PixelSymtext';
-  font-size: 1.2rem;
+  font-family: 'PIXEARG_';
+  font-size: 1rem;
 }
+
 html {
   margin: 0;
   padding: 0;
 }
 
 body { // full page wrapper
+  background-color: #ff8c8c;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background: linear-gradient(0deg, #ff8c8c 15%, #41d7d7 90%);
+  background-size: 100vw 100vh;
+  object-fit: fill;
+  display: flex;
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
-  background-color: lightgray;
-  display: flex;
-}
-
-// .container {
-//   width: 100%;
-//   height: 100%;
-//   // background-color: salmon;
-//   position: absolute;
-//   align-items: center;
-//   justify-items: center;
-//   display: grid;
-// }
-
-.text-box {
-  background-color: white;
-  height: 8em;
-  position: absolute;
-  bottom: 50px;
-  width: 320px * $px;
-  padding: 1.5em;
-}
-
-.text-wrapper {
-  height: 100%;
-  width: 100%;
-}
-
-.text-box-button {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-  height: auto;
-}
-
-.gameport {
-  background-color: mistyrose;
-  width: 320px * $px;
-  height: 240px * $px;
 }
 
 header { // sticky header!
@@ -69,43 +37,8 @@ header { // sticky header!
   height: auto;
   width: 100vw;
   // position: fixed;
-  background-color: gray;
+  // background-color: gray;
   align-self: flex-start;
-}
-
-.form {
-  background-color: white;
-  margin: 10px;
-  padding: 5px;
-  width: 30vw;
-  border: solid white 1px;
-  display: grid;
-  // align-items: center;
-  // justify-items: center;
-}
-
-.form-input {
-  padding: 4px;
-  margin: 2px;
-  border: solid lightgray 1px;
-  border-radius: 4px;
-  &.label {
-    display: none;
-  }
-}
-.form-button {
-  &.inline {
-    padding: 3px;
-    padding-left: 6px;
-    padding-right: 6px;
-    background-color: lightgray;
-    border: solid lightgray 1px;
-    border-radius: 4px;
-    &:hover {
-      background-color: gray;
-      color: white;
-    }
-  }
 }
 
 ul {
@@ -128,4 +61,39 @@ ul {
 .npc-id {
   font-size: .7em ;
   color: gray;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+input {
+  background-color: #eee;
+  border:           0;
+  margin:           8px;
+  padding:          8px;
+  width:            100%;
+  &:focus {
+    outline: 0;
+  }
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  // overflow: hidden;
+}
+
+.form-container {
+  border: 1px dotted yellow;
+  // position: absolute;
+  // top: 0;
+  height: 100%;
 }

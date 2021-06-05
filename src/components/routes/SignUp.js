@@ -1,91 +1,80 @@
 import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
-
 import { signUp, signIn } from '../../api/auth'
-// import messages from '../../utils/alertMessages'
 
 const SignUp = (props) => {
-  const [user, setUser] = useState({
-    email: '',
-    password: '',
-    passwordConfirmation: '',
-    name: ''
-  })
+  const [user, setUser] = useState({ email: '', password: '', name: '' })
 
-  const handleChange = event => setUser({
-    [event.target.name]: event.target.value
-  })
-
-  const onSignUp = event => {
-    event.preventDefault()
-    const { history } = props
-    signUp(user)
-      // sign in the user after they make a new account
-      .then(() => signIn(user))
-      .then(res => setUser(user))
-      .then(console.log('a thing'))
-      .then(() => history.push('/'))
-      .catch(error => {
-        setUser({ email: '', password: '', passwordConfirmation: '', name: '' })
-        console.log(' no user ' + error)
-      })
+  const handleChange = event => {
+    event.persist()
+    setUser(currentUser => {
+      const updatedField = { [event.target.name]: event.target.value }
+      const editedUser = Object.assign({}, currentUser, updatedField)
+      return editedUser
+    })
   }
 
-  const { email, password, passwordConfirmation, name } = user
+  const handleSubmit = event => {
+    event.preventDefault()
+    signUp(user)
+      .then((res) => signIn(res.data.user))
+      .then(() => setUser(user))
+      .then(() => props.history.push('/'))
+      .catch(console.error)
+  }
 
   return (
-    <div>
-      <div>
-        <h3>Sign Up</h3>
-        <form onSubmit={onSignUp}>
-          <div>
-            <label className='form-input label'>Email</label>
-            <input
-              placeholder='Enter email'
-              name='email'
-              value={email}
-              onChange={handleChange}
-              className='form-input'
-              type='email'
-            />
+    <section className='form-container sign-up'>
+      <div className='form-group' >
+        <form onSubmit={handleSubmit} className='sign-up'>
+          <h2 className='header sign-up'>Sign Up!</h2>
+          <input
+            name='email'
+            onChange={handleChange}
+            value={user.email}
+            className='form sign-up'
+            type='email'
+            placeholder='email'
+            autoComplete="off"
+          />
+
+          <input
+            name='password'
+            onChange={handleChange}
+            value={user.password}
+            type='password'
+            className='form sign-up'
+            placeholder='password'
+            autoComplete="off"
+          />
+
+          <input
+            name='passwordConfirmation'
+            onChange={handleChange}
+            value={user.passwordConfirmation}
+            type='password'
+            className='form sign-up'
+            placeholder='password'
+            autoComplete="off"
+          />
+
+          <div className='choose-player'>
+            <h3 className='header sign-up'>Choose your player!</h3>
+
+            <input type="radio" id="Amalia" name="name" value="Amalia" className='form sign-up' />
+            <label htmlFor="Amalia" className='radio'>Amalia</label>
+
+            <input type="radio" id="Luna" name="name" value="Luna" className='form sign-up' />
+            <label htmlFor="Luna" className='radio'>Luna</label>
+
+            <input type="radio" id="Scoop" name="name" value="Scoop" className='form sign-up' />
+            <label htmlFor="Scoop" className='radio form sign-up'>Scoop</label>
           </div>
-          <div>
-            <label className='form-input label'>Password</label>
-            <input
-              placeholder='Enter Password'
-              name='password'
-              value={password}
-              onChange={handleChange}
-              className='form-input'
-              type='text'
-            />
-          </div>
-          <div>
-            <label className='form-input label'>Confirm Password</label>
-            <input
-              placeholder='Confirm Password'
-              name='passwordConfirmation'
-              value={passwordConfirmation}
-              onChange={handleChange}
-              className='form-input'
-              type='text'
-            />
-          </div>
-          <div>
-            <label className='form-input label'>Name</label>
-            <input
-              placeholder='Enter Player Name'
-              name='name'
-              value={name}
-              onChange={handleChange}
-              className='form-input'
-              type='text'
-            />
-          </div>
-          <input value='Sign Up!' type="submit" />
+
+          <button type="submit" className='form sign-up'>Sign Up!</button>
         </form>
       </div>
-    </div>
+    </section>
   )
 }
 

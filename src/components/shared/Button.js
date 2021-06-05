@@ -1,15 +1,20 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const StyledButton = styled.button`
+  
+`
 
 const Button = props => {
-  const { text, value, className, handleSubmit } = props
   return (
-    <button
-      value={value}
-      className={className}
-      onClick={handleSubmit}
+    <StyledButton
+      name={props.name}
+      value={props.value}
+      className={props.className}
+      onClick={props.handleSubmit}
     >
-      {text}
-    </button>
+      {props.text}
+    </StyledButton>
   )
 }
 

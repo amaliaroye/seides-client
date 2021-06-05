@@ -1,78 +1,57 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import { signIn } from '../../api/auth'
 
-class SignIn extends Component {
-  constructor (props) {
-    super(props)
+const SignIn = (props) => {
+  const [user, setUser] = useState({ email: '', password: '' })
 
-    this.state = {
-      email: '',
-      password: ''
-    }
+  const handleChange = event => {
+    event.persist()
+    setUser(currentUser => {
+      const updatedField = { [event.target.name]: event.target.value }
+      const editedUser = Object.assign({}, currentUser, updatedField)
+      return editedUser
+    })
   }
-
-  handleChange = event => this.setState({
-    [event.target.name]: event.target.value
-  })
-
-  onSignIn = event => {
+  const handleSubmit = event => {
     event.preventDefault()
-
-    const { newAlert, history, setUser } = this.props
-
-    signIn(this.state)
+    signIn(user)
       .then(res => setUser(res.data.user))
-      .then(() => console.log(this.state))
-      .then(() => history.push('/'))
-      .catch(error => {
-        this.setState({ email: '', password: '' })
-        newAlert({
-          message: 'Whoops! Sign in failed with error: ' + error.message,
-          variant: 'error'
-        })
-      })
+      .then(() => props.history.push('/'))
+      .catch(console.error)
   }
-  render () {
-    const { email, password } = this.state
 
-    return (
-      <div>
-        <div>
-          <h3>Sign In</h3>
-          <form onSubmit={this.onSignIn}>
-            <div>
-              <label className='form-input label'>Email</label>
-              <input
-                placeholder='Enter email'
-                name='email'
-                value={email}
-                onChange={this.handleChange}
-                className='form-input'
-                type='email'
-              />
-            </div>
-            <div>
-              <label className='form-input label'>Password</label>
-              <input
-                placeholder='Enter Password'
-                name='password'
-                value={password}
-                onChange={this.handleChange}
-                className='form-input'
-                type='text'
-              />
-            </div>
-            <input
-              value='Sign In!'
-              type="submit"
-            />
-          </form>
-        </div>
-      </div>
-    )
-  }
+  return (
+    <div className='form-container sign-in-container' >
+      <form onSubmit={handleSubmit} className='sign-in'>
+        <h1 className='header sign-in'>Sign In</h1>
+        <input
+          name='email'
+          onChange={handleChange}
+          value={user.email}
+          className='form sign-in'
+          type='email'
+          placeholder='email'
+          autoComplete="off"
+        />
+
+        <input
+          name='password'
+          onChange={handleChange}
+          value={user.password}
+          type='password'
+          className='form sign-in'
+          placeholder='password'
+          autoComplete="off"
+        />
+
+        <button type="submit" className='form sign-in'>
+        Sign In!
+        </button>
+      </form>
+    </div>
+  )
 }
 
 export default withRouter(SignIn)

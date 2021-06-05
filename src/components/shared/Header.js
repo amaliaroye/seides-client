@@ -24,7 +24,6 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => {
-  // console.log(user)
   return (
     <header>
       { user && <span>Welcome, {user.name}</span>}

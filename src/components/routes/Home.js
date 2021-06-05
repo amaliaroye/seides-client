@@ -1,15 +1,17 @@
-import React, { Fragment } from 'react'
-import TextBox from '../shared/TextBox'
+import React from 'react'
+import SignIn from './SignIn'
+import SignUp from './SignUp'
 
-const text = 'I fucking hate my life'
+// import styled from 'styled-components'
 
 const Home = (props) => {
   return (
-    <Fragment>
-      <div className='gameport'>
-        <TextBox text={text}/>
-      </div>
-    </Fragment>
+    <React.Fragment>
+      <section className='container' id='container'>
+        <SignUp />
+        <SignIn />
+      </section>
+    </React.Fragment>
   )
 }
 
