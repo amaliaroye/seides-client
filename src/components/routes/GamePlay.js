@@ -10,32 +10,34 @@ import React, {
   Fragment
 } from 'react'
 import { gameShow, gameUpdate } from '../../api/game'
-const { user, alert } = props
-
 
 const GamePlay = props => {
-  const [game, setGame] = useState({
-    owner: props.user,
-    map: '',
-    over: false,
-    score: 0,
-    npcs: [],
-    logs: []
-  })
+  const { user, alert } = props
+
+  const [game, setGame] = useState({})
+  // local game data? how many npcs are there? how many npcs have been seen?
 
   // when game loads, set the state of the game shown.
   useEffect(() => {
     gameShow(game.id, user)
       .then(res => setGame(res.data.game))
-      .then(() => props.alert({
+      .then(() => alert({
         message: 'Loaded Game!',
         variant: 'success'
       }))
-      .catch(() => props.alert({
-        message: 'Oh no...Couldn\'t load the game...'',
+      .catch(() => alert({
+        message: 'Oh no...Couldn\'t load the game...',
         variant: 'danger'
       }))
   }, [])
+
+  const playGame = () => {
+    // show next npc in array, load npc data
+    // user selects option,
+    // if good option, add points, if bad option, deduct points!
+    // updates the state of the current game
+    // gameUpdate() the server
+  }
 
   return (
     <Fragment>

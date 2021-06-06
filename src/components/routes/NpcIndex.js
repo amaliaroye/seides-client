@@ -51,9 +51,13 @@ const NpcIndex = props => {
       <ul>
         <li className='npc-id'>{npc.id}</li>
         <li>Points: {npc.points}</li>
-        <li>Request: {npc.requestMessage}</li>
+        <li>Request: {npc.request}</li>
         <li>Options: {npc.options.map(option => {
           return (<ol key={option}>○ {option}</ol>)
+        })}
+        </li>
+        <li>Replies: {npc.replies.map(reply => {
+          return (<ol key={reply}>○ {reply}</ol>)
         })}
         </li>
 

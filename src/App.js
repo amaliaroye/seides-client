@@ -69,9 +69,6 @@ class App extends Component {
           <GameShow alert={this.alert} user={user} />
         )} /> */}
 
-          {/* <Route path='/npcs' render={() => (
-            <NpcIndex alert={this.alert} setUser={this.setUser} />
-          )} /> */}
           <Route path='/create-npc' render={() => (
             <NpcCreate user={user} alert={this.alert}/>
           )} />

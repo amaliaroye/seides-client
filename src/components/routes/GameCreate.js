@@ -4,6 +4,10 @@ import { gameCreate } from '../../api/game'
 /*
 What does a game do?
 Generates a game with random NPCs and passes to gameshow
+how many npcs? - npcindex randomize?
+
+Add date created to log array?
+
 */
 
 const GameCreate = (props) => {
@@ -40,7 +44,6 @@ const GameCreate = (props) => {
       })
     }
   }
-
   const handleAdd = (event) => {
     event.preventDefault()
     // if there is an option, add it to the optionArray
@@ -53,7 +56,6 @@ const GameCreate = (props) => {
       setLog('')
     }
   }
-
   const handleSubmit = (event) => {
     event.preventDefault()
     gameCreate(game, props.user)
