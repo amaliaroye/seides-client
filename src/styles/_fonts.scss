@@ -1,34 +1,39 @@
-@font-face { // 16px
-  font-family: 'FreePixel';
-  src: url('../assets/fonts/FreePixel.ttf');
+@font-face { // pretty standard
+  font-family: 'PIXEARG_';
+  src: url('../assets/fonts/PIXEARG_.TTF');
+}
+
+@font-face {
+  font-family: 'MonsterFriendFore';
+  src: url('../assets/fonts/MonsterFriendFore.otf');
+}
+@font-face {
+  font-family: 'RPGSystem';
+  src: url('../assets/fonts/RPGSystem.ttf');
+}
+@font-face {
+  font-family: 'LycheeSoda';
+  src: url('../assets/fonts/LycheeSoda.ttf');
+}
+
+
+
+@font-face {
+  font-family: 'Daydream';
+  src: url('../assets/fonts/Daydream.ttf');
 }
 @font-face {
   font-family: 'MinimalFont5x7';
   src: url('../assets/fonts/MinimalFont5x7.ttf');
 }
-@font-face { // chonky bubbles
-  font-family: 'PIXEARG_';
-  src: url('../assets/fonts/PIXEARG_.TTF');
-}
-@font-face {
-  font-family: 'memesbruh';
-  src: url('../assets/fonts/memesbruh.ttf');
-}
-@font-face { // 10 px
-  font-family: 'RPGSystem';
-  src: url('../assets/fonts/RPGSystem.ttf');
-}
-@font-face { // 16px - tiny all caps
-  font-family: '000webfont';
-  src: url('../assets/fonts/000webfont.ttf');
-}
+
 @font-face { // copy??
   font-family: '04B_03__';
   src: url('../assets/fonts/04B_03__.TTF');
 }
-@font-face { // good copy text
-  font-family: 'AtariSmall';
-  src: url('../assets/fonts/AtariSmall.ttf');
+@font-face {
+  font-family: 'memesbruh';
+  src: url('../assets/fonts/memesbruh.ttf');
 }
 @font-face { // 21px
   font-family: 'PixelOperator';
@@ -43,8 +48,8 @@
   src: url('../assets/fonts/Pixel Symtext.otf');
 }
 @font-face {
-  font-family: 'rainyhearts';
-  src: url('../assets/fonts/rainyhearts.ttf');
+  font-family: 'Poco';
+  src: url('../assets/fonts/Poco.ttf');
 }
 @font-face { // 8px - ALL CAPS
   font-family: 'Silkscreen';

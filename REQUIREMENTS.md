@@ -6,8 +6,8 @@ In order to get a satisfactory score, by the time you present your project, you
 ### Deployment
 Be deployed online, where the rest of the world can access it.
 1.  [x]  Host on your public Github page, not Github Enterprise.
-1.  [ ]  Deploy client application on GH pages.
-1.  [ ]  Deploy server application on Heroku.
+1.  [x]  Deploy client application on GH pages.
+1.  [x]  Deploy server application on Heroku.
 
 ### Version Control
 Demonstrate using version control by:
@@ -25,7 +25,6 @@ Produce documentation on Github:
 Both front-end and back-end repos should include README's with:
 1.  [ ] An explanation of the what the app does and how it works.
 1.  [ ] Complete the repository `Description` field and `Website` field with a meaningful sentence description of the application and link to the live URL
-![github image](https://git.generalassemb.ly/storage/user/3667/files/beae41ae-aaaa-11e7-8867-63958d376a0b)
 1.  [ ] A link to the other repo
 1.  [ ] A link to both deployed sites
 1.  [ ] List of technologies used
@@ -54,8 +53,8 @@ Your back-end repo's README should also have
     - [ ] (Optional) Reset form to initial state on failure
 
 ### Client Specifications
-1.  [x]  Use a front-end Javascript app to communicate with your API (both read and write) and render data that it receives in the browser.
-1.  [ ] Have semantically clean HTML and CSS
+1. [x]  Use a front-end Javascript app to communicate with your API (both read and write) and render data that it receives in the browser.
+1. [x] Have semantically clean HTML and CSS
 1.  [ ] User must be able to create a new resource
 1.  [ ] User must be able to update a resource
 1.  [ ] User must be able to delete a resource
@@ -73,7 +72,7 @@ Your back-end repo's README should also have
 
 ### DO NOT!!
 Your app **must not**:
-1.  [ ]   Delete your repository at any time or start over.
+1. [x]   Delete your repository at any time or start over.
 1.  [ ]   Rely on refreshing the page for any functionality.
 1.  [ ]   Have any user-facing bugs.
     - [ ] Display non-functional buttons, nor buttons that do not successfully complete a task.

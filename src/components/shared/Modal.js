@@ -45,3 +45,11 @@ export default function Modal ({ open, children, onClose }) {
     document.getElementById('portal')
   )
 }
+// <button onClick={() => setOpen(true)}>✚</button>
+// <Modal open={open} onClose={() => setOpen(false)} />
+// <Modal
+//   message={message}
+//   color={color}
+//   open={open}
+//   onClose={() => setOpen(false)}
+// />

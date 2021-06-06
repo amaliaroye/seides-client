@@ -1,6 +1,11 @@
 import React, { Fragment, useState } from 'react'
 import { gameCreate } from '../../api/game'
 
+/*
+What does a game do?
+Generates a game with random NPCs and passes to gameshow
+*/
+
 const GameCreate = (props) => {
   const [npcArray, setNpcArray] = useState([])
   const [logArray, setLogArray] = useState([])

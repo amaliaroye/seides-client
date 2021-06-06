@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const Alert = (props) => {
+const Alert = ({ color, message, id, deleteAlert }) => {
   const [show, setShow] = useState(true)
   const [timeoutId, setTimeoutId] = useState(null)
 
@@ -10,8 +10,6 @@ const Alert = (props) => {
 
   const handleClose = () => setShow(false)
 
-  const { variant, message, id, deleteAlert } = props
-
   // Delete this alert after the fade animation time (300 ms by default)
   if (!show) {
     setTimeoutId(() => {
@@ -20,16 +18,15 @@ const Alert = (props) => {
   }
 
   return (
-    <Alert
-      dismissible
+    <div
       show={show}
-      variant={variant}
+      color={color}
       onClose={handleClose}
     >
       <div className="container">
         <p className="alert-body">{message}</p>
       </div>
-    </Alert>
+    </div>
   )
 }
 

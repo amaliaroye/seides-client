@@ -1,13 +1,43 @@
 @import 'fonts';
 
+* {
+  font-family: 'PIXEARG_';
+  font-size: 1em;
+}
+
 h1 {
-  margin: 0;
+  font-family: 'MonsterFriendFore';
+  font-size: 4rem;
+  color: #fff;
 }
 
 h2 {
-  text-align: left;
+  font-family: 'Daydream';
+  font-size: 3rem;
+  color: #fff;
 }
 
 h3 {
-  text-align: left;
+  font-family: 'LycheeSoda';
+  font-size: 5rem;
+}
+
+h4 {
+  font-family: 'LycheeSoda';
+  font-size: 4rem;
+}
+
+h5 {
+  font-family: 'LycheeSoda';
+  font-size: 3rem;
+}
+
+h6 {
+  font-family: 'LycheeSoda';
+  font-size: 2.5rem;
+}
+
+p {
+  font-family: 'RPGSystem';
+  font-size: 2rem;
 }

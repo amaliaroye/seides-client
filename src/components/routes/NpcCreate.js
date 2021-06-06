@@ -10,7 +10,7 @@ const NpcCreate = props => {
   // const { user } = props
 
   // newNpcId will be null, until we successfully create a npc
-  const [newNpcId, setNewNpcId] = useState(null)
+  // const [newNpcId, setNewNpcId] = useState(null)
   // stores the array of options for each npc
   const [optionArray, setOptionArray] = useState([])
   // stores the option to be passed into the optionArray
@@ -47,7 +47,7 @@ const NpcCreate = props => {
     // then save the array in the NPC
     setNpc(prevOption => {
       // const updatedField = { options: optionArray }
-      console.log(npc)
+      // console.log(npc)
       return Object.assign({}, prevOption, { options: optionArray })
       // return optionToAdd
     })
@@ -59,9 +59,15 @@ const NpcCreate = props => {
     event.preventDefault()
     // send axios request
     npcCreate(npc)
-      .then(res => setNewNpcId(res.data.npc.id))
-      .then(console.log(`Created new NPC! ${newNpcId}`))
-      .catch(console.error)
+      // .then(res => setNewNpcId(res.data.npc.id))
+      .then(() => props.alert({
+        message: 'Created a new NPC!',
+        variant: 'success'
+      }))
+      .catch(() => props.alert({
+        message: 'Uh oh, why I cannot make?',
+        variant: 'danger'
+      }))
   }
 
   return (
@@ -74,9 +80,9 @@ const NpcCreate = props => {
         handleAdd={handleAdd}
         option={option}
       />
-      <button onClick={() => console.log(npc)}>Console.log(npc)</button>
-      <button onClick={() => console.log(optionArray)}>Console.log(optionArray)</button>
-      <NpcIndex />
+      {/* <button onClick={() => console.log(npc)}>Console.log(npc)</button>
+      <button onClick={() => console.log(optionArray)}>Console.log(optionArray)</button> */}
+      <NpcIndex alert={props.alert}/>
     </Fragment>
   )
 }

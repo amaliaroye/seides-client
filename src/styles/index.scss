@@ -1,17 +1,16 @@
-// @import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap';
 @import 'buttons';
 @import 'variables';
 @import 'alerts';
 @import 'fonts';
 @import 'animations';
+@import 'typography';
 
 * {
   box-sizing: border-box;
   image-rendering: pixelated;
   margin: 0;
   padding: 0;
-  font-family: 'PIXEARG_';
-  font-size: 1rem;
 }
 
 html {
@@ -20,10 +19,10 @@ html {
 }
 
 body { // full page wrapper
-  background-color: #ff8c8c;
+  background-color: $lightpink;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background: linear-gradient(0deg, #ff8c8c 15%, #41d7d7 90%);
+  background: linear-gradient(0deg, $lightpink 15%, $blue 90%);
   background-size: 100vw 100vh;
   object-fit: fill;
   display: flex;
@@ -36,8 +35,6 @@ header { // sticky header!
   padding-left: 10px;
   height: auto;
   width: 100vw;
-  // position: fixed;
-  // background-color: gray;
   align-self: flex-start;
 }
 
@@ -46,21 +43,9 @@ ul {
   list-style-position: inside;
 }
 
-.npc-index-card {
-  border: solid white 1px;
-  margin: 5px;
-  background-color: lightgray;
-  padding: 10px;
-  width: 200px;
-}
-
-.npc-index {
-  display: flex;
-}
-
 .npc-id {
   font-size: .7em ;
-  color: gray;
+  color: $medgray;
 }
 
 form {
@@ -72,7 +57,7 @@ form {
 }
 
 input {
-  background-color: #eee;
+  background-color: $fog;
   border:           0;
   margin:           8px;
   padding:          8px;
@@ -88,12 +73,9 @@ input {
   display: flex;
   flex-direction: row;
   position: relative;
-  // overflow: hidden;
 }
 
 .form-container {
   border: 1px dotted yellow;
-  // position: absolute;
-  // top: 0;
   height: 100%;
 }

@@ -1,8 +1,20 @@
 import React, { useState, useEffect } from 'react'
-// import { Link } from 'react-router-dom'
 import { npcIndex } from '../../api/npc'
 import NpcDelete from './NpcDelete'
-// import NpcUpdate from './NpcUpdate'
+import styled from 'styled-components'
+
+const NpcCard = styled.div`
+  border: solid white 1px;
+  margin: 5px;
+  background-color: lightgray;
+  padding: 10px;
+  width: 30vw;
+`
+
+const CardLayout = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+`
 
 const NpcIndex = props => {
   const [npcs, setNpcs] = useState([])
@@ -10,41 +22,52 @@ const NpcIndex = props => {
   useEffect(() => {
     npcIndex()
       .then(res => setNpcs(res.data.npcs))
-      .then(console.log('Loaded NPCs!'))
-      .catch(console.error)
+      .then(() => props.alert({
+        message: 'Loaded NPCs!',
+        variant: 'success'
+      }))
+      .catch(() => props.alert({
+        message: 'I want my NPCs! :(',
+        variant: 'danger'
+      }))
   }, [])
 
   const resetNpcs = () => {
     setNpcs([])
     npcIndex()
       .then(res => setNpcs(res.data.npcs))
-      .then(console.log('Reloaded NPCs!'))
-      .catch(console.error)
-      .then(console.log(npcs))
+      .then(() => props.alert({
+        message: 'Loaded NPCs!',
+        variant: 'success'
+      }))
+      .catch(() => props.alert({
+        message: 'I want my NPCs! :(',
+        variant: 'danger'
+      }))
   }
-  // const listOptions = npc.options.map(option => { return (<li key={option}>{option}</li>) })
 
   const listNpcs = npcs.map(npc =>
+    <NpcCard key={npc.id}>
+      <ul>
+        <li className='npc-id'>{npc.id}</li>
+        <li>Points: {npc.points}</li>
+        <li>Request: {npc.requestMessage}</li>
+        <li>Options: {npc.options.map(option => {
+          return (<ol key={option}>○ {option}</ol>)
+        })}
+        </li>
 
-    (
-      <div key={npc.id} className='npc-index-card'>
-        <ul>
-          <li className='npc-id'>ID: {npc.id}</li>
-          <li>Points: {npc.points}</li>
-          <li>Request: {npc.requestMessage}</li>
-          <li>Options: {npc.options.map(option => { return (<ol key={option}>{option}</ol>) })} </li>
-
-          <NpcDelete npc={npc} onClick={resetNpcs}/>
-        </ul>
-      </div>
-    ))
+        <NpcDelete npc={npc} onClick={resetNpcs}/>
+      </ul>
+    </NpcCard>
+  )
 
   return (
     <div>
       <button onClick={resetNpcs}>Reset</button>
-      <div className='npc-index'>
+      <CardLayout>
         {listNpcs}
-      </div>
+      </CardLayout>
     </div>
   )
 }

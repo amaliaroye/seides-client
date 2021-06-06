@@ -5,14 +5,15 @@ import { signOut } from '../../api/auth'
 
 class SignOut extends Component {
   componentDidMount () {
-    const { history, setUser, user } = this.props
+    const { alert, history, clearUser, user } = this.props
 
     signOut(user)
-      .then(() => console.log(user))
-      .then(() => history.push('/'))
-      .then(() => setUser(null))
-      .then(() => console.log(user))
-      .catch(console.error)
+      .finally(() => alert({
+        message: 'Signed Out! Come back soon!',
+        variant: 'success'
+      }))
+      .finally(() => history.push('/'))
+      .finally(() => clearUser())
   }
 
   render () {
