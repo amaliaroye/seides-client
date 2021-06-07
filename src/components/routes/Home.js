@@ -1,15 +1,15 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import TextBox from '../shared/TextBox'
+// import styled from 'styled-components'
 
-const text = 'I hate myself'
+const text = 'there was so much hope...'
 
 const Home = (props) => {
   return (
-    <Fragment>
-      <div className='gameport'>
-        <TextBox text={text}/>
-      </div>
-    </Fragment>
+    <React.Fragment>
+      <h1>Switching SEIdes</h1>
+      <TextBox text={text} />
+    </React.Fragment>
   )
 }
 

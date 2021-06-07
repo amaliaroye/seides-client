@@ -2,33 +2,45 @@ import React from 'react'
 // import Button from './Button'
 import styled, { keyframes } from 'styled-components'
 
-// Define Styled Components outside of the render method
-const TextBox = ({ text }) => {
-  return <StyledText text={text}>{text}</StyledText>
-}
-
-const textKeyframes = keyframes`
+const textKeyframes = ({ char }) => keyframes`
   from {
     width: 0;
   }
   to {
-    width: ${props => props.text.length}ch;
+    width: ${char}ch;
   }
 `
 
 const StyledText = styled.div`
   animation: ${textKeyframes};
-  animation-duration: 2s;
-  animation-timing-function: steps(${props => props.text.length}, end);
-  animation-delay: 1s;
+  animation-duration:${props => (props.char) * 0.05}s;
+  animation-timing-function: steps(${props => props.char}, end);
   animation-iteration-count: 1;
   animation-direction: normal;
   animation-fill-mode: both;
   white-space: nowrap;
   overflow: hidden;
-  font-family: 'Source Code Pro', monospace;
-  font-size: 28px;
-  color: rgba(255,255,255,.70);
+  font-family: 'MinimalFont5x7', monospace;
+  font-size: 2.5rem;
+  text-transform: full-width;
+  box-sizing: border-box;
+  margin: 5px;
 `
+const Box = styled.div`
+  background-color: #fff;
+  width: 500px;
+  overflow: hidden;
+
+`
+
+const TextBox = ({ text }) => {
+  const char = parseFloat(text.length)
+  return (
+    <Box>
+      <StyledText char={char}>
+        {text}
+      </StyledText>
+    </Box>)
+}
 
 export default TextBox

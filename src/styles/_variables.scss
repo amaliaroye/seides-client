@@ -1,15 +1,22 @@
 // VARIABLES
 
-$px: 2;
+$px:          2;
+$adjust-tone: 15%;
 
 // COLOR VARIABLES
 
-$lightgray: #c8e1eb;
-$gray: #7891a5;
-$medgray: #55647d;
-$darkgray: #191e3c;
-$peach: #ffcdb4;
-$lightpink: #ff8c8c;
-$pink: #e65078;
-$blue: #41d7d7;
-$yellow: #ffe65a;
+$fog:         rgba(255,255,255,0.5);
+$white:       #fff;
+$black:       #000;
+$lightgray:   #c8e1eb;
+$gray:        #7891a5;
+$medgray:     #55647d;
+$darkgray:    #191e3c;
+$peach:       #ffcdb4;
+$lightpink:   #ff8c8c;
+$pink:        #e65078;
+$lightblue:   #79f6e6;
+$blue:        #41d7d7;
+$yellow:      #ffe65a;
+
+$lightyellow: lighten($yellow, $adjust-tone)

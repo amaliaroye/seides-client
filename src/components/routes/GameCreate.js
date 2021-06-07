@@ -1,84 +1,68 @@
-import React, { Fragment, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { gameCreate } from '../../api/game'
+import { npcCreate } from '../../api/npc'
+import { npcData } from '../../data/npcData'
 
 const GameCreate = (props) => {
-  
-  const [npcArray, setNpcArray] = useState([])
-  const [logArray, setLogArray] = useState([])
-  // can't these just be let npc = null?
-  const [npc, setNpc] = useState('')
-  const [log, setLog] = useState('')
-  
   const [game, setGame] = useState({
-    owner: props.user,
-    map: '',
-    over: false,
-    score: 0,
-    npcs: npcArray,
-    logs: logArray
+    owner: '60b7b0eac90e9a58b490dc36',
+    npcs: [],
+    logs: []
   })
-  
-  const handleChange = (event) => {
-    event.persist()
-    const { name, value } = event.target
-    if ( name === 'npcs') {
-      setNpc(value)
-      console.log(value)
-    }
-    if (name === 'logs') {
-      setLog(value)
-      console.log(value)
-    } else {
-      setGame(prevGame => {
-        const updatedField = { [name]: value }
-        const gameToCreate = Object.assign({}, prevGame, updatedField)
-        return gameToCreate
-      })
-    }
-  }
-  
-  const handleAdd = (event) => {
-    event.preventDefault()
-    // if there is an option, add it to the optionArray
-    if (npc) {setNpcArray([...npcArray, npc])
-    if (log) {setLogArray([...logArray, log])
+  const [npcArray, setNpcArray] = useState([])
+  const [newNpc, setNewNpc] = useState(null)
+
+  const generateNpc = () => {
+    const randomNpc = npcData[Math.floor(Math.random() * npcData.length)]
+    // make axios request to create an npc using the npcdata of that index
+    npcCreate(randomNpc)
+      .then(res => setNewNpc(res.data.npc._id))
+      // I don't know why it insists on adding null to the array, but...
+      .catch(console.error)
   }
 
-  const handleSubmit = (event) => {
+  // whenever an npc is returned from the axios request, update the array.
+  useEffect(() => {
+    setNpcArray([...npcArray, newNpc])
+  }, [newNpc])
+
+  // whenever the npc array is updated, update the game state
+  useEffect(() => {
+    setGame(Object.assign({ ...game, npcs: npcArray }))
+  }, [npcArray])
+
+  const generateNpcLoop = () => {
+    // generate 5 npcs
+    for (let i = 0; i < 5; i++) {
+      generateNpc()
+    }
+  }
+
+  const deleteFirstItem = () => {
+    const newArray = game.npcs.slice(1)
+    setGame(Object.assign({ ...game, npcs: newArray }))
+  }
+
+  const handleSubmit = (event, deleteFirstItem) => {
     event.preventDefault()
+    // generateNpcLoop()
+    if (game.npcs[0] === null) {
+      const newArray = game.npcs.slice(1)
+      setGame(Object.assign({ ...game, npcs: newArray }))
+    }
     gameCreate(game)
-      .then(res => console.log(res))
+      .then(res => console.log(res.data.game))
       .catch(console.error)
   }
 
   return (
-    <Fragment>
-      <form onSubmit={createGame}>
-        <div>
-          <label className='form-input label'>Map</label>
-          <input
-            placeholder='Map Name'
-            name='map'
-            value={game.map}
-            onChange={handleChange}
-            className='form-input'
-            type='text'
-          />
-        </div>
-        <div>
-          <label className='form-input label'>NPCs</label>
-          <input
-            placeholder='Map Name'
-            name='map'
-            value={game.npcs}
-            onChange={handleChange}
-            className='form-input'
-            type='text'
-          />
-        </div>
+    <section>
+      <h1>Create New Game</h1>
+      <button onClick={generateNpcLoop}>generate the npcs</button>
+      <button onClick={deleteFirstItem}>deleteFirstItem</button>
+      <button onClick={handleSubmit}>submit game</button>
 
-      </form>
-    </Fragment>
+    </section>
   )
 }
 export default GameCreate

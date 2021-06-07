@@ -1,90 +1,97 @@
-import React, { useState, Fragment } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 
 // Shared Components
 import Header from './components/shared/Header'
 import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
-import Alert from './components/shared/Alert'
+import AlertMessage from './components/shared/AlertMessage'
 
 // Route Components
-// import Welcome from './components/routes/Welcome'
 import Home from './components/routes/Home'
 import NpcCreate from './components/routes/NpcCreate'
+import GameCreate from './components/routes/GameCreate'
 import GameIndex from './components/routes/GameIndex'
+import GamePlay from './components/routes/GamePlay'
 import SignUp from './components/routes/SignUp'
 import SignIn from './components/routes/SignIn'
 import SignOut from './components/routes/SignOut'
 import ChangePassword from './components/routes/ChangePassword'
-// import KonvaTest from './components/routes/KonvaTest'
 
-const App = (props) => {
-  const [user, setUser] = useState(null)
-  const [alerts, setAlerts] = useState([])
-
-  // deletes one alert from alert array
-  const deleteAlert = (id) => {
-    // filters array of messages
-    setAlerts(alerts.filter(alertToDelete => alertToDelete.id !== id))
+class App extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      user: null,
+      alerts: []
+    }
   }
 
-  const newAlert = ({ message, variant }) => {
+  setUser = user => this.setState({ user })
+  clearUser = () => this.setState({ user: null })
+
+  deleteAlert = (id) => {
+    this.setState((state) => {
+      // filters array of messages by id from uuid
+      return { alerts: state.alerts.filter(msg => msg.id !== id) }
+    })
+  }
+  alert = ({ message, variant }) => {
     const id = uuid()
-    setAlerts([...alerts, { message, variant, id }])
+    this.setState((state) => {
+      return { alerts: [...state.alerts, { message, variant, id }] }
+    })
   }
-  const clearUser = (user) => setUser(null)
 
-  return (
-    <Fragment>
-      <Header user={user} />
-      {alerts.map(alert => (
-        <Alert
-          key={alert.id}
-          message={alert.message}
-          variant={alert.variant}
-          id={alert.id}
-          deleteAlert={deleteAlert}
-        />
-      ))}
-      <main>
-        <Route exact path='/' render={() => (
-          <Home newAlert={newAlert} setUser={setUser} clearUser={clearUser} />
-        )} />
+  render () {
+    const { alerts, user } = this.state
+    return (
+      <Fragment>
+        <Header user={user} />
+        {alerts.map((alert) => (
+          <AlertMessage
+            key={alert.id}
+            message={alert.message}
+            variant={alert.variant}
+            id={alert.id}
+            deleteAlert={this.deleteAlert}
+          />
+        ))}
+        <main>
+          <Route exact path='/' render={() => (
+            <Home alert={this.alert} setUser={this.setUser} clearUser={this.clearUser} />
+          )} />
 
-        <AuthenticatedRoute user={user} path='/games' render={() => (
-          <GameIndex newAlert={newAlert} user={user} clearUser={clearUser} />
-        )} />
-        {/* <AuthenticatedRoute user={user} path='/games' render={() => (
-          <GameShow newAlert={newAlert} user={user} />
-        )} /> */}
+          <Route path='/games/:id' render={() => (
+            <GamePlay user={user} alert={this.alert}/>
+          )} />
+          <Route user={user} path='/games' render={() => (
+            <GameIndex alert={this.alert} user={user} />
+          )} />
+          <Route path='/create-npc' render={() => (
+            <NpcCreate user={user} alert={this.alert}/>
+          )} />
+          <Route path='/create-game' render={() => (
+            <GameCreate user={user} alert={this.alert}/>
+          )} />
 
-        {/* <Route path='/npcs' render={() => (
-            <NpcIndex newAlert={newAlert} setUser={setUser} />
-          )} /> */}
-        <Route path='/create-npc' render={() => (
-          <NpcCreate />
-        )} />
+          <Route path='/sign-up' render={() => (
+            <SignUp alert={this.alert} setUser={this.setUser} />
+          )} />
+          <Route path='/sign-in' render={() => (
+            <SignIn alert={this.alert} setUser={this.setUser} />
+          )} />
 
-        {/* <Route path='/test' render={() => (
-          <KonvaTest newAlert={newAlert} setUser={setUser} />
-        )} /> */}
-
-        <Route path='/sign-up' render={() => (
-          <SignUp msgAlert={newAlert} setUser={setUser} />
-        )} />
-        <Route path='/sign-in' render={() => (
-          <SignIn newAlert={newAlert} setUser={setUser} />
-        )} />
-
-        <AuthenticatedRoute user={user} path='/sign-out' render={() => (
-          <SignOut newAlert={newAlert} setUser={setUser} user={user} clearUser={clearUser}/>
-        )} />
-        <AuthenticatedRoute user={user} path='/change-password' render={() => (
-          <ChangePassword newAlert={newAlert} user={user} />
-        )} />
-      </main>
-    </Fragment>
-  )
+          <AuthenticatedRoute user={user} path='/sign-out' render={() => (
+            <SignOut alert={this.alert} clearUser={this.clearUser} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/change-password' render={() => (
+            <ChangePassword alert={this.alert} user={user} />
+          )} />
+        </main>
+      </Fragment>
+    )
+  }
 }
 
 export default App
