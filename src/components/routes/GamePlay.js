@@ -6,17 +6,20 @@ handles all generated content made by gamecreate
 
 import React, { useState, useEffect, Fragment } from 'react'
 import { gameShow, gameUpdate } from '../../api/game'
-import TextBox from '../shared/TextBox'
+// import { npcShow, npcUpdate } from '../../api/npc'
+// import TextBox from '../shared/TextBox'
 
-const GamePlay = ({ user, alert, id }) => {
-  const [game, setGame] = useState(null)
-  // get npc data from server
-  const [currentNpc, setCurrentNpc] = useState(null)
+const GamePlay = ({ alert, id }) => {
+  const [game, setGame] = useState({})
+  const [currentNpc, setCurrentNpc] = useState({})
+  // const [logEntry, setLogEntry] = useState(null)
 
-  // when component renders, set the state of the
+  // when component renders, set the state of the game to response
   useEffect(() => {
-    gameShow(game.id, user)
+    gameShow(game.id)
       .then(res => setGame(res.data.game))
+      .then(console.log)
+      .then(setGame({ ...game, logs: [Date()] }))
       .then(() => alert({
         message: 'Loaded Game!',
         variant: 'success'
@@ -26,28 +29,35 @@ const GamePlay = ({ user, alert, id }) => {
         variant: 'danger'
       }))
   }, [])
-
-  const npcList = game.npcs.map(npcId => {
-    npcShow(npcId)
-  })
+  // const npcIds = game.npcs
+  // // map npcs for npc of game.npcs
+  // const npcList = npcIds.map(npcId => {
+  //   // get npc data from server
+  //   npcShow(npcId)
+  //     // .then(npc => setCurrentNpc(npc))
+  //     .catch(console.error)
+  // })
 
   const playGame = () => {
-    // make an axios request for
-    // map npcs! for npc of game.npcs
+    // npcList.forEach(console.log())
     // show next npc in array, load npc data
-
     // user selects option,
     // if good option, add points, if bad option, deduct points!
+    // if (option[0]) {
+    //   return response[0]
+    // }
     // update game.log
     // change NPC data, update npc 'requestComplete' to true
+    setCurrentNpc({ ...currentNpc, requestComplete: true })
+    // npcUpdate(currentNpc, currentNpc.id)
     // updates the state of the current game
     // gameUpdate() the server
+    gameUpdate(game)
   }
 
   return (
     <Fragment>
-
-      <TextBox>{currentNpc.request}</TextBox>
+      <button onClick={playGame}>Play</button>
     </Fragment>
   )
 }

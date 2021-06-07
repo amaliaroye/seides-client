@@ -24,13 +24,13 @@ const StyledText = styled.div`
   font-size: 2.5rem;
   text-transform: full-width;
   box-sizing: border-box;
-  border: 1px solid yellow;
-  margin: 0;
+  margin: 5px;
 `
 const Box = styled.div`
   background-color: #fff;
   width: 500px;
   overflow: hidden;
+
 `
 
 const TextBox = ({ text }) => {

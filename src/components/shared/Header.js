@@ -21,6 +21,8 @@ const alwaysOptions = (
     <NavLink to='/'><Button text='Home'/></NavLink>
     <NavLink to='/create-game'><Button text='Create GAME'/></NavLink>
 
+    <NavLink to='/games'><Button text='All Games'/></NavLink>
+
   </Fragment>
 )
 

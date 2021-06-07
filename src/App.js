@@ -12,6 +12,7 @@ import Home from './components/routes/Home'
 import NpcCreate from './components/routes/NpcCreate'
 import GameCreate from './components/routes/GameCreate'
 import GameIndex from './components/routes/GameIndex'
+import GamePlay from './components/routes/GamePlay'
 import SignUp from './components/routes/SignUp'
 import SignIn from './components/routes/SignIn'
 import SignOut from './components/routes/SignOut'
@@ -61,10 +62,12 @@ class App extends Component {
             <Home alert={this.alert} setUser={this.setUser} clearUser={this.clearUser} />
           )} />
 
-          <AuthenticatedRoute user={user} path='/games' render={() => (
-            <GameIndex alert={this.alert} user={user} clearUser={this.clearUser} />
+          <Route path='/games/:id' render={() => (
+            <GamePlay user={user} alert={this.alert}/>
           )} />
-
+          <Route user={user} path='/games' render={() => (
+            <GameIndex alert={this.alert} user={user} />
+          )} />
           <Route path='/create-npc' render={() => (
             <NpcCreate user={user} alert={this.alert}/>
           )} />
