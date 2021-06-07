@@ -13,21 +13,34 @@ const textKeyframes = ({ char }) => keyframes`
 
 const StyledText = styled.div`
   animation: ${textKeyframes};
-  animation-duration: 2s;
+  animation-duration:${props => (props.char) * 0.05}s;
   animation-timing-function: steps(${props => props.char}, end);
-  animation-delay: .5s;
   animation-iteration-count: 1;
   animation-direction: normal;
   animation-fill-mode: both;
   white-space: nowrap;
   overflow: hidden;
-  font-family: 'Source Code Pro', monospace;
-  font-size: 28px;
+  font-family: 'MinimalFont5x7', monospace;
+  font-size: 2.5rem;
+  text-transform: full-width;
+  box-sizing: border-box;
+  border: 1px solid yellow;
+  margin: 0;
+`
+const Box = styled.div`
+  background-color: #fff;
+  width: 500px;
+  overflow: hidden;
 `
 
 const TextBox = ({ text }) => {
-  const char = parseInt(text.length)
-  return <StyledText char={char}>{text}</StyledText>
+  const char = parseFloat(text.length)
+  return (
+    <Box>
+      <StyledText char={char}>
+        {text}
+      </StyledText>
+    </Box>)
 }
 
 export default TextBox

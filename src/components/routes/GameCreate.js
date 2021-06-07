@@ -1,110 +1,58 @@
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
 import { gameCreate } from '../../api/game'
-
-/*
-What does a game do?
-Generates a game with random NPCs and passes to gameshow
-how many npcs? - npcindex randomize?
-
-Add date created to log array?
-
-*/
+import { npcCreate } from '../../api/npc'
+import { npcData } from '../../data/npcData'
 
 const GameCreate = (props) => {
-  const [npcArray, setNpcArray] = useState([])
-  const [logArray, setLogArray] = useState([])
-  // can't these just be let npc = null?
-  const [npc, setNpc] = useState('')
-  const [log, setLog] = useState('')
-
   const [game, setGame] = useState({
-    owner: props.user,
-    map: '',
-    over: false,
-    score: 0,
-    npcs: npcArray,
-    logs: logArray
+    map: 'a-cool-map',
+    npcs: [],
+    logs: []
   })
+  const [npcArray, setNpcArray] = useState([])
+  const [newNpc, setNewNpc] = useState(null)
 
-  const handleChange = (event) => {
-    event.persist()
-    const { name, value } = event.target
-    if (name === 'npc') {
-      setNpc(value)
-      console.log(value)
-    }
-    if (name === 'log') {
-      setLog(value)
-      console.log(value)
-    } else {
-      setGame(prevGame => {
-        const updatedField = { [name]: value }
-        const gameToCreate = Object.assign({}, prevGame, updatedField)
-        return gameToCreate
-      })
-    }
+  const generateNpc = () => {
+    const randomNpcIndex = npcData[Math.floor(Math.random() * npcData.length)]
+    // make axios request to create an npc using the npcdata of that index
+    npcCreate(randomNpcIndex)
+      .then(res => setNewNpc(res.data.npc._id))
+      // I don't know why it insists on adding null to the array, but...
+      // .then(setNpcArray((npcArray[0] === null)
+    // set array to the new npc
+    // ? [newNpc]
+    // : [...npcArray, newNpc]))
+      .then(setNpcArray([...npcArray, newNpc]))
+      .catch(console.error)
   }
-  const handleAdd = (event) => {
-    event.preventDefault()
-    // if there is an option, add it to the optionArray
-    if (npc) {
-      setNpcArray([...npcArray, npc])
-      setNpc('')
+
+  const updateGame = () => {
+    // generate 5 npcs and add to npcArray
+    for (let i = 0; i < 5; i++) {
+      generateNpc()
     }
-    if (log) {
-      setLogArray([...logArray, log])
-      setLog('')
-    }
+    // set game.npcs to the npcArray
+    setGame(Object.assign({ ...game, npcs: npcArray }))
   }
+
   const handleSubmit = (event) => {
     event.preventDefault()
+    // updateGame()
     gameCreate(game, props.user)
-      .then(res => console.log(res))
+      .then(res => setGame(res.data.game))
+      // .then(console.log(game))
       .catch(console.error)
   }
 
   return (
-    <Fragment>
-      <h3>Create a New Game!</h3>
-      <form onSubmit={gameCreate}>
-        <div>
-          <label className='form-input label'>Map</label>
-          <input
-            placeholder='Map Name'
-            name='map'
-            value={game.map}
-            onChange={handleChange}
-            className='form-input'
-            type='text'
-          />
-        </div>
-        <div>
-          <label className='form-input label'>NPCs</label>
-          <input
-            placeholder='NPCs'
-            name='npc'
-            value={npc}
-            onChange={handleChange}
-            className='form-input'
-            type='text'
-          />
-          <button onClick={handleAdd}>Add</button>
-        </div>
-        <div>
-          <label className='form-input label'>LOG</label>
-          <input
-            placeholder='Log Events'
-            name='log'
-            value={log}
-            onChange={handleChange}
-            className='form-input'
-            type='text'
-          />
-          <button onClick={handleAdd}>Add</button>
-        </div>
-        <button onClick={handleSubmit}>New Map!</button>
-      </form>
-    </Fragment>
+    <section>
+      <h3>Wanna Play a Game?</h3>
+      <button onClick={handleSubmit}>submit</button>
+      <button onClick={updateGame}>update game</button>
+      <button onClick={() => console.log(game)}>Game</button>
+      <button onClick={() => console.table(npcArray)}>npcArray</button>
+      <button onClick={generateNpc}>generatenpc</button>
+    </section>
   )
 }
 export default GameCreate

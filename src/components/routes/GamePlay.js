@@ -1,23 +1,19 @@
 /*
 This is for games/:id
 when you're playing a game, this is what's on the screen generated from gamecreate.
-handles all generated conted made by gamecreate
+handles all generated content made by gamecreate
 */
 
-import React, {
-  useState,
-  useEffect,
-  Fragment
-} from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import { gameShow, gameUpdate } from '../../api/game'
+import TextBox from '../shared/TextBox'
 
-const GamePlay = props => {
-  const { user, alert } = props
+const GamePlay = ({ user, alert, id }) => {
+  const [game, setGame] = useState(null)
+  // get npc data from server
+  const [currentNpc, setCurrentNpc] = useState(null)
 
-  const [game, setGame] = useState({})
-  // local game data? how many npcs are there? how many npcs have been seen?
-
-  // when game loads, set the state of the game shown.
+  // when component renders, set the state of the
   useEffect(() => {
     gameShow(game.id, user)
       .then(res => setGame(res.data.game))
@@ -31,10 +27,19 @@ const GamePlay = props => {
       }))
   }, [])
 
+  const npcList = game.npcs.map(npcId => {
+    npcShow(npcId)
+  })
+
   const playGame = () => {
+    // make an axios request for
+    // map npcs! for npc of game.npcs
     // show next npc in array, load npc data
+
     // user selects option,
     // if good option, add points, if bad option, deduct points!
+    // update game.log
+    // change NPC data, update npc 'requestComplete' to true
     // updates the state of the current game
     // gameUpdate() the server
   }
@@ -42,6 +47,7 @@ const GamePlay = props => {
   return (
     <Fragment>
 
+      <TextBox>{currentNpc.request}</TextBox>
     </Fragment>
   )
 }

@@ -8,7 +8,7 @@ there can be npcs where there is no request?
 export const npcData = [
   {
     name: 'Amalia',
-    points: 10,
+    points: 25,
     request: 'Hey {player}! I\'ve been hearing great things about this new tea shop called \'418 Teapots\'. Do you want to go check it out with me?',
     options: [
       'Let\'s go! I love tea!',
@@ -50,6 +50,50 @@ export const npcData = [
       '*chomps the feets*',
       '*chomps the feets*'
     ]
+  },
+  {
+    name: 'Guy',
+    points: 25,
+    request: 'Please help me find my precious Mango!',
+    options: [
+      'Here he is, I found him at a fruit stand!',
+      'I haven\'t found any mangos yet.',
+      'Be warned, mangos are my favorite fruit, I might eat it if I find one!'
+    ],
+    replies: [
+      'Thank you! I\'ve been worried sick!',
+      'Oh...ok...',
+      '*face of abject horror*'
+    ]
+  },
+  {
+    name: 'Shanjana',
+    points: 25,
+    request: 'Want to see who can fit the most gummy bears in their mouth?',
+    options: [
+      'No thanks, I hate gummy bears.',
+      '7',
+      'Game on!!'
+    ],
+    replies: [
+      'Suit yourself, more for me!',
+      'My, my! That\'s a lot of gummy bears!',
+      'Be ready to lose!'
+    ]
+  },
+  {
+    name: 'Tom',
+    points: 25,
+    request: 'I would like to request a potential job promotion. What do you think?',
+    options: [
+      'Stay and get promoted!',
+      'Maybe think it over a bit more.',
+      'Quit, because no promotion.'
+    ],
+    replies: [
+      'I got the promotion and arrays!',
+      'I\'ll discuss with the managers and get back to you.',
+      'I quit, because I didn’t get arrays.'
+    ]
   }
 ]
-export default { npcData }

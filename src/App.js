@@ -8,7 +8,6 @@ import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
 import AlertMessage from './components/shared/AlertMessage'
 
 // Route Components
-// import Welcome from './components/routes/Welcome'
 import Home from './components/routes/Home'
 import NpcCreate from './components/routes/NpcCreate'
 import GameCreate from './components/routes/GameCreate'
@@ -65,9 +64,6 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/games' render={() => (
             <GameIndex alert={this.alert} user={user} clearUser={this.clearUser} />
           )} />
-          {/* <AuthenticatedRoute user={user} path='/games' render={() => (
-          <GameShow alert={this.alert} user={user} />
-        )} /> */}
 
           <Route path='/create-npc' render={() => (
             <NpcCreate user={user} alert={this.alert}/>
