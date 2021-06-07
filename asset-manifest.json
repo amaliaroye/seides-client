@@ -1,18 +1,10 @@
 {
-  "main.js": "static/js/main.24a1e300.js",
-  "main.js.map": "static/js/main.24a1e300.js.map",
-  "static\\media\\000webfont.ttf": "static/media/000webfont.a6cfba88.ttf",
-  "static\\media\\04B_03__.TTF": "static/media/04B_03__.a369d5ae.TTF",
-  "static\\media\\04B_30__.TTF": "static/media/04B_30__.f03febe5.TTF",
-  "static\\media\\AtariSmall.ttf": "static/media/AtariSmall.4f0ec113.ttf",
+  "main.js": "static/js/main.41b65a26.js",
+  "main.js.map": "static/js/main.41b65a26.js.map",
   "static\\media\\Daydream.ttf": "static/media/Daydream.4b846ba2.ttf",
-  "static\\media\\FreePixel.ttf": "static/media/FreePixel.b3fd2f77.ttf",
+  "static\\media\\LycheeSoda.ttf": "static/media/LycheeSoda.ab181d64.ttf",
+  "static\\media\\MinimalFont5x7.ttf": "static/media/MinimalFont5x7.112d0648.ttf",
   "static\\media\\MonsterFriendFore.otf": "static/media/MonsterFriendFore.9cb55507.otf",
-  "static\\media\\Pixel Symtext.otf": "static/media/Pixel Symtext.fbebb0c4.otf",
-  "static\\media\\PixelTiny.ttf": "static/media/PixelTiny.d48eace4.ttf",
-  "static\\media\\macaron.ttf": "static/media/macaron.ba82cc74.ttf",
-  "static\\media\\rainyhearts.ttf": "static/media/rainyhearts.069fb64d.ttf",
-  "static\\media\\slkscr.ttf": "static/media/slkscr.2761fd10.ttf",
-  "static\\media\\slkscrb.ttf": "static/media/slkscrb.efd8ca98.ttf",
-  "static\\media\\tiny-islanders.otf": "static/media/tiny-islanders.cc6a017b.otf"
+  "static\\media\\PIXEARG_.TTF": "static/media/PIXEARG_.ce007d54.TTF",
+  "static\\media\\RPGSystem.ttf": "static/media/RPGSystem.b3735264.ttf"
 }
