@@ -9,7 +9,7 @@ export const npcData = [
   {
     name: 'Amalia',
     points: 25,
-    request: 'Hey {player}! I\'ve been hearing great things about this new tea shop called \'418 Teapots\'. Do you want to go check it out with me?',
+    request: 'Hey! I\'ve been hearing great things about this new tea shop called \'418 Teapots\'. Do you want to go check it out with me?',
     options: [
       'Let\'s go! I love tea!',
       'Can I take a rain check?',
@@ -84,7 +84,7 @@ export const npcData = [
   {
     name: 'Tom',
     points: 25,
-    request: 'I would like to request a potential job promotion. What do you think?',
+    request: 'I\'m thinking about asking my boss for a promotion. What do you think?',
     options: [
       'Stay and get promoted!',
       'Maybe think it over a bit more.',
@@ -95,5 +95,53 @@ export const npcData = [
       'I\'ll discuss with the managers and get back to you.',
       'I quit, because I didn’t get arrays.'
     ]
+  },
+  {
+    name: 'Dave',
+    points: 25,
+    request: 'Hey! How about a game of pickup basketball?',
+    options: [
+      'I\'m so down!',
+      'Sorry, I can\'t right now, but count me in next time!',
+      'Basketball? Who plays basketball?'
+    ],
+    replies: [
+      'Let\'s play some basketball!',
+      'Will do!',
+      '...b-basketball is my lifeblood.'
+    ]
+  },
+  {
+    name: 'Delgado',
+    points: 25,
+    request: 'I\'m playing over at the \'Algo-Rhythm\' tonight, do you want to come check it out?',
+    options: [
+      'Absolutely! What time?',
+      'Sorry, I can\'t tonight.',
+      'Ew. I\'m boycotting the \'Algo-Rhythm\''
+    ],
+    replies: [
+      'Here\'s the flyer! Can\'t wait to see you there!',
+      'That\'s cool, I\'ll catch you next time!',
+      'Oh...sorry I asked.'
+    ]
   }
 ]
+
+/*
+{
+  name: 'name',
+  points: 25,
+  request: 'request',
+  options: [
+    'option',
+    'option',
+    'option'
+  ],
+  replies: [
+    'reply',
+    'reply',
+    'reply'
+  ]
+}
+*/

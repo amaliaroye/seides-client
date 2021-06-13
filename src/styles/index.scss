@@ -1,7 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
-@import 'buttons';
 @import 'variables';
-@import 'alerts';
 @import 'fonts';
 @import 'animations';
 @import 'typography';
@@ -19,10 +17,11 @@ html {
 }
 
 body {                                                                     // full page wrapper
-  background-color:      $lightblue;
+  background-color:      lighten($lightblue, 15%);
   background-attachment: fixed;
   background-repeat:     no-repeat;
-  background:            linear-gradient(0deg, $peach 15%, $lightblue 90%);
+  // background:            linear-gradient(0deg, $peach 15%, $lightblue 90%);
+  background:            linear-gradient(0deg, $lightblue 0%, lighten($lightblue, 15%) 50%);
   background-size:       100vw 100vh;
   object-fit:            fill;
   display:               flex;
@@ -30,7 +29,7 @@ body {                                                                     // fu
   padding:               0;
 }
 
-header {                                                                   // sticky header!
+header {                                                                   // 
   padding:               2px;
   padding-left:          10px;
   height:                auto;
@@ -73,4 +72,24 @@ input {
   display:               flex;
   flex-direction:        row;
   position:              relative;
+}
+
+button {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 4px;
+  border-radius: 4px;
+  border-style: none;
+  color: $white;
+  background-color: $gray;
+  font-family: 'LycheeSoda';
+  font-size: 1.5rem;
+  
+  &:hover {
+    background-color: $lightgray;
+    color: $darkgray;
+  }
+  &:active {
+    background-color: $yellow;
+  }
 }

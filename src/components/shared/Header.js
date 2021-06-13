@@ -6,8 +6,6 @@ const authenticatedOptions = (
   <Fragment>
     <NavLink to='/sign-out'><Button text='Sign Out'/></NavLink>
     <NavLink to='/change-password'><Button text='Change Password'/></NavLink>
-    {/* <NavLink to='/create-npc'><Button text='Create NPC'/></NavLink> */}
-    {/* <NavLink to='/create-game'><Button text='Create GAME'/></NavLink> */}
   </Fragment>
 )
 const unauthenticatedOptions = (

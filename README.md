@@ -11,17 +11,7 @@
 
 
 
-[Konva](https://konvajs.org/docs/)
-[React Konva](https://github.com/konvajs/react-konva)
 
-
-
-
-## Misc. Links
- [NES.css](https://nostalgic-css.github.io/NES.css/) + [RPG UI](https://github.com/RonenNess/RPGUI)
- [SASS Interpolation](https://sass-lang.com/documentation/interpolation)
- [Questbook](https://github.com/Leopotam/questbook)  + [Questbook JS](https://github.com/Leopotam/questbook-js)
- [RPG Language](http://howtomakeanrpg.com/a/rpg-dialog-language-discourse.html)
  
  
 ### Routes

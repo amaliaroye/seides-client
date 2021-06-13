@@ -1,5 +1,17 @@
 # Notes
 
+[Konva](https://konvajs.org/docs/)
+[React Konva](https://github.com/konvajs/react-konva)
+
+
+
+
+## Misc. Links
+ [NES.css](https://nostalgic-css.github.io/NES.css/) + [RPG UI](https://github.com/RonenNess/RPGUI)
+ [SASS Interpolation](https://sass-lang.com/documentation/interpolation)
+ [Questbook](https://github.com/Leopotam/questbook)  + [Questbook JS](https://github.com/Leopotam/questbook-js)
+ [RPG Language](http://howtomakeanrpg.com/a/rpg-dialog-language-discourse.html)
+
 ### Request Ideas
 'I need help fixing up my Neopets page!'
 'I'm missing a C U R L Y  B O I somewhere, can you help me find him??'

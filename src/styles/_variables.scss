@@ -1,7 +1,6 @@
 // VARIABLES
 
 $px:          2;
-$adjust-tone: 15%;
 
 // COLOR VARIABLES
 
@@ -19,4 +18,4 @@ $lightblue:   #79f6e6;
 $blue:        #41d7d7;
 $yellow:      #ffe65a;
 
-$lightyellow: lighten($yellow, $adjust-tone)
+$lightenedyellow: lighten($yellow, 15%)

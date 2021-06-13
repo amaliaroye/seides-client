@@ -18,7 +18,10 @@ const GameCreate = (props) => {
     npcCreate(randomNpc)
       .then(res => setNewNpc(res.data.npc._id))
       // I don't know why it insists on adding null to the array, but...
-      .catch(console.error)
+      .catch(() => props.alert({
+        message: 'I want my NPCs! :(',
+        variant: 'danger'
+      }))
   }
 
   // whenever an npc is returned from the axios request, update the array.
@@ -43,16 +46,22 @@ const GameCreate = (props) => {
     setGame(Object.assign({ ...game, npcs: newArray }))
   }
 
-  const handleSubmit = (event, deleteFirstItem) => {
+  const handleSubmit = (event) => {
     event.preventDefault()
-    // generateNpcLoop()
     if (game.npcs[0] === null) {
       const newArray = game.npcs.slice(1)
       setGame(Object.assign({ ...game, npcs: newArray }))
     }
     gameCreate(game)
       .then(res => console.log(res.data.game))
-      .catch(console.error)
+      .then(() => props.alert({
+        message: 'Game Created!',
+        variant: 'success'
+      }))
+      .catch(() => props.alert({
+        message: 'Sorry! Something went wrong. Please try again!',
+        variant: 'danger'
+      }))
   }
 
   return (

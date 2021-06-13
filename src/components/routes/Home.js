@@ -4,12 +4,16 @@ import TextBox from '../shared/TextBox'
 
 const text = 'there was so much hope...'
 
+// const homePage = styled.section`
+//
+// `
+
 const Home = (props) => {
   return (
-    <React.Fragment>
+    <section>
       <h1>Switching SEIdes</h1>
       <TextBox text={text} />
-    </React.Fragment>
+    </section>
   )
 }
 
