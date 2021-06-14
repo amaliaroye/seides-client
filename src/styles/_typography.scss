@@ -1,4 +1,5 @@
 @import 'fonts';
+@import 'variables';
 
 * {
   font-family: 'PIXEARG_';
@@ -38,6 +39,12 @@ h6 {
 }
 
 p {
-  font-family: 'RPGSystem';
-  font-size: 2rem;
+  font-family: 'monobit';
+  font-size: 32px;
+}
+
+.id {
+  font-family: 'PIXEARG_';
+  color: $gray;
+  font-size: .7em;
 }

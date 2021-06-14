@@ -24,7 +24,7 @@ export const npcData = [
   {
     name: 'Timm',
     points: 50,
-    request: 'Hey man, I\'m staaaaarving. I could really use a donut right now.',
+    request: 'Heeeeey...I\'m staaaaarving. I could really use a donut right now.',
     options: [
       'Well it\'s your lucky day! I just picked up these Krispy Kreme ones FRESH.',
       'Sorry, I don\'t have any.',
@@ -118,12 +118,27 @@ export const npcData = [
     options: [
       'Absolutely! What time?',
       'Sorry, I can\'t tonight.',
-      'Ew. I\'m boycotting the \'Algo-Rhythm\''
+      'The \'Algo-Rhythm\' is an awful venue.'
     ],
     replies: [
       'Here\'s the flyer! Can\'t wait to see you there!',
       'That\'s cool, I\'ll catch you next time!',
       'Oh...sorry I asked.'
+    ]
+  },
+  {
+    name: 'Mike',
+    points: 50,
+    request: 'Oh no! My cat peed in her carrier! Could you pick up a can of AJAX for me?',
+    options: [
+      'On my way!',
+      'I\'m a little busy, sorry',
+      'NO. AJAX is bad for the environment.'
+    ],
+    replies: [
+      'Thanks! You\'re a lifesaver!',
+      'No worries, I\'ll make do with what I\'ve got.',
+      'Okay...thanks for your help.'
     ]
   }
 ]

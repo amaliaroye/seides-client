@@ -1,6 +1,6 @@
 @font-face { // pretty standard
   font-family: 'PIXEARG_';
-  src: url('../assets/fonts/PIXEARG_.TTF');
+  src: url('../assets/fonts/PIXEARG_.woff2');
 }
 
 @font-face {
@@ -8,18 +8,26 @@
   src: url('../assets/fonts/MonsterFriendFore.otf');
 }
 @font-face {
-  font-family: 'RPGSystem';
-  src: url('../assets/fonts/RPGSystem.ttf');
+  font-family: 'euxoi';
+  src: url('../assets/fonts/euxoi.woff2');
 }
 @font-face {
   font-family: 'LycheeSoda';
-  src: url('../assets/fonts/LycheeSoda.ttf');
+  src: url('../assets/fonts/LycheeSoda.woff2');
 }
 @font-face {
   font-family: 'Daydream';
-  src: url('../assets/fonts/Daydream.ttf');
+  src: url('../assets/fonts/Daydream.woff2');
 }
 @font-face { // !! mono
   font-family: 'MinimalFont5x7';
-  src: url('../assets/fonts/MinimalFont5x7.ttf');
+  src: url('../assets/fonts/MinimalFont5x7.woff2');
+}
+@font-face { // !! mono
+  font-family: 'Monotype_Gerhilt';
+  src: url('../assets/fonts/Monotype_Gerhilt.ttf');
+}
+@font-face { // !! mono
+  font-family: 'monobit';
+  src: url('../assets/fonts/monobit.woff2');
 }

@@ -1,18 +1,23 @@
 import React from 'react'
-import TextBox from '../shared/TextBox'
-// import styled from 'styled-components'
+import styled from 'styled-components'
+import Typing from '../shared/Typing'
 
-const text = 'there was so much hope...'
-
-// const homePage = styled.section`
-//
-// `
+const TitleWrapper = styled.div`
+    height: 200px;
+    width: 400px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    background-position: center;
+    background-image: url('./title.png');
+  background-size: cover;
+`
 
 const Home = (props) => {
   return (
     <section>
-      <h1>Switching SEIdes</h1>
-      <TextBox text={text} />
+      <TitleWrapper />
+      <Typing text='Oogabooga!'/>
     </section>
   )
 }

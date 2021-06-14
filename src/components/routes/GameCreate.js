@@ -3,26 +3,22 @@ import { gameCreate } from '../../api/game'
 import { npcCreate } from '../../api/npc'
 import { npcData } from '../../data/npcData'
 
-const GameCreate = (props) => {
+/*
+this.setState((prevState) => {
+  const newState = Object.assign({}, prevState);
+  newState.movie.title = 'some new title';
+  newState.showLength = !prevState.showLength;
+  return newState;
+});
+*/
+
+const GameCreate = ({ alert }) => {
   const [game, setGame] = useState({
     owner: '60b7b0eac90e9a58b490dc36',
-    npcs: [],
-    logs: []
+    npcs: []
   })
   const [npcArray, setNpcArray] = useState([])
   const [newNpc, setNewNpc] = useState(null)
-
-  const generateNpc = () => {
-    const randomNpc = npcData[Math.floor(Math.random() * npcData.length)]
-    // make axios request to create an npc using the npcdata of that index
-    npcCreate(randomNpc)
-      .then(res => setNewNpc(res.data.npc._id))
-      // I don't know why it insists on adding null to the array, but...
-      .catch(() => props.alert({
-        message: 'I want my NPCs! :(',
-        variant: 'danger'
-      }))
-  }
 
   // whenever an npc is returned from the axios request, update the array.
   useEffect(() => {
@@ -34,11 +30,19 @@ const GameCreate = (props) => {
     setGame(Object.assign({ ...game, npcs: npcArray }))
   }, [npcArray])
 
-  const generateNpcLoop = () => {
-    // generate 5 npcs
-    for (let i = 0; i < 5; i++) {
-      generateNpc()
+  const generateNpcs = (npcAmt) => {
+    for (let i = 0; i < npcAmt; i++) {
+      const randomNpc = npcData[Math.floor(Math.random() * npcData.length)]
+      npcCreate(randomNpc)
+        .then(res => setNewNpc(res.data.npc._id))
+        .then(console.log('Created NPC!'), newNpc)
+        .catch(() => alert({
+          message: 'Could not create NPC!',
+          variant: 'danger'
+        }))
     }
+    deleteFirstItem()
+    // setGame({ ...game, npcs: (game.npcs.slice(1)) })
   }
 
   const deleteFirstItem = () => {
@@ -48,17 +52,15 @@ const GameCreate = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    if (game.npcs[0] === null) {
-      const newArray = game.npcs.slice(1)
-      setGame(Object.assign({ ...game, npcs: newArray }))
-    }
+    generateNpcs()
+    deleteFirstItem()
     gameCreate(game)
       .then(res => console.log(res.data.game))
-      .then(() => props.alert({
+      .then(() => alert({
         message: 'Game Created!',
         variant: 'success'
       }))
-      .catch(() => props.alert({
+      .catch(() => alert({
         message: 'Sorry! Something went wrong. Please try again!',
         variant: 'danger'
       }))
@@ -67,9 +69,18 @@ const GameCreate = (props) => {
   return (
     <section>
       <h1>Create New Game</h1>
-      <button onClick={generateNpcLoop}>generate the npcs</button>
-      <button onClick={deleteFirstItem}>deleteFirstItem</button>
+      <form>
+        <div>
+          <label htmlFor='npcAmt'>Number of NPCs to generate: </label>
+          <input id='npcAmt' type='number' value='5' placeholder='Number of NPCs'/>
+        </div>
+        <input onClick={handleSubmit} type='submit' value='New Game' />
+      </form>
+      <button onClick={() => generateNpcs(5, deleteFirstItem)}>generate the npcs</button>
+      <button onClick={() => deleteFirstItem(generateNpcs)}>deleteFirstItem</button>
       <button onClick={handleSubmit}>submit game</button>
+
+      {/* <button onClick={() => console.log(game)}>game</button> */}
 
     </section>
   )

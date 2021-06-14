@@ -1,6 +1,7 @@
 import React from 'react'
-// import Button from './Button'
 import styled, { keyframes } from 'styled-components'
+
+const px = 3
 
 const textKeyframes = ({ char }) => keyframes`
   from {
@@ -12,25 +13,28 @@ const textKeyframes = ({ char }) => keyframes`
 `
 
 const StyledText = styled.div`
-  animation: ${textKeyframes};
+  animation-name: ${textKeyframes};
   animation-duration:${props => (props.char) * 0.05}s;
-  animation-timing-function: steps(${props => props.char}, end);
+  animation-timing-function: steps(${props => props.char});
   animation-iteration-count: 1;
   animation-direction: normal;
   animation-fill-mode: both;
   white-space: nowrap;
   overflow: hidden;
-  font-family: 'MinimalFont5x7', monospace;
-  font-size: 2.5rem;
+  font-family: 'monobit', monospace;
+  font-size: calc(${px} * 16px);
   text-transform: full-width;
-  box-sizing: border-box;
-  margin: 5px;
+  
+  // border: dotted 1px blue;
+  
 `
 const Box = styled.div`
-  background-color: #fff;
-  width: 500px;
-  overflow: hidden;
-
+  border: solid transparent;
+  border-width: calc(${px} * 8px);
+  border-image: url('./border-8x8.png') 8 fill;
+  width: calc(${px} * 256px);
+  margin: 5px;
+  grid-area: text;
 `
 
 const TextBox = ({ text }) => {

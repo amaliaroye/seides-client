@@ -4,18 +4,18 @@ $px:          2;
 
 // COLOR VARIABLES
 
-$fog:         rgba(255,255,255,0.5);
-$white:       #fff;
-$black:       #000;
-$lightgray:   #c8e1eb;
-$gray:        #7891a5;
-$medgray:     #55647d;
-$darkgray:    #191e3c;
-$peach:       #ffcdb4;
-$lightpink:   #ff8c8c;
-$pink:        #e65078;
-$lightblue:   #79f6e6;
-$blue:        #41d7d7;
-$yellow:      #ffe65a;
+$fog:         hsla(0, 0%, 100%, .5);
+$white:       hsla(0, 0%, 100%, 1);
+$black:       hsla(0, 0%, 0%, 1);
+$lightgray:   hsla(197, 47%, 85%, 1);
+$gray:        hsla(207, 20%, 56%, 1);
+$medgray:     hsla(218, 19%, 41%, 1);
+$darkgray:    hsla(231, 41%, 17%, 1);
+$peach:       hsla(20, 100%, 85%, 1);
+$pink:   hsla(0, 100%, 77%, 1);
+$hotpink:        hsla(344, 75%, 61%, 1);
+$lightblue:   hsla(172, 87%, 72%, 1);
+$blue:        hsla(180, 65%, 55%, 1);
+$yellow:      hsla(51, 100%, 68%, 1);
 
 $lightenedyellow: lighten($yellow, 15%)

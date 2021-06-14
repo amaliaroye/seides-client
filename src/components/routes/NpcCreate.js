@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react'
 import { npcCreate } from '../../api/npc'
 import { npcData } from '../../data/npcData'
 
-const NpcCreate = ({ amtOfNpcs }) => {
+const NpcCreate = (props) => {
   // game creation starts with no npcs in the array
   const [npcs, setNpcs] = useState([])
   const [newNpc, setNewNpc] = useState(null)

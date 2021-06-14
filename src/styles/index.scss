@@ -1,7 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
 @import 'variables';
 @import 'fonts';
-@import 'animations';
 @import 'typography';
 
 * {
@@ -16,7 +15,7 @@ html {
   padding:               0;
 }
 
-body {                                                                     // full page wrapper
+body {
   background-color:      lighten($lightblue, 15%);
   background-attachment: fixed;
   background-repeat:     no-repeat;
@@ -29,7 +28,13 @@ body {                                                                     // fu
   padding:               0;
 }
 
-header {                                                                   // 
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header {
   padding:               2px;
   padding-left:          10px;
   height:                auto;
@@ -37,22 +42,9 @@ header {                                                                   //
   align-self:            flex-start;
 }
 
-ul {
-  list-style-type:       none;
-  list-style-position:   inside;
-}
-
 .npc-id {
   font-size:             .7em ;
   color:                 $medgray;
-}
-
-form {
-  display:               flex;
-  align-items:           center;
-  justify-content:       center;
-  flex-direction:        column;
-  height:                100%;
 }
 
 input {
