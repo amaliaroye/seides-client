@@ -140,6 +140,66 @@ export const npcData = [
       'No worries, I\'ll make do with what I\'ve got.',
       'Okay...thanks for your help.'
     ]
+  },
+  {
+    name: 'Elaine',
+    points: 25,
+    request: 'Would you like to pet my cat?',
+    options: [
+      'Absolutely! I love cats!',
+      'Sorry, I don\'t have time right now.',
+      'No way! I\'m allergic.'
+    ],
+    replies: [
+      'Thanks for your help!',
+      'It\'s okay, next time!',
+      'Oh, okay. Heard of antihistamines?'
+    ]
+  },
+  {
+    name: 'Kyle',
+    points: 151,
+    request: 'Hey you! I challenge you to a Pokemon battle! Think you can handle it?',
+    options: [
+      'You\'re on!',
+      'I\'m good, but thanks for asking!',
+      'Grow up, Pokemon is for kids.'
+    ],
+    replies: [
+      'Awesome! A battle for the ages!',
+      'Too bad! Maybe next time.',
+      'Jerk...'
+    ]
+  },
+  {
+    name: 'Juan',
+    points: 25,
+    request: 'Yo! Can I have some money?',
+    options: [
+      'Yep. Here\'s a penny.',
+      'Sorry, I don\'t have anything to give.',
+      'Hell no'
+    ],
+    replies: [
+      'Anything is plenty. Thanks',
+      'Thanks anyway',
+      'WHAT!?'
+    ]
+  },
+  {
+    name: 'Angel',
+    points: 25,
+    request: 'Hey! Want to watch the Austin FC match this weekend?',
+    options: [
+      'Heck yeah!',
+      'Sorry, I can\'t this weekend, but count me in next time!',
+      'Austin FC? They suuuuuck!'
+    ],
+    replies: [
+      'Noice! It\'s BYOB, but I\'ll order pizza.',
+      'No worries.',
+      'It\'s been a rough start, but they\'re still plenty of games left.'
+    ]
   }
 ]
 

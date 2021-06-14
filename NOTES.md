@@ -5,6 +5,28 @@
 
 
 
+I'm trying to make a game turn loop that will
+- make a get request for an npc
+- set the state of 'currentNpc' with the npc object from the server
+- display the currentnpc's request and options
+
+then after the user clicks an option,
+- display the corresponding npc reply
+- update the currentNpc's 'requestComplete' value
+- send patch request for the npc
+- update the game state's score
+- send patch request for game
+
+Next turn:
+- increase turn count
+- load next npc id in array
+- make get request
+- now we're back at the beginning!
+
+Woah what a coincidence! I spent a chunk of the weekend organizing my...life? Making to do lists organized by date and urgency and consolidating my pile of post-its and updating my calendar
+
+...and printing out the list of homework and project requirements I have to still complete
+
 
 ## Misc. Links
  [NES.css](https://nostalgic-css.github.io/NES.css/) + [RPG UI](https://github.com/RonenNess/RPGUI)

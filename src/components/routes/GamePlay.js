@@ -98,16 +98,6 @@ const GamePlay = (props) => {
     loadNpc()
   }
 
-  // const addToLog = () => {
-  //   const newEntry = {
-  //     date: Date.now(),
-  //     npc: currentNpc.name,
-  //     request: currentNpc.request,
-  //     reply: reply
-  //   }
-  //   setGame({ ...game, logs: [...game.logs, newEntry] })
-  // }
-
   return (
     <GameBox>
       <div style={{ gridArea: 'hud' }}>
