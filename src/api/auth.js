@@ -9,7 +9,8 @@ export const signUp = credentials => {
       credentials: {
         email: credentials.email,
         password: credentials.password,
-        password_confirmation: credentials.passwordConfirmation
+        password_confirmation: credentials.passwordConfirmation,
+        name: credentials.name
       }
     }
   })
@@ -33,7 +34,7 @@ export const signOut = user => {
     url: apiUrl + '/sign-out',
     method: 'DELETE',
     headers: {
-      'Authorization': `Bearer: ${user.token}`
+      'Authorization': `Bearer ${user.token}`
     }
   })
 }
@@ -43,7 +44,7 @@ export const changePassword = (passwords, user) => {
     url: apiUrl + '/change-password',
     method: 'PATCH',
     headers: {
-      'Authorization': `Bearer: ${user.token}`
+      'Authorization': `Bearer ${user.token}`
     },
     data: {
       passwords: {

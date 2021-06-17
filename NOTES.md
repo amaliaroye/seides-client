@@ -1,31 +1,13 @@
 # Notes
 
-[Konva](https://konvajs.org/docs/)
-[React Konva](https://github.com/konvajs/react-konva)
-
-
-
-I'm trying to make a game turn loop that will
-- make a get request for an npc
-- set the state of 'currentNpc' with the npc object from the server
-- display the currentnpc's request and options
-
-then after the user clicks an option,
-- display the corresponding npc reply
-- update the currentNpc's 'requestComplete' value
-- send patch request for the npc
-- update the game state's score
-- send patch request for game
-
-Next turn:
-- increase turn count
-- load next npc id in array
-- make get request
-- now we're back at the beginning!
-
-Woah what a coincidence! I spent a chunk of the weekend organizing my...life? Making to do lists organized by date and urgency and consolidating my pile of post-its and updating my calendar
-
-...and printing out the list of homework and project requirements I have to still complete
+### Emojis are fun!
+📡 send 🔗 link ⌛️⏳ async
+🧮 calculate 🎰🎲 randomize 🎮 play
+🔒🔑 auth 💻
+📞 call 🧲 get 🎯 target 🎧 listen
+💣💥 destroy ⚠️📢 alert 💭
+📦 package 🎨 render 📩 recieve
+🩹 fix 🧱 build 🔎 search 💡 idea
 
 
 ## Misc. Links
@@ -33,6 +15,8 @@ Woah what a coincidence! I spent a chunk of the weekend organizing my...life? Ma
  [SASS Interpolation](https://sass-lang.com/documentation/interpolation)
  [Questbook](https://github.com/Leopotam/questbook)  + [Questbook JS](https://github.com/Leopotam/questbook-js)
  [RPG Language](http://howtomakeanrpg.com/a/rpg-dialog-language-discourse.html)
+ [Konva](https://konvajs.org/docs/)
+ [React Konva](https://github.com/konvajs/react-konva)
 
 ### Request Ideas
 'I need help fixing up my Neopets page!'
@@ -55,7 +39,27 @@ API Store: AJAX, SOAP
 - ~~Gifting items to NPCs increases your reputation level. A higher reputation level increases the chances NPCs will give you gifts)~~
 - ~~NPCs have gift preferences. If they get a gift that they like, the player's reputation increases more than if they got a gift they are neutral about, if they get a gift they dislike, the player's reputation decreases.~~
 - ~~Choose a player, start game, collect nodes on our Full stack developer road map? Maybe interactions throughout? 'networking'?~~
+I'm trying to make a game turn loop that will
+- make a get request for an npc
+- set the state of 'currentNpc' with the npc object from the server
+- display the currentnpc's request and options
 
+then after the user clicks an option,
+- display the corresponding npc reply
+- update the currentNpc's 'requestComplete' value
+- send patch request for the npc
+- update the game state's score
+- send patch request for game
+
+Next turn:
+- increase turn count
+- load next npc id in array
+- make get request
+- now we're back at the beginning!
+
+Woah what a coincidence! I spent a chunk of the weekend organizing my...life? Making to do lists organized by date and urgency and consolidating my pile of post-its and updating my calendar
+
+...and printing out the list of homework and project requirements I have to still complete
 ## 📝 User Stories
 ##### 🔒 AUTHENTICATION
   - A new user can sign-up with an email and password,

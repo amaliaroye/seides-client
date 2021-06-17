@@ -32,7 +32,11 @@ class SignUp extends Component {
       }))
       .then(() => history.push('/'))
       .catch(error => {
-        this.setState({ email: '', password: '', passwordConfirmation: '', name: '' })
+        this.setState({
+          email: '',
+          password: '',
+          passwordConfirmation: '',
+          name: '' })
         alert({
           message: 'Sign Up Failed with error: ' + error.message,
           variant: 'danger'
@@ -40,7 +44,7 @@ class SignUp extends Component {
       })
   }
   render () {
-    const { email, password, passwordConfirmation } = this.state
+    const { email, password, passwordConfirmation, name } = this.state
     return (
       <section className='form-container sign-up'>
         <div className='form-group' >
@@ -50,10 +54,16 @@ class SignUp extends Component {
               name='email'
               onChange={this.handleChange}
               value={email}
-              className='form sign-up'
               type='email'
               placeholder='email'
-              autoComplete="off"
+            />
+
+            <input
+              name='name'
+              onChange={this.handleChange}
+              value={name}
+              type='text'
+              placeholder='name'
             />
 
             <input
@@ -61,9 +71,7 @@ class SignUp extends Component {
               onChange={this.handleChange}
               value={password}
               type='password'
-              className='form sign-up'
               placeholder='password'
-              autoComplete="off"
             />
 
             <input
@@ -71,25 +79,10 @@ class SignUp extends Component {
               onChange={this.handleChange}
               value={passwordConfirmation}
               type='password'
-              className='form sign-up'
-              placeholder='password'
-              autoComplete="off"
+              placeholder='confirm password'
             />
 
-            <div className='choose-player'>
-              <h3 className='header sign-up'>Choose your player!</h3>
-
-              <input type="radio" id="Amalia" name={this.state.name} value="Amalia" className='form sign-up' />
-              <label htmlFor="Amalia" className='radio'>Amalia</label>
-
-              <input type="radio" id="Luna" name={this.state.name} value="Luna" className='form sign-up' />
-              <label htmlFor="Luna" className='radio'>Luna</label>
-
-              <input type="radio" id="Scoop" name={this.state.name} value="Scoop" className='form sign-up' />
-              <label htmlFor="Scoop" className='radio form sign-up'>Scoop</label>
-            </div>
-
-            <button type="submit" className='form sign-up'>Sign Up!</button>
+            <button type="submit">Sign Up!</button>
           </form>
         </div>
       </section>

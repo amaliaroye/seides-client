@@ -5,11 +5,9 @@ import TextBox from '../shared/TextBox'
 import styled from 'styled-components'
 
 const px = 3
-
 const GameBox = styled.div`
   width: calc(${px} * 320px);
   height: calc(${px} * 240px);
-  // border: 2px dotted pink;
   display: grid;
   // grid-auto-flow: row;
   grid-template-areas:
@@ -21,15 +19,16 @@ const GameBox = styled.div`
     "foot foot foot foot foot";
   background: hsla(197, 47%, 85%, .7);
 `
+
 const Sprite = styled.div`
   grid-area: sprite;
   background-color: lightpink;
   width: calc(${px} * 32px);
   height: calc(${px} * 48px);
 `
+
 const Footer = styled.div`
   grid-area: foot;
-  // background-color: lightyellow;
 `
 
 const GamePlay = (props) => {
@@ -42,11 +41,11 @@ const GamePlay = (props) => {
   const [turn, setTurn] = useState(0)
   const [message, setMessage] = useState('')
 
-  const { alert } = props
+  const { user, alert } = props
 
   // when component renders, set the state of the game to response
   useEffect(() => {
-    gameShow(props.match.params.id)
+    gameShow(props.match.params.id, user)
       .then(res => setGame(res.data.game))
       .then(() => alert({
         message: 'Loaded Game!',
@@ -62,7 +61,7 @@ const GamePlay = (props) => {
     // end game if there are no more npcs in the array
     if (turn > game.npcs.length) {
       setGame({ ...game, over: true })
-      gameUpdate(game.id, game)
+      gameUpdate(game, user)
       setTurn(0)
       console.log('Game over!')
     }
@@ -74,7 +73,7 @@ const GamePlay = (props) => {
       .catch(console.error)
   }
 
-  const selectOption = () => {
+  const selectOption = (event) => {
     // shows the corresponding reply
     setMessage(currentNpc.replies[event.target.value])
 
@@ -88,7 +87,7 @@ const GamePlay = (props) => {
     // axios update for npc and game
     setCurrentNpc({ ...currentNpc, requestComplete: true })
     npcUpdate(currentNpc.id, currentNpc)
-    gameUpdate(game.id, game)
+    gameUpdate(game, user)
   }
 
   const nextNpc = () => {

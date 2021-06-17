@@ -15,13 +15,14 @@ const GameIndex = (props) => {
   const [games, setGames] = useState([])
 
   useEffect(() => {
-    gameIndex()
+    gameIndex(props.user)
       .then(res => setGames(res.data.games))
       .catch(console.error)
   }, [])
 
-  const deleteGame = (id) => {
-    gameDelete(id)
+  const deleteGame = (game, user) => {
+    gameDelete(game, user)
+    // TODO: update game state to refresh
       .then(console.log)
       .catch(console.error)
   }

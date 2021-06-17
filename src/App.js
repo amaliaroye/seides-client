@@ -62,16 +62,16 @@ class App extends Component {
             <Home alert={this.alert} setUser={this.setUser} clearUser={this.clearUser} />
           )} />
 
-          <Route path='/games/:id' render={(props) => (
-            <GamePlay {...props} user={user} alert={this.alert}/>
+          <AuthenticatedRoute user={user} path='/games/:id' render={() => (
+            <GamePlay user={user} alert={this.alert}/>
           )} />
-          <Route user={user} exact path='/games' render={() => (
+          <AuthenticatedRoute user={user} exact path='/games' render={() => (
             <GameIndex alert={this.alert} user={user} />
           )} />
           <Route path='/create-npc' render={() => (
             <NpcCreate user={user} alert={this.alert}/>
           )} />
-          <Route path='/create-game' render={() => (
+          <AuthenticatedRoute user={user} path='/create-game' render={() => (
             <GameCreate user={user} alert={this.alert}/>
           )} />
 
