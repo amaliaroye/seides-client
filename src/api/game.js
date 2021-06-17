@@ -2,48 +2,48 @@ import apiUrl from '../apiConfig'
 import axios from 'axios'
 
 // create a new game
-export const gameCreate = (game) => {
+export const gameCreate = (game, user) => {
   return axios({
     url: apiUrl + '/games',
     method: 'POST',
-    // headers: { 'Authorization': `Bearer: ${user.token}` },
+    headers: { 'Authorization': `Bearer ${user.token}` },
     data: { game }
   })
 }
 
 /// get one game
-export const gameShow = (id) => {
+export const gameShow = (game, user) => {
   return axios({
-    url: apiUrl + '/games/' + id,
-    method: 'GET'
-    // headers: { 'Authorization': `Bearer: ${user.token}` }
+    url: apiUrl + '/games/' + game.id,
+    method: 'GET',
+    headers: { 'Authorization': `Bearer ${user.token}` }
   })
 }
 
 // get all games
-export const gameIndex = () => {
+export const gameIndex = (user) => {
   return axios({
     url: apiUrl + '/games',
-    method: 'GET'
-    // headers: { 'Authorization': `Bearer: ${user.token}` }
+    method: 'GET',
+    headers: { 'Authorization': `Bearer ${user.token}` }
   })
 }
 
 // edit an game
-export const gameUpdate = (id, game) => {
+export const gameUpdate = (game, user) => {
   return axios({
-    url: apiUrl + '/games/' + id,
+    url: apiUrl + '/games/' + game.id,
     method: 'PATCH',
-    // headers: { 'Authorization': `Bearer: ${user.token}` },
+    headers: { 'Authorization': `Bearer ${user.token}` },
     data: { game }
   })
 }
 
 // delete an game
-export const gameDelete = (id) => {
+export const gameDelete = (game, user) => {
   return axios({
-    url: apiUrl + '/games/' + id,
-    method: 'DELETE'
-    // headers: { 'Authorization': `Bearer: ${user.token}` }
+    url: apiUrl + '/games/' + game.id,
+    method: 'DELETE',
+    headers: { 'Authorization': `Bearer ${user.token}` }
   })
 }

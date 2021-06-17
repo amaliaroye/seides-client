@@ -1,21 +1,32 @@
 // VARIABLES
+$px             : 2; // COLOR VARIABLES
+$fog            : hsla(0, 0%, 100%, .5);
+$white          : hsla(0, 0%, 100%, 1);
+$black          : hsla(0, 0%, 0%, 1);
+$lightgray      : hsla(197, 47%, 85%, 1);
+$gray           : hsla(207, 20%, 56%, 1);
+$medgray        : hsla(218, 19%, 41%, 1);
+$darkgray       : hsla(231, 41%, 17%, 1);
+$peach          : hsla(20, 100%, 85%, 1);
+$pink           : hsla(0, 100%, 77%, 1);
+$hotpink        : hsla(344, 75%, 61%, 1);
+$lightblue      : hsla(172, 87%, 72%, 1);
+$blue           : hsla(180, 65%, 55%, 1);
+$yellow         : hsla(51, 100%, 68%, 1);
+$lightenedyellow:lighten($yellow, 15%)
+/*
+043 New York:
+background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 
-$px:          2;
+162 Perfect White: soft subtle gradient
+background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
 
-// COLOR VARIABLES
+068 Heaven Peach: aesthetic
+background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%);
 
-$fog:         hsla(0, 0%, 100%, .5);
-$white:       hsla(0, 0%, 100%, 1);
-$black:       hsla(0, 0%, 0%, 1);
-$lightgray:   hsla(197, 47%, 85%, 1);
-$gray:        hsla(207, 20%, 56%, 1);
-$medgray:     hsla(218, 19%, 41%, 1);
-$darkgray:    hsla(231, 41%, 17%, 1);
-$peach:       hsla(20, 100%, 85%, 1);
-$pink:   hsla(0, 100%, 77%, 1);
-$hotpink:        hsla(344, 75%, 61%, 1);
-$lightblue:   hsla(172, 87%, 72%, 1);
-$blue:        hsla(180, 65%, 55%, 1);
-$yellow:      hsla(51, 100%, 68%, 1);
+001 Warm Flame: mild peach, subtle gradient
+background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
 
-$lightenedyellow: lighten($yellow, 15%)
+112 Child care: peach
+background-image: linear-gradient(-20deg, #f794a4 0%, #fdd6bd 100%);
+*/

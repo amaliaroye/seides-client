@@ -1,88 +1,91 @@
 import React, { useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 import { gameCreate } from '../../api/game'
 import { npcCreate } from '../../api/npc'
 import { npcData } from '../../data/npcData'
 
-/*
-this.setState((prevState) => {
-  const newState = Object.assign({}, prevState);
-  newState.movie.title = 'some new title';
-  newState.showLength = !prevState.showLength;
-  return newState;
-});
-*/
+export default function GameCreate (props) {
+  if (!props.user) return (<Redirect to={'/'} />)
 
-const GameCreate = ({ alert }) => {
   const [game, setGame] = useState({
-    owner: '60b7b0eac90e9a58b490dc36',
     npcs: []
   })
-  const [npcArray, setNpcArray] = useState([])
   const [newNpc, setNewNpc] = useState(null)
+  const [npcQuantity, setNpcQuantity] = useState('')
+  const [isCreated, setIsCreated] = useState(false)
 
-  // whenever an npc is returned from the axios request, update the array.
+  /*
+    This function updates the game state whenever the newNpc state changes
+    It has a condition to prevent the initial state of null being passed into the array when the component mounts
+  */
   useEffect(() => {
-    setNpcArray([...npcArray, newNpc])
+    if (newNpc) {
+      setGame((prevState) =>
+        ({ ...prevState, npcs: [...prevState.npcs, newNpc] })
+      )
+    }
   }, [newNpc])
 
-  // whenever the npc array is updated, update the game state
-  useEffect(() => {
-    setGame(Object.assign({ ...game, npcs: npcArray }))
-  }, [npcArray])
-
-  const generateNpcs = (npcAmt) => {
-    for (let i = 0; i < npcAmt; i++) {
-      const randomNpc = npcData[Math.floor(Math.random() * npcData.length)]
-      npcCreate(randomNpc)
-        .then(res => setNewNpc(res.data.npc._id))
-        .then(console.log('Created NPC!'), newNpc)
-        .catch(() => alert({
-          message: 'Could not create NPC!',
-          variant: 'danger'
-        }))
-    }
-    deleteFirstItem()
-    // setGame({ ...game, npcs: (game.npcs.slice(1)) })
+  const generateOneNpc = () => {
+    return new Promise(resolve => {
+      const randomNpcData = npcData[Math.floor(Math.random() * npcData.length)]
+      npcCreate(randomNpcData)
+        .then(res => {
+          setNewNpc(() => res.data.npc.id)
+        })
+        .catch(console.error)
+    })
   }
 
-  const deleteFirstItem = () => {
-    const newArray = game.npcs.slice(1)
-    setGame(Object.assign({ ...game, npcs: newArray }))
+  /*
+  This function returns a Promise that generates multiple npcs in a loop.
+  It takes in an npcQuantity argument that defaults to 5 unless changed by user
+  */
+  const generateNpcs = (npcQuantity) => {
+    return new Promise(resolve => {
+      for (let i = 0; i < npcQuantity; i++) {
+        generateOneNpc()
+      }
+    })
+  }
+
+  /* This function sends the game data to the api */
+  const generateGame = () => {
+    return new Promise(resolve => {
+      resolve(
+        gameCreate(game, props.user)
+          // set the state to response so the id can be used for the redirect
+          .then(res => setGame(res.data.game))
+          .then(() => setIsCreated(true))
+          .catch(console.error)
+      )
+    })
+  }
+
+  const handleChange = (event) => {
+    setNpcQuantity(event.target.value)
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    generateNpcs()
-    deleteFirstItem()
-    gameCreate(game)
-      .then(res => console.log(res.data.game))
-      .then(() => alert({
-        message: 'Game Created!',
-        variant: 'success'
-      }))
-      .catch(() => alert({
-        message: 'Sorry! Something went wrong. Please try again!',
-        variant: 'danger'
-      }))
+    generateNpcs(npcQuantity)
+      .then(generateGame())
+      .catch(console.error)
   }
+
+  if (isCreated === true) return (<Redirect to={`/games/${game.id}`} />)
 
   return (
     <section>
-      <h1>Create New Game</h1>
-      <form>
-        <div>
-          <label htmlFor='npcAmt'>Number of NPCs to generate: </label>
-          <input id='npcAmt' type='number' value='5' placeholder='Number of NPCs'/>
-        </div>
-        <input onClick={handleSubmit} type='submit' value='New Game' />
+      <form onSubmit={handleSubmit}>
+        <input
+          value={npcQuantity}
+          placeholder='How many NPCs?'
+          type='number'
+          onChange={handleChange}
+        />
+        <input type='submit' value='Start New Game'/>
       </form>
-      <button onClick={() => generateNpcs(5, deleteFirstItem)}>generate the npcs</button>
-      <button onClick={() => deleteFirstItem(generateNpcs)}>deleteFirstItem</button>
-      <button onClick={handleSubmit}>submit game</button>
-
-      {/* <button onClick={() => console.log(game)}>game</button> */}
-
     </section>
   )
 }
-export default GameCreate
