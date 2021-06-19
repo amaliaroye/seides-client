@@ -4,78 +4,84 @@ import { gameCreate } from '../../api/game'
 import { npcCreate } from '../../api/npc'
 import { npcData } from '../../data/npcData'
 
-export default function GameCreate (props) {
+const GameCreate = (props) => {
   if (!props.user) return (<Redirect to={'/'} />)
 
-  const [game, setGame] = useState({
-    npcs: []
-  })
-  const [newNpc, setNewNpc] = useState(null)
-  const [npcQty, setNpcQty] = useState('')
+  const [game, setGame] = useState({ npcs: [] })
+  const [newNpc, setNewNpc] = useState('')
+  const [npcQty, setNpcQty] = useState(1)
   const [isCreated, setIsCreated] = useState(false)
 
-  /*
-    This function updates the game state whenever the newNpc state changes
-    It has a condition to prevent the initial state of null being passed into the array when the component mounts
-  */
-  useEffect(() => {
-    if (newNpc) {
-      setGame((prevState) =>
-        ({ ...prevState, npcs: [...prevState.npcs, newNpc] })
-      )
+
+  useEffect(() => { // updates game state with npcs?
+    async function addNpcToGame() {
+      try {
+        console.log('using an effect')
+        setGame((prev) =>
+          ({ ...prev, npcs: [...prev.npcs, newNpc] })
+        )
+      } catch {
+        console.error()
+      }
     }
-    console.log(game)
+    if (newNpc) addNpcToGame()
   }, [newNpc])
 
+  useEffect(() => {
+    if (game.npcs.length == npcQty && !isCreated) {
+      console.log('%cSending axios request!', 'color:green')
+      gameCreate(game, props.user)
+        .then(res => setGame(res.data.game))
+        .then(setIsCreated(true))
+        .catch(console.error)
+    }
+  }, [game])
+
   const generateOneNpc = () => {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       const randomNpcData = npcData[Math.floor(Math.random() * npcData.length)]
       npcCreate(randomNpcData)
-        .then(res => {
-          setNewNpc(() => res.data.npc.id)
-        })
+        .then(res => {setNewNpc(() => res.data.npc.id)})
+        .then(console.log('making one npc'))
         .catch(console.error)
     })
   }
 
-  /*
-  This function returns a Promise that generates multiple npcs in a loop.
-  It takes in an npcQuantity argument that defaults to 5 unless changed by user
-  */
   const generateNpcLoop = (npcQty) => {
-    return new Promise(resolve => {
-      for (let i = 0; i <= npcQty; i++) {
+    console.log('generating npcs!')
+    return new Promise((resolve) => {
+      for (let i = 0; i < npcQty; i++) {
         generateOneNpc()
       }
+      console.log('I generated some npcs')
     })
   }
 
-  /* This function sends the game data to the api */
   const generateGame = () => {
-    return new Promise(resolve => {
-      resolve(
-        gameCreate(game, props.user)
-          // set the state to response so the id can be used for the redirect
-          .then(res => setGame(res.data.game))
-          .then(() => setIsCreated(true))
-          .catch(console.error)
-      )
+    console.log('game generating!')
+    return new Promise((resolve) => {
+      gameCreate(game, props.user)
+        .then(res => setGame(res.data.game))
+        .catch(console.error)
     })
   }
-
 
   const handleSubmit = (event) => {
     event.preventDefault()
     generateNpcLoop(npcQty)
-      .then(generateGame())
-      .then(console.log(game))
+      // .then(generateGame())
       .catch(console.error)
   }
 
-  if (isCreated === true) return (<Redirect to={`/games/${game.id}`} />)
+  if (isCreated === true && game.id) {
+    console.log('redirecting? here is the game')
+    console.log(game)
+    // return (<Redirect to={`/games/${game.id}`} />)
+  }
 
   return (
     <section>
+      <button onClick={()=>console.log(game)}>Game!</button>
       <form onSubmit={handleSubmit}>
         <input
           value={npcQty}
@@ -88,3 +94,5 @@ export default function GameCreate (props) {
     </section>
   )
 }
+
+export default GameCreate

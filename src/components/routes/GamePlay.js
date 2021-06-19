@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { withRouter } from 'react-router-dom'
 import { gameShow, gameUpdate } from '../../api/game'
 import { npcShow, npcUpdate } from '../../api/npc'
 import TextBox from '../shared/TextBox'
@@ -35,30 +36,23 @@ const Footer = styled.div`
 */
 
 const GamePlay = (props) => {
-  const [game, setGame] = useState({
-    npcs: [], score: ''
-  })
+  const [game, setGame] = useState({ npcs: [], score: '', turn:0, id:props.match.params.id })
   const [currentNpc, setCurrentNpc] = useState({
     name: '', request: '', options: [], replies: []
   })
   const [message, setMessage] = useState('')
+
   // useRef does not re-render the component, its values persist through renders
   const turn = useRef(0)
 
-  const { user, alert } = props
+  const { user } = props
 
   // when component renders, set the state of the game to response
   useEffect(() => {
     gameShow(props.match.params.id, user)
       .then(res => setGame(res.data.game))
-      .then(() => alert({
-        message: 'Loaded Game!',
-        variant: 'success'
-      }))
-      .catch(() => alert({
-        message: 'Oh no...Couldn\'t load the game...',
-        variant: 'danger'
-      }))
+      .then(console.log)
+      .catch(console.error)
   }, [])
 
   useEffect(() => {
@@ -73,6 +67,7 @@ const GamePlay = (props) => {
   const loadNpc = () => {
     npcShow(game.npcs[turn.current])
       .then(res => setCurrentNpc(res.data.npc))
+      .then(console.log)
       .catch(console.error)
   }
 
@@ -102,6 +97,7 @@ const GamePlay = (props) => {
 
   return (
     <section>
+      <button onClick={() =>console.log(game)}>console.log(game)</button>
       <div style={{ gridArea: 'hud' }}>
         Turn: {turn.current} Score: {game.score}
       </div>
@@ -126,4 +122,4 @@ const GamePlay = (props) => {
   )
 }
 
-export default GamePlay
+export default withRouter(GamePlay)
