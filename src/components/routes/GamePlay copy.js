@@ -1,17 +1,18 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 import { gameShow, gameUpdate } from '../../api/game'
 import { npcShow, npcUpdate } from '../../api/npc'
 import TextBox from '../shared/TextBox'
-/*
-
 import styled from 'styled-components'
+
+// TODO: should I put the text in a fieldset? The legend may be handy
+// You can use the transform property to position the legend
 
 const px = 3
 const GameBox = styled.div`
   width: calc(${px} * 320px);
   height: calc(${px} * 240px);
   display: grid;
-  // grid-auto-flow: row;
   grid-template-areas:
     "hud hud hud hud hud"
     ". text text text ."
@@ -21,57 +22,53 @@ const GameBox = styled.div`
     "foot foot foot foot foot";
   background: hsla(197, 47%, 85%, .7);
 `
-
 const Sprite = styled.div`
   grid-area: sprite;
   background-color: lightpink;
   width: calc(${px} * 32px);
   height: calc(${px} * 48px);
 `
-
 const Footer = styled.div`
   grid-area: foot;
 `
-*/
-
+// TODO: fix all the async issues!
 const GamePlay = (props) => {
+  if (!props.user) return (<Redirect to={'/'} />)
   const [game, setGame] = useState({
-    npcs: [], score: ''
+    id: props.match.params.id,
+    npcs: [],
+    turn: (0),
+    score: ''
   })
   const [currentNpc, setCurrentNpc] = useState({
-    name: '', request: '', options: [], replies: []
+    name: '',
+    request: '',
+    options: [],
+    replies: []
   })
+  const [turn, setTurn] = useState(0)
   const [message, setMessage] = useState('')
-  // useRef does not re-render the component, its values persist through renders
-  const turn = useRef(0)
-
-  const { user, alert } = props
 
   // when component renders, set the state of the game to response
   useEffect(() => {
-    gameShow(props.match.params.id, user)
+    gameShow(props.match.params.id, props.user)
       .then(res => setGame(res.data.game))
-      .then(() => alert({
-        message: 'Loaded Game!',
-        variant: 'success'
-      }))
-      .catch(() => alert({
-        message: 'Oh no...Couldn\'t load the game...',
-        variant: 'danger'
-      }))
+      .then(console.log('in the useEffect hook for getting game data'))
+      .catch(console.error)
   }, [])
 
   useEffect(() => {
     // end game if there are no more npcs in the array
-    if (turn.current > game.npcs.length) {
+    if (turn > game.npcs.length) {
       setGame({ ...game, over: true })
+      gameUpdate(game, props.user)
+      setTurn(0)
       console.log('Game over!')
     }
-    gameUpdate(game, user)
-  }, [])
+  }, [turn])
 
   const loadNpc = () => {
-    npcShow(game.npcs[turn.current])
+    npcShow(game.npcs[game.turn])
       .then(res => setCurrentNpc(res.data.npc))
       .catch(console.error)
   }
@@ -90,20 +87,21 @@ const GamePlay = (props) => {
     // axios update for npc and game
     setCurrentNpc({ ...currentNpc, requestComplete: true })
     npcUpdate(currentNpc.id, currentNpc)
-    gameUpdate(game, user)
+    gameUpdate(game, props.user)
   }
 
   const nextNpc = () => {
-    turn.current += 1
-    setGame({ ...game, turn: (turn.current) })
+    setGame((prevGame) =>
+      ({ ...prevGame, turn: (prevGame.turn + 1) })
+    )
     setMessage('')
     loadNpc()
   }
 
   return (
-    <section>
+    <GameBox>
       <div style={{ gridArea: 'hud' }}>
-        Turn: {turn.current} Score: {game.score}
+        Turn: {game.turn} Score: {game.score}
       </div>
 
       <TextBox text={currentNpc.requestComplete ? message : currentNpc.request} />
@@ -112,6 +110,7 @@ const GamePlay = (props) => {
       <div style={{ gridArea: 'back' }}>
         <button onClick={loadNpc}>loadNpc</button>
       </div>
+      <Sprite />
       <div style={{ gridArea: 'next' }}>
         <button onClick={nextNpc}>nextNpc</button>
       </div>
@@ -122,7 +121,9 @@ const GamePlay = (props) => {
         <button onClick={selectOption} value='2' style={{ display: 'block', width: '100%' }}>{currentNpc.options[2]}</button>
       </div>
 
-    </section>
+      <Footer />
+
+    </GameBox>
   )
 }
 

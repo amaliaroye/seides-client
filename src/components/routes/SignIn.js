@@ -19,28 +19,25 @@ class SignIn extends Component {
   handleSubmit = event => {
     event.preventDefault()
 
-    const { alert, history, setUser } = this.props
+    const { history, setUser } = this.props
 
     signIn(this.state)
-      .then(res => setUser(res.data.user))
-      .then(() => alert({
-        message: 'Welcome! You have been logged in!',
-        variant: 'success'
-      }))
+      .then(res => {
+        setUser(res.data.user)
+        console.log(`Welcome Back ${res.data.user.name}!`)
+      })
       .then(() => history.push('/'))
       .catch(error => {
+        console.error(error)
         this.setState({ email: '', password: '' })
-        alert({
-          message: 'Sorry, couldn\'t log you in because of the error: ' + error.message,
-          variant: 'danger'
-        })
+
       })
   }
   render () {
     const { email, password } = this.state
 
     return (
-      <div className='form-container sign-in-container' >
+      <div className='sign-in' >
         <form onSubmit={this.handleSubmit} className='sign-in'>
           <h1 className='header sign-in'>Sign In</h1>
           <input

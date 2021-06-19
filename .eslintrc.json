@@ -1,5 +1,13 @@
 {
-  "extends": ["plugin:react/recommended", "standard"],
+  "plugins": [
+    "styled-components-a11y"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:styled-components-a11y/recommended",
+    "plugin:jsx-a11y/recommended"
+  ],
   "root": true,
   "parser": "babel-eslint",
   "settings": {
@@ -16,6 +24,8 @@
       "browser": true
   },
   "rules": {
+    "no-unused-vars":"off",
+    "no-console":"off",
     "prefer-const": "error",
     "no-var": "error",
     "semi": [

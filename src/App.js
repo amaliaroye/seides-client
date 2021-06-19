@@ -3,13 +3,11 @@ import { Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 
 // Shared Components
-import Header from './components/shared/Header'
 import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
 import AlertMessage from './components/shared/AlertMessage'
 
 // Route Components
 import Home from './components/routes/Home'
-import NpcCreate from './components/routes/NpcCreate'
 import GameCreate from './components/routes/GameCreate'
 import GameIndex from './components/routes/GameIndex'
 import GamePlay from './components/routes/GamePlay'
@@ -47,7 +45,6 @@ class App extends Component {
     const { alerts, user } = this.state
     return (
       <Fragment>
-        <Header user={user} />
         {alerts.map((alert) => (
           <AlertMessage
             key={alert.id}
@@ -58,21 +55,17 @@ class App extends Component {
           />
         ))}
         <main>
-          <Route exact path='/' render={() => (
-            <Home alert={this.alert} setUser={this.setUser} clearUser={this.clearUser} />
+          <Route exact path='/' user={user} render={() => (
+            <Home alert={this.alert} user={user} setUser={this.setUser} clearUser={this.clearUser} />
           )} />
-
-          <AuthenticatedRoute user={user} path='/games/:id' render={() => (
-            <GamePlay user={user} alert={this.alert}/>
+          <AuthenticatedRoute user={user} path='/games/:id' render={(props) => (
+            <GamePlay {...props} user={user} alert={this.alert}/>
           )} />
-          <AuthenticatedRoute user={user} exact path='/games' render={() => (
-            <GameIndex alert={this.alert} user={user} />
+          <AuthenticatedRoute user={user} exact path='/games' render={(props) => (
+            <GameIndex {...props} alert={this.alert} user={user} />
           )} />
-          <Route path='/create-npc' render={() => (
-            <NpcCreate user={user} alert={this.alert}/>
-          )} />
-          <AuthenticatedRoute user={user} path='/create-game' render={() => (
-            <GameCreate user={user} alert={this.alert}/>
+          <AuthenticatedRoute user={user} path='/create-game' render={(props) => (
+            <GameCreate {...props} user={user} alert={this.alert}/>
           )} />
 
           <Route path='/sign-up' render={() => (
@@ -82,7 +75,7 @@ class App extends Component {
             <SignIn alert={this.alert} setUser={this.setUser} />
           )} />
 
-          <AuthenticatedRoute user={user} path='/sign-out' render={() => (
+          <AuthenticatedRoute path='/sign-out' user={user} render={() => (
             <SignOut alert={this.alert} clearUser={this.clearUser} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (

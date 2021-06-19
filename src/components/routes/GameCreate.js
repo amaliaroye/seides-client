@@ -11,7 +11,7 @@ export default function GameCreate (props) {
     npcs: []
   })
   const [newNpc, setNewNpc] = useState(null)
-  const [npcQuantity, setNpcQuantity] = useState('')
+  const [npcQty, setNpcQty] = useState('')
   const [isCreated, setIsCreated] = useState(false)
 
   /*
@@ -24,6 +24,7 @@ export default function GameCreate (props) {
         ({ ...prevState, npcs: [...prevState.npcs, newNpc] })
       )
     }
+    console.log(game)
   }, [newNpc])
 
   const generateOneNpc = () => {
@@ -41,9 +42,9 @@ export default function GameCreate (props) {
   This function returns a Promise that generates multiple npcs in a loop.
   It takes in an npcQuantity argument that defaults to 5 unless changed by user
   */
-  const generateNpcs = (npcQuantity) => {
+  const generateNpcLoop = (npcQty) => {
     return new Promise(resolve => {
-      for (let i = 0; i < npcQuantity; i++) {
+      for (let i = 0; i <= npcQty; i++) {
         generateOneNpc()
       }
     })
@@ -62,14 +63,12 @@ export default function GameCreate (props) {
     })
   }
 
-  const handleChange = (event) => {
-    setNpcQuantity(event.target.value)
-  }
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    generateNpcs(npcQuantity)
+    generateNpcLoop(npcQty)
       .then(generateGame())
+      .then(console.log(game))
       .catch(console.error)
   }
 
@@ -79,10 +78,10 @@ export default function GameCreate (props) {
     <section>
       <form onSubmit={handleSubmit}>
         <input
-          value={npcQuantity}
-          placeholder='How many NPCs?'
+          value={npcQty}
           type='number'
-          onChange={handleChange}
+          onChange={event => setNpcQty(event.target.value)}
+          placeholder='how many NPCs to create'
         />
         <input type='submit' value='Start New Game'/>
       </form>

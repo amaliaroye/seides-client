@@ -1,75 +1,98 @@
 # Switching SEIdes
-Switching SEIdes is a text-based rpg created in React.
+
+This is a React application
+
+---
+
+## Table of Contents
+
+---
 
 ## Links
+
 [Deployed Client](https://amaliaroye.github.io/seides-client/)
 
 [Server Repo](https://github.com/amaliaroye/seides-server)
-[Deployed Server]()
+[Deployed Server](https://seides-server.herokuapp.com/)
+
+## Background
 
 [Capsone Project](https://git.generalassemb.ly/ga-wdi-boston/capstone-project)
 
+---
+
 ## Screenshots
 
+![Switching SEIdes](https://i.imgur.com/vljwNkr.png)
+
+---
+
+## Installation
+
+- Fork and clone this repository. You will need node and npm installed globally on your machine.
+- Run `npm install` in the project directory to install dependencies
+- Run `npm start` to start the server on `localhost:7165`
+
+---
 
 ## Technologies
-  - React 17.0
+
+### Client
+
+- React
+
+### Server
+
+- Node.js
+- Express
+
+---
 
 ## Routes
-##### 🎮 Game Routes
-| Endpoint           | Component        | `AuthenticatedRoute` |
-|--------------------|------------------|----------------------|
-| `/games`           | `GameIndex`      | Yes |
-| `/games/:id`       | `GamePlay`       | Yes |
 
+### 🎮 Game Routes
 
-##### 🔒 Authentication Routes
-| Endpoint           | Component        | `AuthenticatedRoute` |
-|--------------------|------------------|----------------------|
-| `/sign-up`         | `SignUp`         | No  |
-| `/sign-in`         | `SignIn`         | No  |
-| `/change-password` | `ChangePassword` | Yes |
-| `/sign-out`        | `SignOut`        | Yes |
+| Endpoint       | Component    | `AuthRoute` |
+| -------------- | ------------ | ----------- |
+| `/games`       | `GameIndex`  | Yes         |
+| `/games/:id`   | `GamePlay`   | Yes         |
+| `/create-game` | `GameCreate` | Yes         |
 
+### 🔒 Authentication Routes
+
+| Endpoint           | Component        | `AuthRoute` |
+| ------------------ | ---------------- | ----------- |
+| `/sign-up`         | `SignUp`         | No          |
+| `/sign-in`         | `SignIn`         | No          |
+| `/change-password` | `ChangePassword` | Yes         |
+| `/sign-out`        | `SignOut`        | Yes         |
+
+---
 
 ## 🙎 User Stories
-##### 🔒 Authentication
-  - A new user can sign-up with an email and password
-  - A returning user can sign-in with their email and password
-  - A signed in user can sign-out of their account
-  - A signed in user can change their password
-##### 🎮 Gameplay
-  - A signed in user can create a new game with random npcs
+
+### 🔒 Authentication
+
+- As a new user, I want to be able to enter my name, email, and password to create a new account so I can begin playing the game
+- As a returning user, I want to be able to enter my email and password to sign back into my account so I can resume playing a game or create a new game
+- As a signed-in user, I want to be able to enter my old password and a new password so I can change the password to my account
+- As a signed-in user, I want to be able to sign-out of my account so
+
+### 🎮 Gameplay
+
+- As a signed in user, I want to create a new game so I can begin playing
+- As a signed in user, I want to be able to play a game I create
+- As the player, I want to be able to see an NPC's request and button with options for possible responses so I can reply the the NPC's request
+- As the player, I want to be able to select and click on an option so I can see the NPC's reply to my response
+
+---
+
+## Entity Relationship Diagram
+
+![Entity Relationship Diagram](https://i.imgur.com/sfQIKYH.png)
+
+---
 
 ## Wireframes
 
-
-## Entity Relationship Diagram
-```mermaid
-  erDiagram
-
-  USER ||--o{ GAME : has
-  GAME ||--|{ NPC : has
-    
-  USER {
-    email string
-    password string
-    token string
-    name string
-    sprite string
-  }
-  GAME {
-    owner playerRef
-    map string
-    npcs array
-    over boolean
-    score number
-  }
-  NPC {
-    name string
-    request string
-    options array
-    requestComplete array
-    points number
-}
-```
+![Wireframes](https://i.imgur.com/6ksgeVB.png)

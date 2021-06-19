@@ -30,13 +30,13 @@ const GameIndex = (props) => {
   const listGames = games.map(game => (
     <GameInfoCard key={game._id}>
       <p>Score: {game.score}</p>
-      {/* <p>Turn: {game.turn}/{game.npcs.length}</p> */}
+      <p>Turn: {game.turn}/{game.npcs.length}</p>
       <p>{game.over ? 'Completed' : 'In Progress'}</p>
       <div>
-        <Link to={`/games/${game.id}`}>
+        <Link to={`/games/${game._id}`}>
           <button disabled={!!game.over}>Continue</button>
         </Link>
-        <button onClick={() => deleteGame(game.id)}>Delete</button>
+        <button onClick={() => deleteGame(game._id, props.user)}>Delete</button>
       </div>
 
     </GameInfoCard>
