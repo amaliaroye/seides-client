@@ -67,14 +67,14 @@ class SignUp extends Component {
             <input
               name='name'
               onChange={this.handleChange}
-              value={email}
+              value={name}
               type='text'
               placeholder='enter name'
             />
           </div>
 
           <div>
-            <label htmlFor='Password'>Password: </label>
+            <label htmlFor='password'>Password: </label>
             <input
               name='password'
               onChange={this.handleChange}
@@ -85,11 +85,11 @@ class SignUp extends Component {
           </div>
 
           <div>
-            <label htmlFor='confirmpassword'>Confirm Password: </label>
+            <label htmlFor='passwordConfirmation'>Confirm Password: </label>
             <input
               name='passwordConfirmation'
               onChange={this.handleChange}
-              value={password}
+              value={passwordConfirmation}
               type='password'
               placeholder='confirm password'
             />
@@ -104,6 +104,7 @@ class SignUp extends Component {
             </button>
           </div>
         </form>
+        <p>Please don't use any real information...</p>
       </section>
     )
   }
