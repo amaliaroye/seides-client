@@ -10,11 +10,11 @@
   margin: 0;
   padding: 0;
   outline: 0;
-  &:focus :active :visited {
+  &:focus :active :visited :hover {
     border: 0;
     outline: none !important;
   }
-  outline: solid rgb(110, 110, 110) 1px;
+  // outline: solid rgb(110, 110, 110) 1px;
 }
 
 :root {
