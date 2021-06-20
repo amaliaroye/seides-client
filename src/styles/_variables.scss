@@ -1,19 +1,22 @@
 // VARIABLES
-$px             : 2; // COLOR VARIABLES
-$fog            : hsla(0, 0%, 100%, .5);
-$white          : hsla(0, 0%, 100%, 1);
-$black          : hsla(0, 0%, 0%, 1);
-$lightgray      : hsla(197, 47%, 85%, 1);
-$gray           : hsla(207, 20%, 56%, 1);
-$medgray        : hsla(218, 19%, 41%, 1);
-$darkgray       : hsla(231, 41%, 17%, 1);
-$peach          : hsla(20, 100%, 85%, 1);
-$pink           : hsla(0, 100%, 77%, 1);
-$hotpink        : hsla(344, 75%, 61%, 1);
-$lightblue      : hsla(172, 87%, 72%, 1);
-$blue           : hsla(180, 65%, 55%, 1);
-$yellow         : hsla(51, 100%, 68%, 1);
-$lightenedyellow:lighten($yellow, 15%)
+$px: 2; // COLOR VARIABLES
+$mist: hsla(0, 0%, 100%, 0.3);
+$fog: hsla(0, 0%, 0%, 0.2);
+$white: hsla(0, 0%, 100%, 1);
+$black: hsla(0, 0%, 0%, 1);
+$lightgray: hsla(197, 47%, 85%, 1);
+$gray: hsla(207, 20%, 56%, 1);
+$medgray: hsla(218, 19%, 41%, 1);
+$darkgray: hsla(231, 41%, 17%, 1);
+$peach: hsla(20, 100%, 85%, 1);
+$pink: hsla(0, 100%, 77%, 1);
+$hotpink: hsla(344, 75%, 61%, 1);
+$blush: #e69b96;
+$mauve: #be6973;
+$lightblue: hsla(172, 87%, 72%, 1);
+$blue: hsla(180, 65%, 55%, 1);
+$yellow: hsla(51, 100%, 68%, 1);
+$lightenedyellow: lighten($yellow, 15%);
 /*
 043 New York:
 background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
@@ -29,4 +32,11 @@ background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
 
 112 Child care: peach
 background-image: linear-gradient(-20deg, #f794a4 0%, #fdd6bd 100%);
+
+  background-image: linear-gradient(
+    to top,
+    #d5dee7 0%,
+    #ffafbd 0%,
+    #c9ffbf 100%
+  );
 */

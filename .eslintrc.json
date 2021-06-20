@@ -1,12 +1,8 @@
 {
-  "plugins": [
-    "styled-components-a11y"
-  ],
+  "plugins": [],
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:styled-components-a11y/recommended",
-    "plugin:jsx-a11y/recommended"
+    "plugin:react/recommended"
   ],
   "root": true,
   "parser": "babel-eslint",

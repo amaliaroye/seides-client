@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
+import GlobalFonts from './fonts/fonts'
 
 // Shared Components
 import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
@@ -45,6 +46,7 @@ class App extends Component {
     const { alerts, user } = this.state
     return (
       <Fragment>
+        <GlobalFonts />
         {alerts.map((alert) => (
           <AlertMessage
             key={alert.id}

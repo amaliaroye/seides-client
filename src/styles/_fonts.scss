@@ -1,33 +1,47 @@
-@font-face { // pretty standard
-  font-family: 'PIXEARG_';
-  src: url('../assets/fonts/PIXEARG_.woff2');
+@font-face {
+  font-family: "monobit";
+  src: local("../fonts/monobitwoff2");
+}
+@font-face {
+  font-family: "LycheeSoda";
+  src: local("../fonts/LycheeSoda.woff2");
+}
+@font-face {
+  font-family: "Silkscreen";
+  src: local("../fonts/slkscr.ttf");
+}
+@font-face {
+  font-family: "Poco";
+  src: local("../fonts/poco.woff2");
+}
+@font-face {
+  font-family: "MinimalFont5x7";
+  src: local("../fonts/MinimalFont5x7.woff2");
+}
+// @font-face {
+//   font-family: "MonsterFriendFore";
+//   src: local("../fonts/MonsterFriendFore.otf");
+// }
+
+* {
+  font-family: MinimalFont5x7, monobit, monospace;
+}
+h1 {
+  font-family: LycheeSoda;
+  font-size: 4rem;
+  text-align: center;
+  margin: 0;
+}
+h2 {
+  font-family: LycheeSoda;
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 0;
 }
 
-@font-face {
-  font-family: 'MonsterFriendFore';
-  src: url('../assets/fonts/MonsterFriendFore.otf');
-}
-@font-face {
-  font-family: 'euxoi';
-  src: url('../assets/fonts/euxoi.woff2');
-}
-@font-face {
-  font-family: 'LycheeSoda';
-  src: url('../assets/fonts/LycheeSoda.woff2');
-}
-@font-face {
-  font-family: 'Daydream';
-  src: url('../assets/fonts/Daydream.woff2');
-}
-@font-face { // !! mono
-  font-family: 'MinimalFont5x7';
-  src: url('../assets/fonts/MinimalFont5x7.woff2');
-}
-@font-face { // !! mono
-  font-family: 'Monotype_Gerhilt';
-  src: url('../assets/fonts/Monotype_Gerhilt.ttf');
-}
-@font-face { // !! mono
-  font-family: 'monobit';
-  src: url('../assets/fonts/monobit.woff2');
+p {
+  font-size: 1.5rem;
+  color: gray;
+  line-height: 0.8;
+  margin: 0;
 }

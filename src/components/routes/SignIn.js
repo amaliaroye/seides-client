@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 import { signIn } from '../../api/auth'
+
 
 class SignIn extends Component {
   constructor (props) {
@@ -37,32 +38,39 @@ class SignIn extends Component {
     const { email, password } = this.state
 
     return (
-      <div className='sign-in' >
-        <form onSubmit={this.handleSubmit} className='sign-in'>
-          <h1 className='header sign-in'>Sign In</h1>
-          <input
-            name='email'
-            onChange={this.handleChange}
-            value={email}
-            className='form sign-in'
-            type='email'
-            placeholder='email'
-          />
-
-          <input
-            name='password'
-            onChange={this.handleChange}
-            value={password}
-            type='password'
-            className='form sign-in'
-            placeholder='password'
-          />
-
-          <button type="submit" className='form sign-in'>
-        Sign In!
-          </button>
+      <section>
+        <form onSubmit={this.handleSubmit}>
+          <h1>Sign In</h1>
+          <div>
+            <label htmlFor='email'>Email:</label>
+            <input
+              name='email'
+              onChange={this.handleChange}
+              value={email}
+              type='email'
+              placeholder='email'
+            />
+          </div>
+          <div>
+            <label htmlFor='Password'>Password: </label>
+            <input
+              name='password'
+              onChange={this.handleChange}
+              value={password}
+              type='password'
+              placeholder='password'
+            />
+          </div>
+          <div className='buttons'>
+            <Link to='/'>
+              <button>cancel</button>
+            </Link>
+            <button type="submit">
+            Sign In!
+            </button>
+          </div>
         </form>
-      </div>
+      </section>
     )
   }
 }
