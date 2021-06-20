@@ -6,6 +6,7 @@ import GlobalFonts from './fonts/fonts'
 // Shared Components
 import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
 import AlertMessage from './components/shared/AlertMessage'
+import Toaster from './components/shared/Toaster'
 
 // Route Components
 import Home from './components/routes/Home'
@@ -22,68 +23,86 @@ class App extends Component {
     super(props)
     this.state = {
       user: null,
-      alerts: []
+      toasts: []
     }
   }
 
   setUser = user => this.setState({ user })
   clearUser = () => this.setState({ user: null })
 
-  deleteAlert = (id) => {
+  removeToast = (id) => {
     this.setState((state) => {
       // filters array of messages by id from uuid
-      return { alerts: state.alerts.filter(msg => msg.id !== id) }
+      return { toasts: state.toasts.filter(msg => msg.id !== id) }
     })
   }
-  alert = ({ message, variant }) => {
+
+  makeToast = ({ message, theme }) => {
     const id = uuid()
+    console.log('toast!', message, theme)
     this.setState((state) => {
-      return { alerts: [...state.alerts, { message, variant, id }] }
+      return { toasts: [...state.toasts, { message, theme, id }] }
     })
   }
 
   render () {
-    const { alerts, user } = this.state
+    const { toasts, user } = this.state
     return (
       <Fragment>
+
         <GlobalFonts />
-        {alerts.map((alert) => (
-          <AlertMessage
-            key={alert.id}
-            message={alert.message}
-            variant={alert.variant}
-            id={alert.id}
-            deleteAlert={this.deleteAlert}
-          />
-        ))}
+
         <main>
           <Route exact path='/' user={user} render={() => (
-            <Home alert={this.alert} user={user} setUser={this.setUser} clearUser={this.clearUser} />
+            <Home
+              toast={this.makeToast}
+              user={user}
+              setUser={this.setUser}
+              clearUser={this.clearUser}
+            />
           )} />
-          <AuthenticatedRoute user={user} path='/games/:id' render={(props) => (
-            <GamePlay {...props} user={user} alert={this.alert}/>
-          )} />
+
+          <AuthenticatedRoute user={user}
+            path='/games/:id' render={(props) => (
+              <GamePlay {...props}
+                user={user}
+                toast={this.makeToast}/>
+            )} />
+
           <AuthenticatedRoute user={user} exact path='/games' render={(props) => (
-            <GameIndex {...props} alert={this.alert} user={user} />
+            <GameIndex {...props} toast={this.makeToast} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/create-game' render={(props) => (
-            <GameCreate {...props} user={user} alert={this.alert}/>
+            <GameCreate {...props} user={user} toast={this.makeToast}/>
           )} />
 
           <Route path='/sign-up' render={() => (
-            <SignUp alert={this.alert} setUser={this.setUser} />
+            <SignUp toast={this.makeToast} setUser={this.setUser} />
           )} />
           <Route path='/sign-in' render={() => (
-            <SignIn alert={this.alert} setUser={this.setUser} />
+            <SignIn toast={this.makeToast} setUser={this.setUser} />
           )} />
 
           <AuthenticatedRoute path='/sign-out' user={user} render={() => (
-            <SignOut alert={this.alert} clearUser={this.clearUser} user={user} />
+            <SignOut toast={this.makeToast} clearUser={this.clearUser} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
-            <ChangePassword alert={this.alert} user={user} />
+            <ChangePassword toast={this.makeToast} user={user} />
           )} />
         </main>
+        <footer>
+          {toasts.map((toast) => (
+            <Toaster
+              key={toast.id}
+              message={toast.message}
+              theme={toast.theme}
+              id={toast.id}
+              removeToast={this.removeToast}
+            />
+          ))}
+
+        </footer>
+
       </Fragment>
     )
   }

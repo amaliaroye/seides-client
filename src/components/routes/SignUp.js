@@ -21,16 +21,17 @@ class SignUp extends Component {
   handleSubmit = event => {
     event.preventDefault()
 
-    const { alert, history, setUser } = this.props
+    const { toast, history, setUser } = this.props
 
     signUp(this.state)
       .then(() => signIn(this.state))
       .then(res => setUser(res.data.user))
-      .then(console.log(`Welcome ${this.state.name}!`))
-      .then(() => alert({
-        message: 'Welcome!',
-        variant: 'success'
-      }))
+      .then(
+        toast({
+          message: `Welcome ${this.state.name}!`,
+          theme: 'green'
+        })
+      )
       .then(() => history.push('/'))
       .catch(error => {
         this.setState({
@@ -38,9 +39,9 @@ class SignUp extends Component {
           password: '',
           passwordConfirmation: '',
           name: '' })
-        alert({
+        toast({
           message: 'Sign Up Failed with error: ' + error.message,
-          variant: 'danger'
+          theme: 'red'
         })
       })
   }
@@ -86,7 +87,7 @@ class SignUp extends Component {
           <div>
             <label htmlFor='confirmpassword'>Confirm Password: </label>
             <input
-              name='confirmpassword'
+              name='passwordConfirmation'
               onChange={this.handleChange}
               value={password}
               type='password'

@@ -6,39 +6,36 @@ import styled from 'styled-components'
 const GameInfoCard = styled.div`
   border: solid 1px gray;
   display: inline-grid;
-  padding: 5px;
-  margin: 5px;
+  padding: 1em;
+  margin: 1em;
   background-color: white;
 `
 
-const GameIndex = (props) => {
+const GameIndex = ({ user, toast }) => {
   const [games, setGames] = useState([])
 
   useEffect(() => {
-    gameIndex(props.user)
+    gameIndex(user)
       .then(res => setGames(res.data.games))
-      .catch(console.error)
-  }, [])
+      .then(()=>{toast({message:'Loaded your games!'})})
+      .catch(()=>toast({message:'Uh oh, something went wrong.'}))
+  }, [games])
 
   const deleteGame = (game, user) => {
     gameDelete(game, user)
-    // TODO: update game state to refresh
-      .then(console.log)
-      .catch(console.error)
+      .then(()=>toast({message:'Game deleted!'}))
+      .catch(()=>toast({message:'Could not delete!'}))
   }
 
   const listGames = games.map(game => (
     <GameInfoCard key={game._id}>
       <p>Score: {game.score}</p>
       <p>Turn: {game.turn}/{game.npcs.length}</p>
-      <p>{game.over ? 'Completed' : 'In Progress'}</p>
+      <p>{game.over ? 'Completed!' : 'In Progress'}</p>
+      <p>{game.createdAt}</p>
       <div>
-        <Link to={`/games/${game._id}`}>
-          <button disabled={!!game.over}>Continue</button>
-        </Link>
-        <button onClick={() => deleteGame(game._id, props.user)}>Delete</button>
+        <button onClick={() => deleteGame(game.id, user)}>Delete</button>
       </div>
-
     </GameInfoCard>
   ))
 

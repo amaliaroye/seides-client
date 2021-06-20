@@ -20,12 +20,13 @@ class SignIn extends Component {
   handleSubmit = event => {
     event.preventDefault()
 
-    const { history, setUser } = this.props
+    const { toast, history, setUser } = this.props
 
     signIn(this.state)
-      .then(res => {
-        setUser(res.data.user)
-        console.log(`Welcome Back ${res.data.user.name}!`)
+      .then(res => { setUser(res.data.user)
+        toast({ theme:'green',
+          message: `Welcome back, ${res.data.user.name}!`
+        })
       })
       .then(() => history.push('/'))
       .catch(error => {

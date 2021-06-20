@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-router-dom'
-import TypedText from '../shared/TypedText'
 
 const TitleWrapper = styled.div`
     height: 200px;
@@ -44,11 +43,14 @@ const unauthenticatedOptions = (
   </div>
 )
 
-const Home = ({ user }) => {
+const Home = ({ user, toast }) => {
   return (
     <section>
       <TitleWrapper />
       { user ? authenticatedOptions : unauthenticatedOptions }
+      {/* <button onClick={()=>toast({
+        message:'I am toast', theme: 'green'
+      })}>Toast Bread</button> */}
     </section>
   )
 }

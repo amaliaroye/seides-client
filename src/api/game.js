@@ -40,9 +40,9 @@ export const gameUpdate = (game, user) => {
 }
 
 // delete an game
-export const gameDelete = (game, user) => {
+export const gameDelete = (id, user) => {
   return axios({
-    url: apiUrl + '/games/' + game.id,
+    url: apiUrl + '/games/' + id,
     method: 'DELETE',
     headers: { 'Authorization': `Bearer ${user.token}` }
   })

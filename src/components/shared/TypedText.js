@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 
-const TypedText = ({ text, name }) => {
+const TypedText = ({ text, name, next }) => {
 
   useEffect(() => {
     clearType()
@@ -26,7 +26,7 @@ const TypedText = ({ text, name }) => {
   }
 
   return (
-    <div className="textBox">
+    <div className="textBox" onClick={next}>
       <h2 className="displayName">{name}</h2>
       <p id="type"></p>
     </div>
