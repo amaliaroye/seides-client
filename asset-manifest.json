@@ -1,10 +1,8 @@
 {
-  "main.js": "static/js/main.41b65a26.js",
-  "main.js.map": "static/js/main.41b65a26.js.map",
-  "static\\media\\Daydream.ttf": "static/media/Daydream.4b846ba2.ttf",
+  "main.js": "static/js/main.3fa5a087.js",
+  "main.js.map": "static/js/main.3fa5a087.js.map",
   "static\\media\\LycheeSoda.ttf": "static/media/LycheeSoda.ab181d64.ttf",
-  "static\\media\\MinimalFont5x7.ttf": "static/media/MinimalFont5x7.112d0648.ttf",
-  "static\\media\\MonsterFriendFore.otf": "static/media/MonsterFriendFore.9cb55507.otf",
-  "static\\media\\PIXEARG_.TTF": "static/media/PIXEARG_.ce007d54.TTF",
-  "static\\media\\RPGSystem.ttf": "static/media/RPGSystem.b3735264.ttf"
+  "static\\media\\LycheeSoda.woff2": "static/media/LycheeSoda.b9bba970.woff2",
+  "static\\media\\monobit.ttf": "static/media/monobit.f09287d3.ttf",
+  "static\\media\\monobit.woff2": "static/media/monobit.2d670cdf.woff2"
 }
