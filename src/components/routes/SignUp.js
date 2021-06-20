@@ -104,7 +104,7 @@ class SignUp extends Component {
             </button>
           </div>
         </form>
-        <p>Please don't use any real information...</p>
+        <p>Please don&apos;t use any real information...</p>
       </section>
     )
   }
