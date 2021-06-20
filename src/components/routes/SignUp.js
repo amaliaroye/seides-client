@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { signUp, signIn } from '../../api/auth'
 
 class SignUp extends Component {
@@ -47,45 +47,62 @@ class SignUp extends Component {
   render () {
     const { email, password, passwordConfirmation, name } = this.state
     return (
-      <section className='form-container sign-up'>
-        <div className='form-group' >
-          <form onSubmit={this.handleSubmit} className='sign-up'>
-            <h2 className='header sign-up'>Sign Up!</h2>
+      <section>
+        <form onSubmit={this.handleSubmit}>
+          <h1>Sign Up!</h1>
+          <div>
+            <label htmlFor='email'>Email:</label>
             <input
               name='email'
               onChange={this.handleChange}
               value={email}
               type='email'
-              placeholder='email'
+              placeholder='enter email'
             />
+          </div>
 
+          <div>
+            <label htmlFor='name'>Name:</label>
             <input
               name='name'
               onChange={this.handleChange}
-              value={name}
+              value={email}
               type='text'
-              placeholder='name'
+              placeholder='enter name'
             />
+          </div>
 
+          <div>
+            <label htmlFor='Password'>Password: </label>
             <input
               name='password'
               onChange={this.handleChange}
               value={password}
               type='password'
-              placeholder='password'
+              placeholder='enter password'
             />
+          </div>
 
+          <div>
+            <label htmlFor='confirmpassword'>Confirm Password: </label>
             <input
-              name='passwordConfirmation'
+              name='confirmpassword'
               onChange={this.handleChange}
-              value={passwordConfirmation}
+              value={password}
               type='password'
               placeholder='confirm password'
             />
+          </div>
 
-            <button type="submit">Sign Up!</button>
-          </form>
-        </div>
+          <div className='buttons'>
+            <Link to='/'>
+              <button>cancel</button>
+            </Link>
+            <button type="submit">
+            Sign In!
+            </button>
+          </div>
+        </form>
       </section>
     )
   }

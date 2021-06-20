@@ -1,17 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-router-dom'
-import Button from '../shared/Button'
-
-const rotate = keyframes`
-  from {
-    transform: translate(0deg);
-  }
-
-  to {
-    transform: translate(360deg);
-  }
-`
+import TypedText from '../shared/TypedText'
 
 const TitleWrapper = styled.div`
     height: 200px;
@@ -25,28 +15,31 @@ const TitleWrapper = styled.div`
 `
 
 const authenticatedOptions = (
-  <div>
-    <Link to='/sign-out'>
-      <Button text='Sign Out'/>
-    </Link>
-    <Link to='/change-password'>
-      <Button text='Change Password'/>
-    </Link>
+  <div className="container">
     <Link to='/create-game'>
-      <Button text='New Game'/>
+      <button className='big'>Create New Game</button>
     </Link>
-    <Link to='/games'>
-      <Button text='All Games'/>
-    </Link>
+
+    <div className="buttons">
+      <Link to='/games'>
+        <button>My Games</button>
+      </Link>
+      <Link to='/sign-out'>
+        <button>Sign Out</button>
+      </Link>
+      <Link to='/change-password'>
+        <button>Change Password</button>
+      </Link>
+    </div>
   </div>
 )
 const unauthenticatedOptions = (
-  <div>
+  <div className="buttons">
     <Link to='/sign-up'>
-      <Button text='Sign Up'/>
+      <button>Sign Up</button>
     </Link>
     <Link to='/sign-in'>
-      <Button text='Sign In'/>
+      <button>Sign In</button>
     </Link>
   </div>
 )
