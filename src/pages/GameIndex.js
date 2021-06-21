@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { gameIndex, gameDelete } from '../../api/game'
+import { gameIndex, gameDelete } from '../api/game'
 import styled from 'styled-components'
 
 const GameInfoCard = styled.div`

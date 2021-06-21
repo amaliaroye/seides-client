@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { gameShow, gameUpdate } from '../../api/game'
-import { npcShow, npcUpdate } from '../../api/npc'
-import TypedText from '../shared/TypedText'
+import { gameShow, gameUpdate } from '../api/game'
+import { npcShow, npcUpdate } from '../api/npc'
+import TypedText from '../components/TypedText'
+
+//! I know something is amiss with my state updates but it works for now...
 
 const GamePlay = (props) => {
   const [game, setGame] = useState({
@@ -16,36 +18,32 @@ const GamePlay = (props) => {
     options: [],
     replies: []
   })
-  const [message, setMessage] = useState('Click to play!')
+  const [message, setMessage] = useState('')
+
+  const { user, toast } = props
+
 
   // useRef does not re-render the component, its values persist through renders
   const turn = useRef(-1)
 
-  const { user, toast } = props
 
   // when component renders, set the state of the game to response
   useEffect(() => {
     gameShow(props.match.params.id, user)
       .then(res => setGame(res.data.game))
-      .then(()=> toast({ theme: 'green',
+      .then(()=> toast({
         message: 'Loaded game!'
       }))
-      .catch(()=> toast({ theme: 'red',
+      .catch(()=> toast({
         message: 'Whoops! Couldn\'nt load the game!'
       }))
   }, [])
 
   useEffect(() => {
     // end game if there are no more npcs in the array
-    if (!game) return
     if (turn.current >=  game.npcs.length) {
-      toast({message:'Game Over!'})
       setGame({ ...game, over: true })
-        .then(()=> toast({ theme: 'orange',
-          message: 'Game Over!'
-        }))
     }
-    // gameUpdate(game, user)
   }, [game])
 
   const selectOption = (event) => {
@@ -79,9 +77,9 @@ const GamePlay = (props) => {
 
   const nextNpc = () => {
     if (turn.current >=  game.npcs.length) {
-      toast({message:'Game Over!'})
+      console.log('in nextNpc!', game)
       setGame({ ...game, over: true })
-        .then(()=> toast({ theme: 'orange',
+        .then(()=> toast({
           message: 'Game Over!'
         }))
         .then(()=>gameUpdate(game, user))
@@ -97,15 +95,13 @@ const GamePlay = (props) => {
     <React.Fragment>
       <section>
         <div className='hud'>
-        Turn: {turn.current} Score: {game.score}
+          <p>Turn: {turn.current} Score: {game.score}</p>
         </div>
 
-
-        <TypedText next={nextNpc} name={currentNpc.name} text={currentNpc.requestComplete ? message : currentNpc.request} />
-
-        {/* <div>
-          <button onClick={nextNpc}>nextNpc</button>
-        </div> */}
+        <div className="textBox" onClick={nextNpc}>
+          <h2 className="displayName">{currentNpc.name}</h2>
+          <TypedText text={currentNpc.requestComplete ? message : currentNpc.request} />
+        </div>
 
         <div className='options'>
           <button onClick={selectOption} value='0' className='option'>

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 
-const TypedText = ({ text, name, next }) => {
+const TypedText = ({ text }) => {
 
   useEffect(() => {
     clearType()
@@ -19,17 +19,12 @@ const TypedText = ({ text, name, next }) => {
       setTimeout(setType, speed)
     }
   }
-
   const clearType = () => {
-    // clears out the <p>
     document.getElementById('type').innerHTML = ''
   }
 
   return (
-    <div className="textBox" onClick={next}>
-      <h2 className="displayName">{name}</h2>
-      <p id="type"></p>
-    </div>
+    <p id="type"></p>
   )
 }
 

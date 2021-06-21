@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
-import { changePassword } from '../../api/auth'
+import { changePassword } from '../api/auth'
 
 
 class ChangePassword extends Component {

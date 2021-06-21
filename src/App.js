@@ -1,29 +1,32 @@
 import React, { Component, Fragment } from 'react'
 import { Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
+import styled, { ThemeProvider, css, keyframes } from 'styled-components'
 import GlobalFonts from './fonts/fonts'
 
 // Shared Components
-import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
-import AlertMessage from './components/shared/AlertMessage'
-import Toaster from './components/shared/Toaster'
+import AuthenticatedRoute from './components/AuthenticatedRoute'
+import Toaster from './components/Toaster'
 
 // Route Components
-import Home from './components/routes/Home'
-import GameCreate from './components/routes/GameCreate'
-import GameIndex from './components/routes/GameIndex'
-import GamePlay from './components/routes/GamePlay'
-import SignUp from './components/routes/SignUp'
-import SignIn from './components/routes/SignIn'
-import SignOut from './components/routes/SignOut'
-import ChangePassword from './components/routes/ChangePassword'
+import Home from './pages/Home'
+import GameCreate from './pages/GameCreate'
+import GameIndex from './pages/GameIndex'
+import GamePlay from './pages/GamePlay'
+import SignUp from './pages/SignUp'
+import SignIn from './pages/SignIn'
+import SignOut from './pages/SignOut'
+import ChangePassword from './pages/ChangePassword'
+
+
 
 class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
       user: null,
-      toasts: []
+      toasts: [],
+      theme: {}
     }
   }
 
@@ -45,10 +48,11 @@ class App extends Component {
     })
   }
 
+
   render () {
-    const { toasts, user } = this.state
+    const { toasts, user, theme } = this.state
     return (
-      <Fragment>
+      <ThemeProvider theme={theme}>
 
         <GlobalFonts />
 
@@ -103,7 +107,7 @@ class App extends Component {
 
         </footer>
 
-      </Fragment>
+      </ThemeProvider>
     )
   }
 }

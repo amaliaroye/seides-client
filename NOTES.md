@@ -1,6 +1,9 @@
-# Notes
+# Notes SEIdes
+
+THIS IS A HOT HOT MESS WHERE I COPYPASTA'D RANDOM STUFF PLEASE IGNORE.
 
 ### Emojis are fun!
+
 📡 send 🔗 link ⌛️⏳ async
 🧮 calculate 🎰🎲 randomize 🎮 play
 🔒🔑 auth 💻
@@ -9,18 +12,19 @@
 📦 package 🎨 render 📩 recieve
 🩹 fix 🧱 build 🔎 search 💡 idea
 
-
 ## Misc. Links
- [NES.css](https://nostalgic-css.github.io/NES.css/) + [RPG UI](https://github.com/RonenNess/RPGUI)
- [SASS Interpolation](https://sass-lang.com/documentation/interpolation)
- [Questbook](https://github.com/Leopotam/questbook)  + [Questbook JS](https://github.com/Leopotam/questbook-js)
- [RPG Language](http://howtomakeanrpg.com/a/rpg-dialog-language-discourse.html)
- [Konva](https://konvajs.org/docs/)
- [React Konva](https://github.com/konvajs/react-konva)
+
+[NES.css](https://nostalgic-css.github.io/NES.css/) + [RPG UI](https://github.com/RonenNess/RPGUI)
+[SASS Interpolation](https://sass-lang.com/documentation/interpolation)
+[Questbook](https://github.com/Leopotam/questbook) + [Questbook JS](https://github.com/Leopotam/questbook-js)
+[RPG Language](http://howtomakeanrpg.com/a/rpg-dialog-language-discourse.html)
+[Konva](https://konvajs.org/docs/)
+[React Konva](https://github.com/konvajs/react-konva)
 
 ### Request Ideas
+
 'I need help fixing up my Neopets page!'
-'I'm missing a C U R L Y  B O I somewhere, can you help me find him??'
+'I'm missing a C U R L Y B O I somewhere, can you help me find him??'
 'I can't find the bug on line 572 in this 84-line file!'
 'Is a hot dog a sandwich?'
 'Can I ASCII you a question?'
@@ -28,23 +32,26 @@
 'Can you GET me a can of AJAX from the API store?'
 
 ### Area Ideas!
+
 418 Tea. Only Tea.
 Algo-Rhythm
 API Store: AJAX, SOAP
 
 ## 💡 Ideas
+
 - RPG or platformer side-scroller with parallax backgrounds game?
 - ~~At random intervals, random items have a chance to spawn on the map~~
 - When a player gets near an element (NPCs, trash cans, items). The player can then hit the spacebar to interact with the element (pick up item, open )
 - ~~Gifting items to NPCs increases your reputation level. A higher reputation level increases the chances NPCs will give you gifts)~~
 - ~~NPCs have gift preferences. If they get a gift that they like, the player's reputation increases more than if they got a gift they are neutral about, if they get a gift they dislike, the player's reputation decreases.~~
 - ~~Choose a player, start game, collect nodes on our Full stack developer road map? Maybe interactions throughout? 'networking'?~~
-I'm trying to make a game turn loop that will
+  I'm trying to make a game turn loop that will
 - make a get request for an npc
 - set the state of 'currentNpc' with the npc object from the server
 - display the currentnpc's request and options
 
 then after the user clicks an option,
+
 - display the corresponding npc reply
 - update the currentNpc's 'requestComplete' value
 - send patch request for the npc
@@ -52,6 +59,7 @@ then after the user clicks an option,
 - send patch request for game
 
 Next turn:
+
 - increase turn count
 - load next npc id in array
 - make get request
@@ -60,111 +68,124 @@ Next turn:
 Woah what a coincidence! I spent a chunk of the weekend organizing my...life? Making to do lists organized by date and urgency and consolidating my pile of post-its and updating my calendar
 
 ...and printing out the list of homework and project requirements I have to still complete
-## 📝 User Stories
-##### 🔒 AUTHENTICATION
-  - A new user can sign-up with an email and password,
-  - A returning user can sign-in with their email and password
-  - A signed in user can choose to sign-out and end their game
-  - A signed in user can change their user password
-##### 🚶 MOVEMENT
-  - Players can start a new game that draws the map of the world with the static NPCs and interactable items
-  - Players can use the <kbd>W</kbd> and <kbd>D</kbd> or <kbd>L-Arrow</kbd> and <kbd>R-Arrow</kbd> to move their character sprite around the map
-  - When a player is within a certain range of an entity they can interact with, it outlines itself in white to allow it to stand out from the background
-##### 🎒 ITEMS
-  - If the Player walks over a collectible item, they can pick it up and add it to their inventory
-  - Players can view all the items they collect in their inventory
-  - Players can interact with a dumpster or trash can to throw away items from their inventory
-##### 👤 NPCs
-  - Players can chat/interact with NPCs
-  - NPCs can respond to a player's interaction with a random message from a list of possible response messages
-  - Interactions with NPCs are recorded in your diary
-##### 🌍 MAP
-  - The map is generated when a new game starts
 
-  ## ER Diagram
-  ```mermaid
-    erDiagram
-  
-    MAP ||--o{ PLAYER : displays
-    ENTITY-NPC }o--o{ PLAYER : interacts
-    ENTITY-ITEM }o--o{ PLAYER : interacts
-    MAP ||--o{ ENTITY-NPC : generates
-    MAP ||--o{ ENTITY-ITEM : generates
-    USER ||--|{ PLAYER : owns
-    PLAYER ||--o{ INTERACTION : creates
-  
-  
-    USER {
-      userid id
-      username string
-      email string
-      password string
-      scores array
-    }
-    PLAYER {
-      playerid id
-      ownerid id
-      name string
-      inventory array
-      interactions array
-      spritesheet string
-      messages array
-    }
-    ENTITY-ITEM {
-      id id
-      name string
-      type string
-      coordinates array
-      scoreModifier number
-      isCollectible boolean
-      messages array
-    }
-    ENTITY-NPC {
-      id id
-      name string
-      type string
-      coordinates array
-      scoreModifier number
-      isCollectible boolean
-      messages array
-      favoriteItems array
-      hatedItems array
-    }
-    INTERACTION {
-      id id
-      player id
-      entity id
-      coordinates array
-      messageDisplayed string
-      result string
-      scoreModifier number
-      isCollected boolean
-      timeItHappened timestamp
-    }
-    MAP {
-      id id
-      height number
-      width number
-      createdAt timestamp
-      currentEntities array
-    }
-  ```
+## 📝 User Stories
+
+##### 🔒 AUTHENTICATION
+
+- A new user can sign-up with an email and password,
+- A returning user can sign-in with their email and password
+- A signed in user can choose to sign-out and end their game
+- A signed in user can change their user password
+
+##### 🚶 MOVEMENT
+
+- Players can start a new game that draws the map of the world with the static NPCs and interactable items
+- Players can use the <kbd>W</kbd> and <kbd>D</kbd> or <kbd>L-Arrow</kbd> and <kbd>R-Arrow</kbd> to move their character sprite around the map
+- When a player is within a certain range of an entity they can interact with, it outlines itself in white to allow it to stand out from the background
+
+##### 🎒 ITEMS
+
+- If the Player walks over a collectible item, they can pick it up and add it to their inventory
+- Players can view all the items they collect in their inventory
+- Players can interact with a dumpster or trash can to throw away items from their inventory
+
+##### 👤 NPCs
+
+- Players can chat/interact with NPCs
+- NPCs can respond to a player's interaction with a random message from a list of possible response messages
+- Interactions with NPCs are recorded in your diary
+
+##### 🌍 MAP
+
+- The map is generated when a new game starts
+
+## ER Diagram
+
+```mermaid
+  erDiagram
+
+  MAP ||--o{ PLAYER : displays
+  ENTITY-NPC }o--o{ PLAYER : interacts
+  ENTITY-ITEM }o--o{ PLAYER : interacts
+  MAP ||--o{ ENTITY-NPC : generates
+  MAP ||--o{ ENTITY-ITEM : generates
+  USER ||--|{ PLAYER : owns
+  PLAYER ||--o{ INTERACTION : creates
+
+
+  USER {
+    userid id
+    username string
+    email string
+    password string
+    scores array
+  }
+  PLAYER {
+    playerid id
+    ownerid id
+    name string
+    inventory array
+    interactions array
+    spritesheet string
+    messages array
+  }
+  ENTITY-ITEM {
+    id id
+    name string
+    type string
+    coordinates array
+    scoreModifier number
+    isCollectible boolean
+    messages array
+  }
+  ENTITY-NPC {
+    id id
+    name string
+    type string
+    coordinates array
+    scoreModifier number
+    isCollectible boolean
+    messages array
+    favoriteItems array
+    hatedItems array
+  }
+  INTERACTION {
+    id id
+    player id
+    entity id
+    coordinates array
+    messageDisplayed string
+    result string
+    scoreModifier number
+    isCollected boolean
+    timeItHappened timestamp
+  }
+  MAP {
+    id id
+    height number
+    width number
+    createdAt timestamp
+    currentEntities array
+  }
+```
 
 ### 🚂 Train of Thought
+
 > I want to make a side-scrolling platformer game that's populated with entities like NPCs and items
 
 > I don't want to use a 2D array as a tileset for the map. This creates a game that has a static viewport and the player moves around.
 > If I want to make a large background image containing the whole map that moves on user input, and have a limited viewport where the player is static on the screen. How do I work with collision detection and entity interaction?
 
 > I can use the HTML canvas, but tutorials I've watched usually also implement confusing game logic like game loops and buffers to save memory so the canvas doesn't have to be completely redrawn on every update. Can I create an svg path that the player can "run on"? Maybe draw and populate the entire map with canvas squares representing the ground, map boundaries, entities, maybe the player? Can I change the background of a canvas element?
-[MDN Canvas Paths and SVGs](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths)
-[Window.requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
+> [MDN Canvas Paths and SVGs](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) > [Window.requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
 
 > Making a tileset map might be a good way to learn about animation and movement. I'm still not 100% if there's going to be gravity and a game loop, but we'll see. [requestAnimationFrame](https://www.paulirish.com/2011/requestanimationframe-for-smart-animating/)
 
 > [2D RPG with React Tree Fiber?](https://dev.to/flagrede/making-a-2d-rpg-game-with-react-tree-fiber-4af1), [Repo](https://github.com/coldi/r3f-game-demo), [React Tree Fiber](https://github.com/pmndrs/react-three-fiber)
 
 ##### Elements and Features
+
 🗺 A **map** defined with tilesets
 🚶‍♂️ A **character** that can be moved with a keyboard
 🧱 A **collision** system which prevents to walk into walls or objects
@@ -172,36 +193,37 @@ Woah what a coincidence! I spent a chunk of the weekend organizing my...life? Ma
 📽 A **scene** system to move from one room to another
 
 ##### Folder/ Architecture:
+
 - core/public: reusable static components
 - components: components that hold logics more specific to the current demo.
 - entities: describe elements in the game world (Pizza, Plant, Player...). All these elements are `GameObject`.
 - `scenes`: represents the different rooms in the game. Scenes are an aggregation of GameObject. In the demo there are two scenes (Office and Other).
 
 ##### This dude's component architecture...
+
 ```js
-  <Game>
-    <AssetLoader urls={urls} placeholder="Loading assets ...">
-        <SceneManager defaultScene="office">
-            <Scene id="office">
-                <OfficeScene />
-            </Scene>
-            <Scene id="other">
-                <OtherScene />
-            </Scene>
-        </SceneManager>
-    </AssetLoader>
-  </Game>
+<Game>
+  <AssetLoader urls={urls} placeholder='Loading assets ...'>
+    <SceneManager defaultScene='office'>
+      <Scene id='office'>
+        <OfficeScene />
+      </Scene>
+      <Scene id='other'>
+        <OtherScene />
+      </Scene>
+    </SceneManager>
+  </AssetLoader>
+</Game>
 ```
+
 > [Planck.js](https://piqnt.com/planck.js/): 2D JavaScript physics engine for cross-platform HTML5 game development
 > Maybe the tileset idea might not be so bad after all?
-
-
 
 [MDN Coming in Clutch](https://developer.mozilla.org/en-US/docs/Games/Techniques/Tilemaps/Square_tilemaps_implementation:_Scrolling_maps)
 [MDN Repo for Tilemaps](https://github.com/mozdevs/gamedev-js-tiles)
 
-
 ### Components
+
 Event Listener - Controller
 : Listens for keyboard inputs, changes state?
 
@@ -226,7 +248,6 @@ Sprite
 TileMap
 : A large graphic created by rendering a matrix of position indexes derived from a smaller set of common tiles.
 
-
 🎮 Controller: event listener
 🧠 Engine: collision detection
 ⌛ Game Loop: rerenders the frame 30x per second?
@@ -235,6 +256,7 @@ TileMap
 ---
 
 ## File Structure
+
 public/ -static assets
 src/ - all code, including images supported in React components
 utils/ - utilities and helper methods to use project-wide
@@ -260,15 +282,19 @@ utils/ - utilities and helper methods to use project-wide
 🎲 randomGenerator.js
 📑 README.md
 ```
+
 ---
 
 ## Structure
+
 `App.js`
-  - Top level component that stores the currently authenticated user in state, as well as data related to the flash messages.
-  - `App` renders the `Header` component, and a list of routes, each of which render a component from `src/components`.
-  - The `src/api` directory has a component file, `auth.js`, which contains all the needed `axios` calls pertaining to authentication.
+
+- Top level component that stores the currently authenticated user in state, as well as data related to the flash messages.
+- `App` renders the `Header` component, and a list of routes, each of which render a component from `src/components`.
+- The `src/api` directory has a component file, `auth.js`, which contains all the needed `axios` calls pertaining to authentication.
 
 ### React Tips!
+
 - Aim for "dumb", stateless components:
   - They're easier to work with, less buggy and easier to test!
   - Avoid large render methods!
@@ -276,9 +302,11 @@ utils/ - utilities and helper methods to use project-wide
 - React has a fake dom?
 
 ### Stand-Alone Javascript Modules
+
 Random Number Generator
 
 ## Links
+
 [MDN Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
 [MDN OffscreenCanvas](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas)
 
@@ -292,14 +320,15 @@ Random Number Generator
 [Structuring Apps](https://cheesecakelabs.com/blog/efficient-way-structure-react-native-projects/)
 [React Sidescroller](https://github.com/nrobin24/react-sidescroller)
 [MelonJS](http://melonjs.github.io/melonJS/docs/)
+
 ## Public APIs
+
 [Joke API](https://sv443.net/jokeapi/v2/)
 [Yo Momma Jokes API](https://yomomma-api.herokuapp.com/jokes)
 [Dad Joke API](https://icanhazdadjoke.com/api)
 
-
-
 ### Critic Markup
+
 Addition {++ ++} (markdown-writer:toggle-addition-text)
 Deletion {-- --} (markdown-writer:toggle-deletion-text)
 Substitution {~~ ~> ~~} (markdown-writer:toggle-substitution-text)
@@ -309,13 +338,14 @@ Highlight {== ==}{>> <<} (markdown-writer:toggle-highlight-text)
 ⸻
 
 ### Symbols!
+
 [coolSymbol](https://coolsymbol.com/)
 [Symbol Copy](https://www.symbolcopy.com/arrow-symbol.html)
 [fSymbols](https://fsymbols.com/all/)
 
 🦺 Under Construction
 
-❗️ ❕ ❓ ❔ ➕ ➖ ➗ ⭕ ❌ ✅ ❎ 〰️ 🆔 *️⃣ #️⃣
+❗️ ❕ ❓ ❔ ➕ ➖ ➗ ⭕ ❌ ✅ ❎ 〰️ 🆔 \*️⃣ #️⃣
 🔒 🔐 🔑 🔔 🔗 💻 📼 📷 💾
 📄 📄 📑 📜 📦 📁 📂 📖 📇 📅 ✉️ 📩
 ⌛ ⌚ ⏰ 🔍 🏠 🧲 🚩 🛑 ⛔ 🎒

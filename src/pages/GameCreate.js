@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
-import { gameCreate } from '../../api/game'
-import { npcCreate } from '../../api/npc'
-import { npcData } from '../../data/npcData'
+import { gameCreate } from '../api/game'
+import { npcCreate } from '../api/npc'
+import { npcData } from '../data/npcData'
 
 const GameCreate = (props) => {
   if (!props.user) return (<Redirect to={'/'} />)
